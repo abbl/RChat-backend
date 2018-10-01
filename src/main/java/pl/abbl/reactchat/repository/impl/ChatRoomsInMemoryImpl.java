@@ -5,12 +5,14 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import pl.abbl.reactchat.model.ChatMessage;
 import pl.abbl.reactchat.model.ChatRoom;
 import pl.abbl.reactchat.repository.ChatRoomsRepository;
 
 @Repository
 public class ChatRoomsInMemoryImpl implements ChatRoomsRepository{
 	private List<ChatRoom> chatRooms;
+	private static final short RECENT_MESSAGES_RANGE = 25;
 	
 	public ChatRoomsInMemoryImpl() {
 		chatRooms = new ArrayList<>();
@@ -30,10 +32,19 @@ public class ChatRoomsInMemoryImpl implements ChatRoomsRepository{
 	public List<ChatRoom> getChatRooms() {
 		return chatRooms;
 	}
-
+	
+	@Override
+	public List<ChatMessage> getRecentChatMessages(long id) {
+		List<ChatMessage> chatMessages = getChatRoom(id).getMessages();
+		return chatMessages.subList(Math.max(0, chatMessages.size() - RECENT_MESSAGES_RANGE), chatMessages.size());
+	}
+	
 	@Override
 	public ChatRoom getChatRoom(long id) {
-		// TODO Auto-generated method stub
+		for (ChatRoom chatRoom : chatRooms) {
+			if(chatRoom.getId() == id)
+				return chatRoom;
+		}
 		return null;
 	}
 

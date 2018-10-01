@@ -1,11 +1,15 @@
 package pl.abbl.reactchat.model;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class ChatRoom {
 	private long id;
 	private String name;
-	private ArrayList<ChatMessage> messages;
+	@JsonIgnore
+	private List<ChatMessage> messages;
 	
 	public ChatRoom(long id, String name) {
 		this.id = id;
@@ -23,5 +27,9 @@ public class ChatRoom {
 	
 	public long getId() {
 		return id;
+	}
+	
+	public List<ChatMessage> getMessages(){
+		return messages;
 	}
 }
