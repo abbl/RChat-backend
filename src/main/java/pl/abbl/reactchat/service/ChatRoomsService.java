@@ -1,10 +1,12 @@
-package pl.abbl.reactchat.repository;
+package pl.abbl.reactchat.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import pl.abbl.reactchat.model.ChatRoom;
 
-public interface ChatRoomsRepository {
+public interface ChatRoomsService {
 	void addChatRoom(ChatRoom chatRoom);
 	void removeChatRoom(ChatRoom chatRoom);
 	ChatRoom getChatRoom(long id);
