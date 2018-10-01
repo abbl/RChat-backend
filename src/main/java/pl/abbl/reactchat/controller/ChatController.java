@@ -1,11 +1,13 @@
 package pl.abbl.reactchat.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,6 +28,7 @@ public class ChatController {
 	@PostConstruct
 	public void createDefaultChatRoom() {
 		chatRoomsService.addChatRoom(new ChatRoom(0, "#default"));
+		chatRoomsService.addChatRoom(new ChatRoom(1, "#test"));
 		chatRoomsService.getChatRoom(0).addMessage("Im a default message generated in run process.");
 	}
 	
@@ -42,7 +45,7 @@ public class ChatController {
 	}
 	
 	@RequestMapping(value = "/chat/chatRoom/addNewMessage", method = RequestMethod.POST)
-	public void addNewMessage(@RequestParam("chatRoomId") long id ,@RequestParam("message") String message) {
-		chatRoomsService.getChatRoom(id).addMessage(message);
+	public void addNewMessage(@RequestBody Map<String, String> data) {
+		chatRoomsService.getChatRoom(Long.parseLong(data.get("chatRoomId"))).addMessage(data.get("message"));
 	}
 }
