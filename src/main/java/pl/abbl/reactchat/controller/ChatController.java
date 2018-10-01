@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +16,7 @@ import pl.abbl.reactchat.model.ChatMessage;
 import pl.abbl.reactchat.model.ChatRoom;
 import pl.abbl.reactchat.service.ChatRoomsService;
 
+@CrossOrigin
 @RestController
 @RequestMapping("api")
 public class ChatController {
@@ -41,7 +43,6 @@ public class ChatController {
 	
 	@RequestMapping(value = "/chat/chatRoom/addNewMessage", method = RequestMethod.POST)
 	public void addNewMessage(@RequestParam("chatRoomId") long id ,@RequestParam("message") String message) {
-		System.out.println("Inserted new message to chatroom " +  id + " containing:" + message);
 		chatRoomsService.getChatRoom(id).addMessage(message);
 	}
 }
