@@ -38,4 +38,10 @@ public class ChatController {
 	public List<ChatMessage> getRecentChatMessages(@RequestParam("id") long id){
 		return chatRoomsService.getRecentChatMessages(id);
 	}
+	
+	@RequestMapping(value = "/chat/chatRoom/addNewMessage", method = RequestMethod.POST)
+	public void addNewMessage(@RequestParam("chatRoomId") long id ,@RequestParam("message") String message) {
+		System.out.println("Inserted new message to chatroom " +  id + " containing:" + message);
+		chatRoomsService.getChatRoom(id).addMessage(message);
+	}
 }
