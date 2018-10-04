@@ -19,8 +19,12 @@ public class ChatRoomsInMemoryImpl implements ChatRoomsRepository{
 	}
 	
 	@Override
-	public void addChatRoom(ChatRoom chatRoom) {
-		chatRooms.add(chatRoom);
+	public boolean addChatRoom(String token, String roomName, String roomDesc) {
+		if(getChatRoomByName(roomName) != null) {
+			
+			return true;
+		}
+		return false;
 	}
 
 	@Override
@@ -47,5 +51,21 @@ public class ChatRoomsInMemoryImpl implements ChatRoomsRepository{
 		}
 		return null;
 	}
+	
+	private ChatRoom getChatRoomByName(String chatRoomName) {
+		for (ChatRoom chatRoom : chatRooms) {
+			if(chatRoom.getName().equalsIgnoreCase(chatRoomName)){
+				return chatRoom;
+			}
+		}
+		return null;
+	}
 
+	@Override
+	public void sendMessage(long roomId, String sender, String message) {
+		ChatRoom target = getChatRoom(roomId);
+		
+		if(target != null) 
+			target.addMessage(sender, message);
+	}
 }

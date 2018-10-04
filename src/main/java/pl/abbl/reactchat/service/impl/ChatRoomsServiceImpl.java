@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import pl.abbl.reactchat.callbacks.ChatCallbacks;
 import pl.abbl.reactchat.model.ChatMessage;
 import pl.abbl.reactchat.model.ChatRoom;
 import pl.abbl.reactchat.repository.ChatRoomsRepository;
@@ -16,19 +17,18 @@ public class ChatRoomsServiceImpl implements ChatRoomsService{
 	private ChatRoomsRepository chatRoomsRepository;
 	
 	@Override
-	public void addChatRoom(ChatRoom chatRoom) {
-		chatRoomsRepository.addChatRoom(chatRoom);
+	public String addChatRoom(String ownerToken, String roomName, String roomDesc) {
+		if(chatRoomsRepository.addChatRoom(ownerToken, roomName, roomDesc))
+			return ChatCallbacks.CHAT_CREATED_SUCCESSFULLY;
+		return ChatCallbacks.CHAT_NAME_TAKEN;
 	}
 
 	@Override
-	public void removeChatRoom(ChatRoom chatRoom) {
-		chatRoomsRepository.removeChatRoom(chatRoom);
+	public void removeChatRoom(String ownerToken, String roomName) {
+		// TODO 
+
 	}
 
-	@Override
-	public ChatRoom getChatRoom(long id) {
-		return chatRoomsRepository.getChatRoom(id);
-	}
 	
 	@Override
 	public List<ChatMessage> getRecentChatMessages(long id) {
@@ -40,4 +40,10 @@ public class ChatRoomsServiceImpl implements ChatRoomsService{
 		return chatRoomsRepository.getChatRooms();
 	}
 
+	@Override
+	public void addMessageToRoom(long roomId, String sender, String message) {
+		if(sender != null && message != null)
+			if(!sender.isEmpty() && !message.isEmpty())
+				chatRoomsRepository.sendMessage(roomId, sender, message);	
+	}
 }

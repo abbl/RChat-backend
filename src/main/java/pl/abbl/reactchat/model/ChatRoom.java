@@ -10,15 +10,16 @@ public class ChatRoom {
 	private String name;
 	@JsonIgnore
 	private List<ChatMessage> messages;
+	private String description;
 	
-	public ChatRoom(long id, String name) {
+	public ChatRoom(long id, String name, String description) {
 		this.id = id;
 		this.name = name;
 		messages = new ArrayList<>();
 	}
 	
-	public void addMessage(String message) {
-		messages.add(new ChatMessage(messages.size() + 1, message));
+	public void addMessage(String sender, String message) {
+		messages.add(new ChatMessage(messages.size() + 1, sender, message));
 	}
 	
 	public String getName() {
