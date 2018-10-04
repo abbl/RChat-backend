@@ -13,8 +13,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 
 	@Override
 	public String createUser(String userName) {
-		userRepository.createUser(userName);
-		return null;
+		return userRepository.createUser(userName);
 	}
 
 	@Override

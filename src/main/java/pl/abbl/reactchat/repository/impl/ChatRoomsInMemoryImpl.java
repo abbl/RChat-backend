@@ -20,8 +20,8 @@ public class ChatRoomsInMemoryImpl implements ChatRoomsRepository{
 	
 	@Override
 	public boolean addChatRoom(String token, String roomName, String roomDesc) {
-		if(getChatRoomByName(roomName) != null) {
-			
+		if(getChatRoomByName(roomName) == null) {
+			chatRooms.add(new ChatRoom(token, roomName, roomDesc));
 			return true;
 		}
 		return false;

@@ -6,15 +6,21 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class ChatRoom {
+	@JsonIgnore
+	private static int idCount = 0;
+	
 	private long id;
 	private String name;
 	@JsonIgnore
 	private List<ChatMessage> messages;
 	private String description;
+	private String ownerToken;
 	
-	public ChatRoom(long id, String name, String description) {
-		this.id = id;
+	public ChatRoom(String ownerToken, String name, String description) {
+		this.id = idCount++;
+		this.ownerToken = ownerToken;
 		this.name = name;
+		this.description = description;
 		messages = new ArrayList<>();
 	}
 	
@@ -28,6 +34,10 @@ public class ChatRoom {
 	
 	public long getId() {
 		return id;
+	}
+	
+	public String getDescription() {
+		return description;
 	}
 	
 	public List<ChatMessage> getMessages(){
