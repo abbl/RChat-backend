@@ -5,7 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pl.abbl.reactchat.callbacks.ChatCallbacks;
+import pl.abbl.reactchat.callbacks.AbstractCallback;
+import pl.abbl.reactchat.callbacks.ChatCreationCallback;
 import pl.abbl.reactchat.model.ChatMessage;
 import pl.abbl.reactchat.model.ChatRoom;
 import pl.abbl.reactchat.repository.ChatRoomsRepository;
@@ -17,10 +18,8 @@ public class ChatRoomsServiceImpl implements ChatRoomsService{
 	private ChatRoomsRepository chatRoomsRepository;
 	
 	@Override
-	public String addChatRoom(String ownerToken, String roomName, String roomDesc) {
-		if(chatRoomsRepository.addChatRoom(ownerToken, roomName, roomDesc))
-			return ChatCallbacks.CHAT_CREATED_SUCCESSFULLY;
-		return ChatCallbacks.CHAT_NAME_TAKEN;
+	public AbstractCallback addChatRoom(String ownerToken, String roomName, String roomDesc) {
+		return chatRoomsRepository.addChatRoom(ownerToken, roomName, roomDesc);
 	}
 
 	@Override

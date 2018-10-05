@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import pl.abbl.reactchat.callbacks.AuthenticationCallbacks;
+import pl.abbl.reactchat.callbacks.AuthenticationCallback;
 import pl.abbl.reactchat.model.User;
 import pl.abbl.reactchat.repository.UserRepository;
 
@@ -18,15 +18,15 @@ public class UserRepositoryInMemoryImpl implements UserRepository{
 	}
 	
 	@Override
-	public String createUser(String userName) {
+	public AuthenticationCallback createUser(String userName) {
 		if(!isUserNameTaken(userName)) {
 			System.out.println("Created user:" + userName);
 			User user = new User(userName);
 			users.add(user);
 			
-			return user.getToken();
+			return new AuthenticationCallback(user.getToken());
 		}else {
-			return AuthenticationCallbacks.USERNAME_TAKEN;
+			return new AuthenticationCallback(AuthenticationCallback.USERNAME_TAKEN);
 		}
 	}
 	

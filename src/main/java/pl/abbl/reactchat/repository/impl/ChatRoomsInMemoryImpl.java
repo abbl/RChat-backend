@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import pl.abbl.reactchat.callbacks.AbstractCallback;
+import pl.abbl.reactchat.callbacks.ChatCreationCallback;
 import pl.abbl.reactchat.model.ChatMessage;
 import pl.abbl.reactchat.model.ChatRoom;
 import pl.abbl.reactchat.repository.ChatRoomsRepository;
@@ -19,12 +21,14 @@ public class ChatRoomsInMemoryImpl implements ChatRoomsRepository{
 	}
 	
 	@Override
-	public boolean addChatRoom(String token, String roomName, String roomDesc) {
+	public AbstractCallback addChatRoom(String token, String roomName, String roomDesc) {
 		if(getChatRoomByName(roomName) == null) {
-			chatRooms.add(new ChatRoom(token, roomName, roomDesc));
-			return true;
+			ChatRoom chatRoom = new ChatRoom(token, roomName, roomDesc);
+			chatRoom.addMessage("SYSTEM", "Room has been created.");
+			chatRooms.add(chatRoom);
+			return new ChatCreationCallback(ChatCreationCallback.CHAT_CREATED_SUCCESSFULLY);
 		}
-		return false;
+		return new ChatCreationCallback(ChatCreationCallback.CHAT_NAME_TAKEN);
 	}
 
 	@Override

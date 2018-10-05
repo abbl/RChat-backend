@@ -3,6 +3,8 @@ package pl.abbl.reactchat.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import pl.abbl.reactchat.callbacks.AbstractCallback;
+import pl.abbl.reactchat.callbacks.AuthenticationCallback;
 import pl.abbl.reactchat.repository.UserRepository;
 import pl.abbl.reactchat.service.AuthenticationService;
 
@@ -12,7 +14,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 	private UserRepository userRepository;
 
 	@Override
-	public String createUser(String userName) {
+	public AbstractCallback createUser(String userName) {
 		return userRepository.createUser(userName);
 	}
 

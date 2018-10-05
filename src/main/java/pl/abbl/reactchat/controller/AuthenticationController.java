@@ -1,11 +1,16 @@
 package pl.abbl.reactchat.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import pl.abbl.reactchat.callbacks.AbstractCallback;
+import pl.abbl.reactchat.callbacks.AuthenticationCallback;
 import pl.abbl.reactchat.service.AuthenticationService;
 
 @CrossOrigin
@@ -17,8 +22,9 @@ public class AuthenticationController {
 	
 	@ResponseBody
 	@RequestMapping("/authenticate")
-	public String authenticate(String userName) {
-		return authenticationService.createUser(userName);
+	public AbstractCallback authenticate(@RequestBody Map<String, String> data) {
+		System.out.println("Received request");
+		return authenticationService.createUser(data.get("username"));
 	}
 	
 	@RequestMapping("/logout")
