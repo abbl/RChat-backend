@@ -20,15 +20,23 @@ public class AuthenticationController {
 	@Autowired
 	private AuthenticationService authenticationService;
 	
+}
+
+/*
+ * 	@ResponseBody
+	@RequestMapping("/register")
+	public AbstractCallback createUserAccount(@RequestBody Map<String, String> data) {
+		return authenticationService.createUser(data);
+	}
+	
 	@ResponseBody
 	@RequestMapping("/authenticate")
 	public AbstractCallback authenticate(@RequestBody Map<String, String> data) {
-		System.out.println("Received request");
 		return authenticationService.createUser(data.get("username"));
 	}
 	
 	@RequestMapping("/logout")
-	public void logout(String token) {
-		//TODO
+	public void logout(@RequestBody Map<String, String> data) {
+		authenticationService.removeUser(data.get("token"));
 	}
-}
+ */

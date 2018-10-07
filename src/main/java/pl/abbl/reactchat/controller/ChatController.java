@@ -38,7 +38,7 @@ public class ChatController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/chat/createChatRoom", method = RequestMethod.POST)
-	public AbstractCallback createChatRoom(@RequestBody Map<String, String> data) {
+	public AbstractCallback createChatRoom(@RequestBody Map<String, String> data) { //TODO PASS MAP TO SERVICE AND HANDLE NULLPOINTNER THERE.
 		return chatRoomsService.addChatRoom(data.get("token"), data.get("roomName"), data.get("roomDesc"));
 	}
 	

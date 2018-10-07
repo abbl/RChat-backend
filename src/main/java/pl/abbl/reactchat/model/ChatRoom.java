@@ -8,11 +8,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class ChatRoom {
 	@JsonIgnore
 	private static int idCount = 0;
-	
-	private long id;
-	private String name;
 	@JsonIgnore
 	private List<ChatMessage> messages;
+
+	private long id;
+	private String name;
 	private String description;
 	private String ownerToken;
 	
