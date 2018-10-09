@@ -1,36 +1,28 @@
 package pl.abbl.reactchat.model;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+
+@Data
+@Entity
 public class ChatMessage {
-	private static final SimpleDateFormat timeStampPattern = new SimpleDateFormat("HH:mm:ss");
-	
-	private final long id;
+	@JsonIgnore
+	private static final SimpleDateFormat timeStampPattern = new SimpleDateFormat("YYYY-MM-DD HH:mm:ss");
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	private int roomId;
 	private String sender;
-	private String timeStamp;
-	private final String message;
-	
-	public ChatMessage(long id, String sender, String message ) {
-		this.id = id;
-		this.sender = sender;
-		this.message = message;
-		this.timeStamp = timeStampPattern.format(Calendar.getInstance().getTime());
-	}
-	
-	public long getId() {
-		return id;
-	}
-	
-	public String getMessage() {
-		return message;
-	}
-	
-	public String getSender() {
-		return sender;
-	}
-	
-	public String getTimeStamp() {
-		return timeStamp;
-	}
+	private String message;
+	private Timestamp timeStamp;
+
+	public ChatMessage() {}
 }

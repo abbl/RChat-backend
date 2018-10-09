@@ -4,43 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
+import pl.abbl.reactchat.repository.enums.ChatRoomType;
 
+import javax.persistence.*;
+
+@Data
+@Entity
 public class ChatRoom {
 	@JsonIgnore
-	private static int idCount = 0;
-	@JsonIgnore
+	@OneToMany
 	private List<ChatMessage> messages;
 
-	private long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
 	private String name;
 	private String description;
-	private String ownerToken;
-	
-	public ChatRoom(String ownerToken, String name, String description) {
-		this.id = idCount++;
-		this.ownerToken = ownerToken;
-		this.name = name;
-		this.description = description;
-		messages = new ArrayList<>();
-	}
-	
-	public void addMessage(String sender, String message) {
-		messages.add(new ChatMessage(messages.size() + 1, sender, message));
-	}
-	
-	public String getName() {
-		return name;
-	}
-	
-	public long getId() {
-		return id;
-	}
-	
-	public String getDescription() {
-		return description;
-	}
-	
-	public List<ChatMessage> getMessages(){
-		return messages;
-	}
+	@Enumerated(EnumType.STRING)
+	private ChatRoomType type;
+
+	public ChatRoom(){}
 }

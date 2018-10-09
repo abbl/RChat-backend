@@ -1,5 +1,6 @@
 package pl.abbl.reactchat.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,39 +11,27 @@ import pl.abbl.reactchat.callbacks.ChatCreationCallback;
 import pl.abbl.reactchat.model.ChatMessage;
 import pl.abbl.reactchat.model.ChatRoom;
 import pl.abbl.reactchat.repository.ChatRoomsRepository;
+import pl.abbl.reactchat.repository.enums.ChatRoomType;
 import pl.abbl.reactchat.service.ChatRoomsService;
 
 @Service
 public class ChatRoomsServiceImpl implements ChatRoomsService{
 	@Autowired
 	private ChatRoomsRepository chatRoomsRepository;
-	
-	@Override
-	public AbstractCallback addChatRoom(String ownerToken, String roomName, String roomDesc) {
-		return chatRoomsRepository.addChatRoom(ownerToken, roomName, roomDesc);
-	}
+
 
 	@Override
-	public void removeChatRoom(String ownerToken, String roomName) {
-		// TODO 
+	public List<ChatRoom> getPublicChatRooms() {
+		List<ChatRoom> chatRooms = chatRoomsRepository.findAll();
+		List<ChatRoom> publicChatRooms = new ArrayList<>();
+		System.out.println("Size:" + chatRooms.size());
+		for(ChatRoom chatRoom : chatRooms){
+			System.out.println("ChatRoom " + chatRoom.getName() + "GetType:" + chatRoom.getType());
+			if(chatRoom.getType() == ChatRoomType.PUBLIC){
+				publicChatRooms.add(chatRoom);
+			}
+		}
 
-	}
-
-	
-	@Override
-	public List<ChatMessage> getRecentChatMessages(long id) {
-		return chatRoomsRepository.getRecentChatMessages(id);
-	}
-	
-	@Override
-	public List<ChatRoom> getChatRooms() {
-		return chatRoomsRepository.getChatRooms();
-	}
-
-	@Override
-	public void addMessageToRoom(long roomId, String sender, String message) {
-		if(sender != null && message != null)
-			if(!sender.isEmpty() && !message.isEmpty())
-				chatRoomsRepository.sendMessage(roomId, sender, message);	
+		return publicChatRooms;
 	}
 }

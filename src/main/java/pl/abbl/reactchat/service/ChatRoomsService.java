@@ -9,9 +9,5 @@ import pl.abbl.reactchat.model.ChatMessage;
 import pl.abbl.reactchat.model.ChatRoom;
 
 public interface ChatRoomsService {
-	AbstractCallback addChatRoom(String token, String roomName, String roomDesc);
-	void removeChatRoom(String token, String roomName);
-	void addMessageToRoom(long roomId, String sender, String message);
-	List<ChatMessage> getRecentChatMessages(long id);
-	List<ChatRoom> getChatRooms();
+	List<ChatRoom> getPublicChatRooms();
 }
