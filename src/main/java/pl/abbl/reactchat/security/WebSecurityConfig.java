@@ -27,6 +27,8 @@ import pl.abbl.reactchat.security.rest.RestAuthenticationSuccessHandler;
 
 import org.springframework.security.core.userdetails.User;
 
+import javax.sql.DataSource;
+
 @Component
 @Configuration
 @EnableWebSecurity
@@ -37,6 +39,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	RestAuthenticationEntryPoint restAuthenticationEntryPoint;
 	@Autowired
 	RestAuthenticationSuccessHandler restAuthenticationSuccessHandler;
+	@Autowired
+	DataSource dataSource;
 
 	@Value("${spring.queries.users-query}")
 	private String usersQuery;
@@ -45,14 +49,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication()
 				.usersByUsernameQuery(usersQuery)
+				.dataSource(dataSource)
 				.passwordEncoder(passwordEncoder);
 	}
 
 	//@formatter:off
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-	    http.cors().and()
-		.csrf().disable()
+	    http.cors()
+				.and()
+		.csrf()
+				.disable()
 				.exceptionHandling()
 		.authenticationEntryPoint(restAuthenticationEntryPoint)
 			.and()

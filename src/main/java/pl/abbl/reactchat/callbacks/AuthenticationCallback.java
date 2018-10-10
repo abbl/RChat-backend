@@ -19,7 +19,9 @@ public class AuthenticationCallback extends AbstractCallback{
 	public static final String ACCOUNT_DONT_EXIST = "ACCOUNT_DONT_EXIST";
 	@JsonIgnore
 	public static final String INVALID_CREDENTIALS = "INVALID_CREDENTIALS";
-	
+	@JsonIgnore
+	public static final String ACCOUNT_BLOCKED = "ACCOUNT_BLOCKED";
+
 	public AuthenticationCallback(String response) {
 		super(response);
 	}

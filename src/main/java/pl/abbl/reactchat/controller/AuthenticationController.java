@@ -19,4 +19,6 @@ public class AuthenticationController {
 	public AbstractCallback register(@RequestBody Map<String, String> data){
 		return userService.register(data);
 	}
+
+
 }
