@@ -3,15 +3,20 @@ package pl.abbl.reactchat.security;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
+import org.springframework.security.web.authentication.rememberme.InMemoryTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -27,9 +32,21 @@ import org.springframework.security.core.userdetails.User;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	@Autowired
 	RestAuthenticationEntryPoint restAuthenticationEntryPoint;
 	@Autowired
 	RestAuthenticationSuccessHandler restAuthenticationSuccessHandler;
+
+	@Value("${spring.queries.users-query}")
+	private String usersQuery;
+
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.jdbcAuthentication()
+				.usersByUsernameQuery(usersQuery)
+				.passwordEncoder(passwordEncoder);
+	}
 
 	//@formatter:off
 	@Override
@@ -65,16 +82,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         source.registerCorsConfiguration("/**", configuration);
         return source;
 	}
-	
-	//TODO LEFT FOR TEST PURPOSES.
+
 	@Bean
-	@Override
-	protected UserDetailsService userDetailsService() {
-		UserDetails userDetails = User.withDefaultPasswordEncoder()
-									.username("test")
-									.password("test")
-									.roles("USER")
-									.build();
-		return new InMemoryUserDetailsManager(userDetails);
+	public PersistentTokenRepository persistentTokenRepository(){
+		InMemoryTokenRepositoryImpl inMemoryTokenRepositoryImpl = new InMemoryTokenRepositoryImpl();
+		return inMemoryTokenRepositoryImpl;
 	}
 }

@@ -1,35 +1,22 @@
 package pl.abbl.reactchat.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import pl.abbl.reactchat.callbacks.AbstractCallback;
 import pl.abbl.reactchat.callbacks.AuthenticationCallback;
+import pl.abbl.reactchat.service.UserService;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("api")
 public class AuthenticationController {
-	@RequestMapping("/secure/test")
-	public AuthenticationCallback testSecure() {
-		return new AuthenticationCallback("test");
+	@Autowired
+	private UserService userService;
+
+	@PostMapping("/register")
+	public AbstractCallback register(@RequestBody Map<String, String> data){
+		return userService.register(data);
 	}
 }
-
-/*
- * 	@ResponseBody
-	@RequestMapping("/register")
-	public AbstractCallback createUserAccount(@RequestBody Map<String, String> data) {
-		return authenticationService.createUser(data);
-	}
-	
-	@ResponseBody
-	@RequestMapping("/authenticate")
-	public AbstractCallback authenticate(@RequestBody Map<String, String> data) {
-		return authenticationService.createUser(data.get("username"));
-	}
-	
-	@RequestMapping("/logout")
-	public void logout(@RequestBody Map<String, String> data) {
-		authenticationService.removeUser(data.get("token"));
-	}
- */

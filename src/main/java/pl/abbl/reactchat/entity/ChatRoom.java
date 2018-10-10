@@ -1,6 +1,5 @@
-package pl.abbl.reactchat.model;
+package pl.abbl.reactchat.entity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -19,6 +18,7 @@ public class ChatRoom {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	private int ownerId;
 	private String name;
 	private String description;
 	@Enumerated(EnumType.STRING)
