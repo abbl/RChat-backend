@@ -9,5 +9,5 @@ public interface ChatRoomsService {
 	List<ChatRoom> getPublicChatRooms();
 	List<ChatRoom> getPrivateChatRooms();
 	AbstractCallback saveChatRoom();
-	boolean isChatRoomPrivate(int roomId);
+	ChatRoom isChatRoomPrivate(int roomId);
 }

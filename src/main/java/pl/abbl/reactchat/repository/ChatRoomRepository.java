@@ -7,5 +7,5 @@ import pl.abbl.reactchat.entity.ChatRoom;
 
 public interface ChatRoomRepository extends JpaRepository<ChatRoom, Integer> {
     @Query("SELECT r FROM ChatRoom r WHERE r.id = :roomId AND r.type = 'PRIVATE'")
-    boolean isChatRoomPrivate(@Param("roomId") int roomId);
+    ChatRoom isChatRoomPrivate(@Param("roomId") int roomId);
 }

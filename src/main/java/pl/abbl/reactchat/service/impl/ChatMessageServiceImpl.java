@@ -6,6 +6,7 @@ import pl.abbl.reactchat.callbacks.AbstractCallback;
 import pl.abbl.reactchat.entity.ChatMessage;
 import pl.abbl.reactchat.entity.ChatUser;
 import pl.abbl.reactchat.repository.ChatMessageRepository;
+import pl.abbl.reactchat.repository.ChatRoomParticipantsRepository;
 import pl.abbl.reactchat.repository.ChatRoomRepository;
 import pl.abbl.reactchat.repository.UserRepository;
 import pl.abbl.reactchat.service.ChatMessageService;
@@ -22,10 +23,12 @@ public class ChatMessageServiceImpl implements ChatMessageService {
     private ChatRoomRepository chatRoomRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private ChatRoomParticipantsRepository chatRoomParticipantsRepository;
 
     @Override
     public List<ChatMessage> findAllByRoomId(int roomId) {
-        if(!chatRoomRepository.isChatRoomPrivate(roomId)){
+        if(chatRoomRepository.isChatRoomPrivate(roomId) == null){
             return chatMessageRepository.findAllByRoomId(roomId);
         }
         return null;
@@ -33,22 +36,24 @@ public class ChatMessageServiceImpl implements ChatMessageService {
 
     @Override
     public List<ChatMessage> findAllByRoomId(int roomId, HttpServletRequest request) {
-        if(chatRoomRepository.isChatRoomPrivate(roomId)){
+        if(chatRoomRepository.isChatRoomPrivate(roomId) != null){
             ChatUser chatUser = userRepository.findByJwtToken(request);
 
             if(chatUser != null){
-                //TODO check if user was invited to join this private room.
-                return null;
+                if(chatRoomParticipantsRepository.isUserParticipantOfChatRoom(chatUser.getId(), roomId) != null){
+                    return chatMessageRepository.findAllByRoomId(roomId);
+                }
             }else{
                 return null;
             }
         }else{
             return findAllByRoomId(roomId);
         }
+        return null;
     }
 
     @Override
     public AbstractCallback postMessage(Map<String, String> chatMessage, HttpServletRequest request) {
-        return null;
+
     }
 }

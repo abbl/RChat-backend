@@ -40,7 +40,7 @@ public class ChatRoomsServiceImpl implements ChatRoomsService{
 		return null;
 	}
 
-	public boolean isChatRoomPrivate(int roomId){
+	public ChatRoom isChatRoomPrivate(int roomId){
 		return chatRoomRepository.isChatRoomPrivate(roomId);
 	}
 }

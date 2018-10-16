@@ -12,6 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 
 @SpringBootApplication()
+@EnableJpaRepositories
 public class ReactChat {
 	public static void main(String[] args) {
 		SpringApplication.run(ReactChat.class, args);
