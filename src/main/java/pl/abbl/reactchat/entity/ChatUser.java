@@ -6,8 +6,8 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name="User")
-public class User {
+@Table(name="ChatUser")
+public class ChatUser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
@@ -15,5 +15,5 @@ public class User {
 	private String password;
 	private int active;
 
-	public User(){}
+	public ChatUser(){}
 }

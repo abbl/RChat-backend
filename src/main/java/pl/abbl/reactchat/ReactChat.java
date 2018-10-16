@@ -1,5 +1,6 @@
 package pl.abbl.reactchat;
 
+import com.google.gson.Gson;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
@@ -16,4 +17,8 @@ public class ReactChat {
 		SpringApplication.run(ReactChat.class, args);
 	}
 
+	@Bean
+	public Gson getGson(){
+		return new Gson();
+	}
 }

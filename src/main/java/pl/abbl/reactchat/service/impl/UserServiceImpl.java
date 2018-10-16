@@ -1,14 +1,13 @@
 package pl.abbl.reactchat.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.abbl.reactchat.callbacks.AbstractCallback;
 import pl.abbl.reactchat.callbacks.AuthenticationCallback;
-import pl.abbl.reactchat.definitions.PostParametersConstans;
+import pl.abbl.reactchat.definitions.PostParametersConstants;
+import pl.abbl.reactchat.entity.ChatUser;
 import pl.abbl.reactchat.entity.Role;
-import pl.abbl.reactchat.entity.User;
 import pl.abbl.reactchat.repository.RoleRepository;
 import pl.abbl.reactchat.repository.UserRepository;
 import pl.abbl.reactchat.service.UserService;
@@ -26,16 +25,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public AbstractCallback register(Map<String, String> userCredentials) {
-        String username = userCredentials.get(PostParametersConstans.USER_NAME);
-        String password = userCredentials.get(PostParametersConstans.USER_PASSWORD);
+        String username = userCredentials.get(PostParametersConstants.USER_NAME);
+        String password = userCredentials.get(PostParametersConstants.USER_PASSWORD);
 
         if(username != null && password != null){
             if(usersRepository.findByUsername(username) == null){
-                User user = new User();
-                user.setUsername(username);
-                user.setPassword(passwordEncoder.encode(password));
-                user.setActive(1);
-                usersRepository.saveAndFlush(user);
+                ChatUser chatUser = new ChatUser();
+                chatUser.setUsername(username);
+                chatUser.setPassword(passwordEncoder.encode(password));
+                chatUser.setActive(1);
+                usersRepository.saveAndFlush(chatUser);
                 Role role = new Role();
                 role.setUsername(username);
                 role.setAuthority("USER"); //TODO create definition of roles.

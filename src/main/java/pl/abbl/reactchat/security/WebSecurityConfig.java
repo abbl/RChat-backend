@@ -2,14 +2,17 @@ package pl.abbl.reactchat.security;
 
 import java.util.Arrays;
 
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,6 +25,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import pl.abbl.reactchat.filter.JwtAuthenticationFilter;
+import pl.abbl.reactchat.filter.JwtAuthorizationFilter;
 import pl.abbl.reactchat.security.rest.RestAuthenticationEntryPoint;
 import pl.abbl.reactchat.security.rest.RestAuthenticationSuccessHandler;
 
@@ -36,11 +41,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	@Autowired
-	RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+	private DataSource dataSource;
 	@Autowired
-	RestAuthenticationSuccessHandler restAuthenticationSuccessHandler;
-	@Autowired
-	DataSource dataSource;
+	private Gson gson;
 
 	@Value("${spring.queries.users-query}")
 	private String usersQuery;
@@ -61,20 +64,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		.csrf()
 				.disable()
 				.exceptionHandling()
-		.authenticationEntryPoint(restAuthenticationEntryPoint)
-			.and()
+				.and()
 		.authorizeRequests()
                 .antMatchers("/api/secure/**").authenticated()
 			.anyRequest().permitAll()
 			.and()
-		.httpBasic()
-			.and()
-		.formLogin()
-                .loginProcessingUrl("/api/authentication")
-			.successHandler(restAuthenticationSuccessHandler)
-			.failureHandler(new SimpleUrlAuthenticationFailureHandler())
-			.and()
-		.logout();
+				.addFilter(new JwtAuthenticationFilter(authenticationManager(), gson))
+				.addFilter(new JwtAuthorizationFilter(authenticationManager()))
+				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
     //@formatter:on
 
@@ -88,11 +85,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
-	}
-
-	@Bean
-	public PersistentTokenRepository persistentTokenRepository(){
-		InMemoryTokenRepositoryImpl inMemoryTokenRepositoryImpl = new InMemoryTokenRepositoryImpl();
-		return inMemoryTokenRepositoryImpl;
 	}
 }

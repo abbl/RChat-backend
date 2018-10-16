@@ -1,8 +1,8 @@
 package pl.abbl.reactchat.definitions;
 
-public abstract class PostParametersConstans {
+public abstract class PostParametersConstants {
     /*
-     * User Entity.
+     * ChatUser Entity.
      */
     public static final String USER_NAME = "username";
     public static final String USER_PASSWORD = "password";
