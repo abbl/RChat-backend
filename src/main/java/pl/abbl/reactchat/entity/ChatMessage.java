@@ -6,6 +6,8 @@ import lombok.Data;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 @Data
 @Entity
@@ -22,5 +24,14 @@ public class ChatMessage {
 	private Timestamp timeStamp;
 	private int roomId;
 
-	public ChatMessage() {}
+	public ChatMessage() {
+
+	}
+
+	/**
+	 * Sets timeStamp to current time.
+	 */
+	public void setTimeStamp(){
+		timeStamp = new Timestamp(Calendar.getInstance().getTimeInMillis());
+	}
 }

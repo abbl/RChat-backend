@@ -9,7 +9,13 @@ public abstract class PostParametersConstants {
     /*
      * ChatRoom Entity.
      */
-    public static final String CHATROOM_NAME = "chatRoomName";
-    public static final String CHATROOM_DESC = "chatRoomDesc";
-    public static final String CHATROOM_TYPE = "chatRoomType";
+    public static final String CHAT_ROOM_NAME = "chatRoomName";
+    public static final String CHAT_ROOM_DESC = "chatRoomDesc";
+    public static final String CHAT_ROOM_TYPE = "chatRoomType";
+    public static final String[] AVAILABLE_CHAT_ROOM_TYPES = {"PUBLIC", "PRIVATE"};
+    /*
+     * ChatRoom Message
+     */
+    public static final String CHAT_ROOM_MESSAGE_CHAT_ROOM_ID = "chatRoomId";
+    public static final String CHAT_ROOM_MESSAGE_MESSAGE = "chatRoomMessage";
 }

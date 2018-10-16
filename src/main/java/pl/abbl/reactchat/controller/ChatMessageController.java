@@ -25,7 +25,7 @@ public class ChatMessageController {
 
     @PostMapping("/secure/chatMessages")
     public AbstractCallback postMessageInChatRoom(@RequestBody Map<String, String> message, HttpServletRequest request){
-        return null;
+        return chatMessageService.postMessage(message, request);
     }
 
     @GetMapping("/secure/chatMessages")

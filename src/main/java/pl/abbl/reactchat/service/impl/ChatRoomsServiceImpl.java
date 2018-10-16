@@ -7,10 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pl.abbl.reactchat.callbacks.AbstractCallback;
+import pl.abbl.reactchat.callbacks.ChatCreationCallback;
 import pl.abbl.reactchat.entity.ChatRoom;
+import pl.abbl.reactchat.entity.ChatUser;
 import pl.abbl.reactchat.repository.ChatRoomRepository;
 import pl.abbl.reactchat.repository.enums.ChatRoomType;
 import pl.abbl.reactchat.service.ChatRoomsService;
+
+import static pl.abbl.reactchat.definitions.PostParametersConstants.*;
 
 @Service
 public class ChatRoomsServiceImpl implements ChatRoomsService{
@@ -37,6 +41,30 @@ public class ChatRoomsServiceImpl implements ChatRoomsService{
 
 	@Override
 	public AbstractCallback saveChatRoom() {
+		/*
+				ChatUser chatUser = userRepository.findByJwtToken(request);
+		boolean isChatRoomTypeCorrect = false;
+
+		if(chatUser != null){
+			String chatRoomName = chatMessage.get(CHAT_ROOM_NAME);
+			String chatRoomDesc = chatMessage.get(CHAT_ROOM_DESC);
+			String chatRoomType = chatMessage.get(CHAT_ROOM_TYPE);
+
+			if(chatRoomName != null && chatRoomDesc != null && chatRoomType != null){
+				for (String roomType : AVAILABLE_CHAT_ROOM_TYPES) {
+					if(roomType == chatRoomType)
+						isChatRoomTypeCorrect = true;
+				}
+
+				if(isChatRoomTypeCorrect){
+
+				}else{
+					return new ChatCreationCallback(ChatCreationCallback.INVALID_CHAT_ROOM_TYPE);
+				}
+			}
+		}
+		return null;
+		 */
 		return null;
 	}
 
