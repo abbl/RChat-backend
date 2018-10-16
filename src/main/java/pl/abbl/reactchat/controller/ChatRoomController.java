@@ -1,10 +1,12 @@
 package pl.abbl.reactchat.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import pl.abbl.reactchat.callbacks.AbstractCallback;
 import pl.abbl.reactchat.entity.ChatRoom;
 import pl.abbl.reactchat.service.ChatRoomsService;
 
@@ -15,15 +17,9 @@ public class ChatRoomController {
 	@Autowired
 	private ChatRoomsService chatRoomsService;
 
-
 	@GetMapping("/chatrooms/public")
 	public List<ChatRoom> getPublicChatRooms(){
 		return chatRoomsService.getPublicChatRooms();
-	}
-
-	@PostMapping("/secure/chatrooms/public")
-	public void addPublicChannel(){
-
 	}
 
 	@GetMapping("/secure/chatrooms/private")
@@ -31,11 +27,9 @@ public class ChatRoomController {
 	    return null; //TODO correct fetching of private chatrooms.
     }
 
-    @PostMapping("/secure/chatrooms/private")
-	public void addPrivateChannel(){
-
+	@PostMapping("/secure/chatrooms")
+	public AbstractCallback addPublicChannel(@RequestBody Map<String, String> chatRoom){
+		return null;
 	}
-
-
 }
 

@@ -3,10 +3,11 @@ package pl.abbl.reactchat.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
-@Table(name="ChatUser")
+@Table(name="user")
 public class ChatUser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
