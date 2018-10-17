@@ -9,10 +9,15 @@ import org.springframework.stereotype.Service;
 import pl.abbl.reactchat.callbacks.AbstractCallback;
 import pl.abbl.reactchat.callbacks.ChatCreationCallback;
 import pl.abbl.reactchat.entity.ChatRoom;
+import pl.abbl.reactchat.entity.ChatRoomParticipants;
 import pl.abbl.reactchat.entity.ChatUser;
+import pl.abbl.reactchat.repository.ChatRoomParticipantsRepository;
 import pl.abbl.reactchat.repository.ChatRoomRepository;
+import pl.abbl.reactchat.repository.UserRepository;
 import pl.abbl.reactchat.repository.enums.ChatRoomType;
 import pl.abbl.reactchat.service.ChatRoomsService;
+
+import javax.servlet.http.HttpServletRequest;
 
 import static pl.abbl.reactchat.definitions.PostParametersConstants.*;
 
@@ -20,6 +25,10 @@ import static pl.abbl.reactchat.definitions.PostParametersConstants.*;
 public class ChatRoomsServiceImpl implements ChatRoomsService{
 	@Autowired
 	private ChatRoomRepository chatRoomRepository;
+	@Autowired
+	private UserRepository userRepository;
+	@Autowired
+	private ChatRoomParticipantsRepository chatRoomParticipantsRepository;
 
 	@Override
 	public List<ChatRoom> getPublicChatRooms() {
@@ -35,7 +44,17 @@ public class ChatRoomsServiceImpl implements ChatRoomsService{
 	}
 
 	@Override
-	public List<ChatRoom> getPrivateChatRooms() {
+	public List<ChatRoom> getPrivateChatRooms(HttpServletRequest request) {
+		ChatUser chatUser = userRepository.findByJwtToken(request);
+
+		if(chatUser != null){
+			List<Integer> chatRooms = new ArrayList<>();
+
+			for (ChatRoomParticipants chatRoomParticipant : chatRoomParticipantsRepository.findChatRoomsByUserId(chatUser.getId())) {
+				chatRooms.add(chatRoomParticipant.getRoomId());
+			}
+			return chatRoomRepository.findChatRoomsByListOfId(chatRooms);
+		}
 		return null;
 	}
 

@@ -10,6 +10,8 @@ import pl.abbl.reactchat.callbacks.AbstractCallback;
 import pl.abbl.reactchat.entity.ChatRoom;
 import pl.abbl.reactchat.service.ChatRoomsService;
 
+import javax.servlet.http.HttpServletRequest;
+
 
 @RestController
 @RequestMapping("api")
@@ -23,12 +25,12 @@ public class ChatRoomController {
 	}
 
 	@GetMapping("/secure/chatrooms/private")
-    public List<ChatRoom> getPrivateChatRooms(){
-	    return null; //TODO correct fetching of private chatrooms.
+    public List<ChatRoom> getPrivateChatRooms(HttpServletRequest request){
+	    return chatRoomsService.getPrivateChatRooms(request);
     }
 
 	@PostMapping("/secure/chatrooms")
-	public AbstractCallback addPublicChannel(@RequestBody Map<String, String> chatRoom){
+	public AbstractCallback addChatRoom(@RequestBody Map<String, String> chatRoom){
 		return null;
 	}
 }
