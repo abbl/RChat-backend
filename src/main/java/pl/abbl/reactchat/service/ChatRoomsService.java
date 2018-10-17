@@ -12,5 +12,7 @@ public interface ChatRoomsService {
 	List<ChatRoom> getPublicChatRooms();
 	List<ChatRoom> getPrivateChatRooms(HttpServletRequest request);
 	AbstractCallback saveChatRoom(Map<String, String> requestBody, HttpServletRequest request);
+	AbstractCallback inviteUser(Map<String, String> requestBody, HttpServletRequest request);
 	ChatRoom isChatRoomPrivate(int roomId);
+	boolean isUserOwnerOfChatRoom(int roomId, int userId);
 }

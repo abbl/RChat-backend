@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pl.abbl.reactchat.callbacks.AbstractCallback;
-import pl.abbl.reactchat.callbacks.ChatCreationCallback;
+import pl.abbl.reactchat.callbacks.ChatRoomCallback;
+import pl.abbl.reactchat.definitions.PostParametersConstants;
 import pl.abbl.reactchat.entity.ChatRoom;
 import pl.abbl.reactchat.entity.ChatRoomParticipants;
 import pl.abbl.reactchat.entity.ChatUser;
@@ -80,7 +81,7 @@ public class ChatRoomsServiceImpl implements ChatRoomsService{
 					ChatRoom newChatRoom = chatRoomRepository.findChatRoomByName(chatRoomName);
 					chatRoomParticipantsRepository.saveAndFlush(createChatRoomParticipant(newChatRoom.getId(), chatUser.getId()));
 				}else{
-					return new ChatCreationCallback(ChatCreationCallback.INVALID_CHAT_ROOM_TYPE);
+					return new ChatRoomCallback(ChatRoomCallback.INVALID_CHAT_ROOM_TYPE);
 				}
 			}
 		}
@@ -104,7 +105,38 @@ public class ChatRoomsServiceImpl implements ChatRoomsService{
 		return chatRoomParticipants;
 	}
 
+	public AbstractCallback inviteUser(Map<String, String> requestBody, HttpServletRequest request){
+		ChatUser ownerOfChatRoom = userRepository.findByJwtToken(request);
+		int roomId = Integer.parseInt(requestBody.get(PostParametersConstants.CHAT_ROOM_INVITE_ROOM_ID));
+
+		if(isChatRoomPrivate(roomId) == null){
+			if(isUserOwnerOfChatRoom(roomId, ownerOfChatRoom.getId())){
+				ChatUser invitedUser = userRepository.findByUsername(requestBody.get(PostParametersConstants.CHAT_ROOM_INVITE_USERNAME));
+
+				if(invitedUser != null){
+					ChatRoomParticipants chatRoomParticipants = new ChatRoomParticipants();
+					chatRoomParticipants.setRoomId(roomId);
+					chatRoomParticipants.setUserId(invitedUser.getId());
+					chatRoomParticipantsRepository.saveAndFlush(chatRoomParticipants);
+				}else{
+					return new ChatRoomCallback(ChatRoomCallback.NO_SUCH_USER_FOUND);
+				}
+			}else{
+				return new ChatRoomCallback(ChatRoomCallback.MISSING_OWNER_RIGHTS);
+			}
+		}else{
+			return new ChatRoomCallback(ChatRoomCallback.CANT_INVITE_TO_PUBLIC_ROOM);
+		}
+
+		return null;
+	}
+
 	public ChatRoom isChatRoomPrivate(int roomId){
 		return chatRoomRepository.isChatRoomPrivate(roomId);
+	}
+
+	@Override
+	public boolean isUserOwnerOfChatRoom(int roomId, int userId) {
+		return chatRoomRepository.isUserOwnerOfChatRoom(roomId, userId) != null;
 	}
 }

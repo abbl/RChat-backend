@@ -19,19 +19,24 @@ public class ChatRoomController {
 	@Autowired
 	private ChatRoomsService chatRoomsService;
 
-	@GetMapping("/chatrooms/public")
+	@GetMapping("/chatroom/public")
 	public List<ChatRoom> getPublicChatRooms(){
 		return chatRoomsService.getPublicChatRooms();
 	}
 
-	@GetMapping("/secure/chatrooms/private")
+	@GetMapping("/secure/chatroom/private")
     public List<ChatRoom> getPrivateChatRooms(HttpServletRequest request){
 	    return chatRoomsService.getPrivateChatRooms(request);
     }
 
-	@PostMapping("/secure/chatrooms")
+	@PostMapping("/secure/chatroom")
 	public AbstractCallback addChatRoom(@RequestBody Map<String, String> requestBody, HttpServletRequest request){
 		return chatRoomsService.saveChatRoom(requestBody, request);
+	}
+
+	@PostMapping("/secure/chatroom/invite")
+	public AbstractCallback inviteToChatRoom(){
+		return null;
 	}
 }
 
