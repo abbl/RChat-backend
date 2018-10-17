@@ -2,6 +2,7 @@ package pl.abbl.reactchat.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,15 +60,14 @@ public class ChatRoomsServiceImpl implements ChatRoomsService{
 	}
 
 	@Override
-	public AbstractCallback saveChatRoom() {
-		/*
-				ChatUser chatUser = userRepository.findByJwtToken(request);
+	public AbstractCallback saveChatRoom(Map<String, String> requestBody, HttpServletRequest request) {
+		ChatUser chatUser = userRepository.findByJwtToken(request);
 		boolean isChatRoomTypeCorrect = false;
 
 		if(chatUser != null){
-			String chatRoomName = chatMessage.get(CHAT_ROOM_NAME);
-			String chatRoomDesc = chatMessage.get(CHAT_ROOM_DESC);
-			String chatRoomType = chatMessage.get(CHAT_ROOM_TYPE);
+			String chatRoomName = requestBody.get(CHAT_ROOM_NAME);
+			String chatRoomDesc = requestBody.get(CHAT_ROOM_DESC);
+			String chatRoomType = requestBody.get(CHAT_ROOM_TYPE);
 
 			if(chatRoomName != null && chatRoomDesc != null && chatRoomType != null){
 				for (String roomType : AVAILABLE_CHAT_ROOM_TYPES) {
@@ -76,15 +76,32 @@ public class ChatRoomsServiceImpl implements ChatRoomsService{
 				}
 
 				if(isChatRoomTypeCorrect){
-
+					chatRoomRepository.saveAndFlush(createChatRoom(chatRoomName, chatRoomDesc, chatRoomType, chatUser.getId()));
+					ChatRoom newChatRoom = chatRoomRepository.findChatRoomByName(chatRoomName);
+					chatRoomParticipantsRepository.saveAndFlush(createChatRoomParticipant(newChatRoom.getId(), chatUser.getId()));
 				}else{
 					return new ChatCreationCallback(ChatCreationCallback.INVALID_CHAT_ROOM_TYPE);
 				}
 			}
 		}
 		return null;
-		 */
-		return null;
+	}
+
+	private ChatRoom createChatRoom(String chatRoomName, String chatRoomDesc, String chatRoomType, int ownerId){
+		ChatRoom chatRoom = new ChatRoom();
+		chatRoom.setName(chatRoomName);
+		chatRoom.setDescription(chatRoomDesc);
+		chatRoom.setType(ChatRoomType.valueOf(chatRoomType));
+		chatRoom.setOwnerId(ownerId);
+
+		return chatRoom;
+	}
+
+	private ChatRoomParticipants createChatRoomParticipant(int roomId, int userId){
+		ChatRoomParticipants chatRoomParticipants = new ChatRoomParticipants();
+		chatRoomParticipants.setUserId(userId);
+		chatRoomParticipants.setRoomId(roomId);
+		return chatRoomParticipants;
 	}
 
 	public ChatRoom isChatRoomPrivate(int roomId){

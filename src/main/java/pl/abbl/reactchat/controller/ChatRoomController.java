@@ -30,8 +30,8 @@ public class ChatRoomController {
     }
 
 	@PostMapping("/secure/chatrooms")
-	public AbstractCallback addChatRoom(@RequestBody Map<String, String> chatRoom){
-		return null;
+	public AbstractCallback addChatRoom(@RequestBody Map<String, String> requestBody, HttpServletRequest request){
+		return chatRoomsService.saveChatRoom(requestBody, request);
 	}
 }
 
