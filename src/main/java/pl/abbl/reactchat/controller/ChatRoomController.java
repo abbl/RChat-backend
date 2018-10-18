@@ -35,8 +35,8 @@ public class ChatRoomController {
 	}
 
 	@PostMapping("/secure/chatroom/invite")
-	public AbstractCallback inviteToChatRoom(){
-		return null;
+	public AbstractCallback inviteToChatRoom(@RequestBody Map<String, String> requestBody, HttpServletRequest request){
+		return chatRoomsService.inviteUser(requestBody, request);
 	}
 }
 
