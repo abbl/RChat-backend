@@ -8,6 +8,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import pl.abbl.reactchat.entity.ChatUser;
 
@@ -21,11 +22,12 @@ import java.util.Date;
 
 import static pl.abbl.reactchat.definitions.SecurityConstants.*;
 
-public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
     private Gson gson;
     private AuthenticationManager authenticationManager;
 
-    public JwtAuthenticationFilter(AuthenticationManager authenticationManager, Gson gson){
+    public JwtAuthenticationFilter(String defaultFilterProcessesUrl, AuthenticationManager authenticationManager, Gson gson) {
+        super(defaultFilterProcessesUrl);
         this.authenticationManager = authenticationManager;
         this.gson = gson;
     }

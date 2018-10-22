@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("api/secure")
 public class ChatRoomController {
 	@Autowired
 	private ChatRoomsService chatRoomsService;
@@ -24,17 +24,17 @@ public class ChatRoomController {
 		return chatRoomsService.getPublicChatRooms();
 	}
 
-	@GetMapping("/secure/chatroom/private")
+	@GetMapping("/chatroom/private")
     public List<ChatRoom> getPrivateChatRooms(HttpServletRequest request){
 	    return chatRoomsService.getPrivateChatRooms(request);
     }
 
-	@PostMapping("/secure/chatroom")
+	@PostMapping("/chatroom")
 	public AbstractCallback addChatRoom(@RequestBody Map<String, String> requestBody, HttpServletRequest request){
 		return chatRoomsService.saveChatRoom(requestBody, request);
 	}
 
-	@PostMapping("/secure/chatroom/invite")
+	@PostMapping("/chatroom/invite")
 	public AbstractCallback inviteToChatRoom(@RequestBody Map<String, String> requestBody, HttpServletRequest request){
 		return chatRoomsService.inviteUser(requestBody, request);
 	}
