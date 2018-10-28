@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.abbl.reactchat.entity.ChatUser;
 import pl.abbl.reactchat.service.UserService;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping("api/secure")
 public class UserController {
@@ -16,6 +18,11 @@ public class UserController {
 
     @GetMapping("/user")
     public ChatUser getUserInformation(@Param("username") String username){
-        return userService.getUserInformation(username);
+        return userService.getUserInformationByUsername(username);
+    }
+
+    @GetMapping("/loggedUser")
+    public ChatUser getUserInformation(HttpServletRequest httpServletRequest){
+        return userService.getUserInformationByJwt(httpServletRequest);
     }
 }

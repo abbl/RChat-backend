@@ -13,6 +13,7 @@ import pl.abbl.reactchat.repository.RoleRepository;
 import pl.abbl.reactchat.repository.UserRepository;
 import pl.abbl.reactchat.service.UserService;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.swing.text.html.Option;
 import java.util.Map;
 import java.util.Optional;
@@ -48,18 +49,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ChatUser getUserInformation(String username){
+    public ChatUser getUserInformationByUsername(String username){
         if(username != null) {
             ChatUser chatUser = usersRepository.findByUsername(username);
             if(chatUser != null){
-                return getUserInformation(chatUser.getId());
+                return getUserInformationById(chatUser.getId());
             }
         }
         return null;
     }
 
     @Override
-    public ChatUser getUserInformation(int userId) {
+    public ChatUser getUserInformationByJwt(HttpServletRequest httpServletRequest) {
+        return getUserInformationById(usersRepository.findByJwtToken(httpServletRequest).getId());
+    }
+
+    @Override
+    public ChatUser getUserInformationById(int userId) {
         ChatUser chatUser = usersRepository.findByIdInt(userId);
         if(chatUser != null){
             ChatUser limitedChatUser = new ChatUser();
