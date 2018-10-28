@@ -13,6 +13,7 @@ public class ChatUser {
 	private int id;
 	private String username;
 	private String password;
+	private String description;
 	private int active;
 
 	public ChatUser(){}
