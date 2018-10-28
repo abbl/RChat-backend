@@ -16,11 +16,15 @@ public abstract class PostParametersConstants {
     /*
      * ChatRoom Message
      */
-    public static final String CHAT_ROOM_MESSAGE_CHAT_ROOM_ID = "chatRoomId";
+    public static final String CHAT_ROOM_MESSAGE_CHAT_ROOM_ID = "roomId";
     public static final String CHAT_ROOM_MESSAGE_MESSAGE = "chatRoomMessage";
     /*
      * ChatRoom Invite
      */
     public static final String CHAT_ROOM_INVITE_USERNAME = "inviteUsername";
     public static final String CHAT_ROOM_INVITE_ROOM_ID = "inviteRoomId";
+    /*
+     * ChatRoom Join
+     */
+    public static final String CHAT_ROOM_JOIN_ROOM_ID = "roomId";
 }

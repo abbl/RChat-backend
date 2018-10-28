@@ -16,16 +16,25 @@ public class ChatMessage {
 	private static final SimpleDateFormat timeStampPattern = new SimpleDateFormat("YYYY-MM-DD HH:mm:ss");
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
+	private int roomIndependentMessageId;
+	private int roomId;
 	private String sender;
 	private String message;
 	private Timestamp timeStamp;
-	private int roomId;
+
 
 	public ChatMessage() {
 
+	}
+
+	public ChatMessage(int roomIndependentMessageId, int roomId, String sender, String message){
+		this.roomIndependentMessageId = roomIndependentMessageId;
+		this.roomId = roomId;
+		this.sender = sender;
+		this.message = message;
+		setTimeStamp();
 	}
 
 	/**

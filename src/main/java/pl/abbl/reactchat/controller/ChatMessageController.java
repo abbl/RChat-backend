@@ -13,23 +13,23 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("api/secure")
 public class ChatMessageController {
     @Autowired
     private ChatMessageService chatMessageService;
 
-    @GetMapping("/chatMessages")
-    public List<ChatMessage> getChatMessagesFromPublicRoom(@RequestParam("roomId") int roomId){
-        return chatMessageService.findAllByRoomId(roomId);
-    }
-
-    @PostMapping("/secure/chatMessages")
+    @PostMapping("/chatMessages")
     public AbstractCallback postMessageInChatRoom(@RequestBody Map<String, String> message, HttpServletRequest request){
         return chatMessageService.postMessage(message, request);
     }
 
-    @GetMapping("/secure/chatMessages")
-    public List<ChatMessage> getChatMessagesFromPrivateRoom(@RequestParam("roomId") int roomId, HttpServletRequest request){
-        return chatMessageService.findAllByRoomId(roomId, request);
+    @GetMapping("/chatMessages")
+    public List<ChatMessage> getChatMessages(@RequestParam("roomId") String roomId, HttpServletRequest request){
+        return chatMessageService.findAllByRoomId(Integer.parseInt(roomId), request);
+    }
+
+    @GetMapping("/chatMessages/getLastMessageInChatRoom")
+    public ChatMessage getLastChatMessageInChatRoom(@RequestParam("roomId") String roomId, HttpServletRequest request){
+        return chatMessageService.getLastMessageInChatRoom(Integer.parseInt(roomId));
     }
 }

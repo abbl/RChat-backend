@@ -30,14 +30,10 @@ public class UserServiceImpl implements UserService {
 
         if(username != null && password != null){
             if(usersRepository.findByUsername(username) == null){
-                ChatUser chatUser = new ChatUser();
-                chatUser.setUsername(username);
-                chatUser.setPassword(passwordEncoder.encode(password));
-                chatUser.setActive(1);
+                ChatUser chatUser = new ChatUser(username, passwordEncoder.encode(password), 1);
+                Role role = new Role(username, "USER");
+
                 usersRepository.saveAndFlush(chatUser);
-                Role role = new Role();
-                role.setUsername(username);
-                role.setAuthority("USER"); //TODO create definition of roles.
                 roleRepository.saveAndFlush(role);
                 return new AuthenticationCallback(AuthenticationCallback.REGISTER_SUCCESSFUL);
             }else{

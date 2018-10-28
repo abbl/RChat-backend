@@ -11,13 +11,10 @@ import javax.persistence.*;
 @Data
 @Entity
 public class ChatRoom {
-	@JsonIgnore
-	@OneToMany
-	private List<ChatMessage> messages;
-
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@JsonIgnore
 	private int ownerId;
 	private String name;
 	private String description;
@@ -25,4 +22,11 @@ public class ChatRoom {
 	private ChatRoomType type;
 
 	public ChatRoom(){}
+
+	public ChatRoom(String name, String description, String type, int ownerId){
+		this.name = name;
+		this.description = description;
+		this.type = ChatRoomType.valueOf(type);
+		this.ownerId = ownerId;
+	}
 }

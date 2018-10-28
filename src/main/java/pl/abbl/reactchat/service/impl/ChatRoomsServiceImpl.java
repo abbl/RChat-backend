@@ -11,7 +11,7 @@ import pl.abbl.reactchat.callbacks.AbstractCallback;
 import pl.abbl.reactchat.callbacks.ChatRoomCallback;
 import pl.abbl.reactchat.definitions.PostParametersConstants;
 import pl.abbl.reactchat.entity.ChatRoom;
-import pl.abbl.reactchat.entity.ChatRoomParticipants;
+import pl.abbl.reactchat.entity.ChatRoomParticipant;
 import pl.abbl.reactchat.entity.ChatUser;
 import pl.abbl.reactchat.repository.ChatRoomParticipantsRepository;
 import pl.abbl.reactchat.repository.ChatRoomRepository;
@@ -46,16 +46,39 @@ public class ChatRoomsServiceImpl implements ChatRoomsService{
 	}
 
 	@Override
-	public List<ChatRoom> getPrivateChatRooms(HttpServletRequest request) {
+	public AbstractCallback joinChatRoom(Map<String, String> requestBody, HttpServletRequest request) {
+		ChatUser chatUser = userRepository.findByJwtToken(request);
+
+		if(chatUser != null){
+			int roomId = Integer.parseInt(requestBody.get(PostParametersConstants.CHAT_ROOM_JOIN_ROOM_ID));
+			ChatRoom isRoomPrivate = chatRoomRepository.isChatRoomPrivate(roomId);
+
+			if(isRoomPrivate == null){
+				if(chatRoomParticipantsRepository.isUserParticipantOfChatRoom(chatUser.getId(), roomId) == null){
+					chatRoomParticipantsRepository.saveAndFlush(new ChatRoomParticipant(chatUser.getId(), roomId));
+				}else{
+					return new ChatRoomCallback(ChatRoomCallback.YOU_ARE_ALREADY_MEMBER_OF_THIS_CHANNEL);
+				}
+			}else{
+				return new ChatRoomCallback(ChatRoomCallback.INVALID_CHAT_ROOM_TYPE);
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public List<ChatRoom> getUserChatRooms(HttpServletRequest request) {
 		ChatUser chatUser = userRepository.findByJwtToken(request);
 
 		if(chatUser != null){
 			List<Integer> chatRooms = new ArrayList<>();
 
-			for (ChatRoomParticipants chatRoomParticipant : chatRoomParticipantsRepository.findChatRoomsByUserId(chatUser.getId())) {
+			for (ChatRoomParticipant chatRoomParticipant : chatRoomParticipantsRepository.findChatRoomsByUserId(chatUser.getId())) {
 				chatRooms.add(chatRoomParticipant.getRoomId());
 			}
-			return chatRoomRepository.findChatRoomsByListOfId(chatRooms);
+
+			if(!chatRooms.isEmpty())
+				return chatRoomRepository.findChatRoomsByListOfId(chatRooms);
 		}
 		return null;
 	}
@@ -77,32 +100,15 @@ public class ChatRoomsServiceImpl implements ChatRoomsService{
 				}
 
 				if(isChatRoomTypeCorrect){
-					chatRoomRepository.saveAndFlush(createChatRoom(chatRoomName, chatRoomDesc, chatRoomType, chatUser.getId()));
+					chatRoomRepository.saveAndFlush(new ChatRoom(chatRoomName, chatRoomDesc, chatRoomType, chatUser.getId()));
 					ChatRoom newChatRoom = chatRoomRepository.findChatRoomByName(chatRoomName);
-					chatRoomParticipantsRepository.saveAndFlush(createChatRoomParticipant(newChatRoom.getId(), chatUser.getId()));
+					chatRoomParticipantsRepository.saveAndFlush(new ChatRoomParticipant(newChatRoom.getId(), chatUser.getId()));
 				}else{
 					return new ChatRoomCallback(ChatRoomCallback.INVALID_CHAT_ROOM_TYPE);
 				}
 			}
 		}
 		return null;
-	}
-
-	private ChatRoom createChatRoom(String chatRoomName, String chatRoomDesc, String chatRoomType, int ownerId){
-		ChatRoom chatRoom = new ChatRoom();
-		chatRoom.setName(chatRoomName);
-		chatRoom.setDescription(chatRoomDesc);
-		chatRoom.setType(ChatRoomType.valueOf(chatRoomType));
-		chatRoom.setOwnerId(ownerId);
-
-		return chatRoom;
-	}
-
-	private ChatRoomParticipants createChatRoomParticipant(int roomId, int userId){
-		ChatRoomParticipants chatRoomParticipants = new ChatRoomParticipants();
-		chatRoomParticipants.setUserId(userId);
-		chatRoomParticipants.setRoomId(roomId);
-		return chatRoomParticipants;
 	}
 
 	public AbstractCallback inviteUser(Map<String, String> requestBody, HttpServletRequest request){
@@ -114,10 +120,7 @@ public class ChatRoomsServiceImpl implements ChatRoomsService{
 				ChatUser invitedUser = userRepository.findByUsername(requestBody.get(PostParametersConstants.CHAT_ROOM_INVITE_USERNAME));
 
 				if(invitedUser != null){
-					ChatRoomParticipants chatRoomParticipants = new ChatRoomParticipants();
-					chatRoomParticipants.setRoomId(roomId);
-					chatRoomParticipants.setUserId(invitedUser.getId());
-					chatRoomParticipantsRepository.saveAndFlush(chatRoomParticipants);
+					chatRoomParticipantsRepository.saveAndFlush(new ChatRoomParticipant(roomId, invitedUser.getId()));
 				}else{
 					return new ChatRoomCallback(ChatRoomCallback.NO_SUCH_USER_FOUND);
 				}
@@ -139,4 +142,5 @@ public class ChatRoomsServiceImpl implements ChatRoomsService{
 	public boolean isUserOwnerOfChatRoom(int roomId, int userId) {
 		return chatRoomRepository.isUserOwnerOfChatRoom(roomId, userId) != null;
 	}
+
 }
