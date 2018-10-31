@@ -19,6 +19,8 @@ public class ChatRoomCallback extends AbstractCallback{
 	public static final String CANT_INVITE_TO_PUBLIC_ROOM = "CANT_INVITE_TO_PUBLIC_ROOM";
 	@JsonIgnore
 	public static final String YOU_ARE_ALREADY_MEMBER_OF_THIS_CHANNEL = "YOU_ARE_ALREADY_MEMBER_OF_THIS_CHANNEL";
+	@JsonIgnore
+	public static final String SUCCESSFULLY_JOINED_CHAT_ROOM = "SUCCESSFULLY_JOINED_CHAT_ROOM";
 
 	public ChatRoomCallback(String response) {
 		super(response);

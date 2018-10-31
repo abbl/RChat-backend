@@ -55,7 +55,8 @@ public class ChatRoomsServiceImpl implements ChatRoomsService{
 
 			if(isRoomPrivate == null){
 				if(chatRoomParticipantsRepository.isUserParticipantOfChatRoom(chatUser.getId(), roomId) == null){
-					chatRoomParticipantsRepository.saveAndFlush(new ChatRoomParticipant(chatUser.getId(), roomId));
+					chatRoomParticipantsRepository.saveAndFlush(new ChatRoomParticipant(roomId, chatUser.getId()));
+					return new ChatRoomCallback(ChatRoomCallback.SUCCESSFULLY_JOINED_CHAT_ROOM);
 				}else{
 					return new ChatRoomCallback(ChatRoomCallback.YOU_ARE_ALREADY_MEMBER_OF_THIS_CHANNEL);
 				}
