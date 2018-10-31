@@ -55,7 +55,7 @@ public class ChatMessageServiceImpl implements ChatMessageService {
             try{
                 int chatRoomId = Integer.parseInt(requestBody.get(CHAT_ROOM_MESSAGE_CHAT_ROOM_ID));
                 String message = requestBody.get(CHAT_ROOM_MESSAGE_MESSAGE);
-                if(message != null){
+                if(message != null && !message.isEmpty()){
                     if(chatRoomRepository.isChatRoomPrivate(chatRoomId) != null){
                         if(chatRoomParticipantsRepository.isUserParticipantOfChatRoom(chatUser.getId(), chatRoomId) == null)
                             return new ChatMessageCallback(ChatMessageCallback.NOT_PARTICIPANT_OF_CHAT_ROOM);

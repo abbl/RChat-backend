@@ -94,21 +94,38 @@ public class ChatRoomsServiceImpl implements ChatRoomsService{
 			String chatRoomType = requestBody.get(CHAT_ROOM_TYPE);
 
 			if(chatRoomName != null && chatRoomDesc != null && chatRoomType != null){
+				String fixedChatRoomName = removeUnnecessaryCharsFromChatRoomName(chatRoomName);
+
+				if(!chatRoomRepository.findChatRoomByName(fixedChatRoomName).isEmpty())
+					return new ChatRoomCallback(ChatRoomCallback.CHAT_ROOM_NAME_TAKEN);
+
 				for (String roomType : AVAILABLE_CHAT_ROOM_TYPES) {
-					if(roomType == chatRoomType)
+					if(roomType.equals(chatRoomType))
 						isChatRoomTypeCorrect = true;
 				}
 
 				if(isChatRoomTypeCorrect){
-					chatRoomRepository.saveAndFlush(new ChatRoom(chatRoomName, chatRoomDesc, chatRoomType, chatUser.getId()));
-					ChatRoom newChatRoom = chatRoomRepository.findChatRoomByName(chatRoomName);
+					chatRoomRepository.saveAndFlush(new ChatRoom(fixedChatRoomName, chatRoomDesc, chatRoomType, chatUser.getId()));
+					ChatRoom newChatRoom = chatRoomRepository.findChatRoomByName(fixedChatRoomName).get(0);
 					chatRoomParticipantsRepository.saveAndFlush(new ChatRoomParticipant(newChatRoom.getId(), chatUser.getId()));
+					return new ChatRoomCallback(ChatRoomCallback.CHAT_ROOM_CREATED_SUCCESSFULLY);
 				}else{
 					return new ChatRoomCallback(ChatRoomCallback.INVALID_CHAT_ROOM_TYPE);
 				}
 			}
 		}
 		return null;
+	}
+
+	private String removeUnnecessaryCharsFromChatRoomName(String chatRoomName){
+		StringBuilder stringBuilder = new StringBuilder(chatRoomName);
+
+		while(stringBuilder.charAt(0) == '#'){
+			stringBuilder.deleteCharAt(0);
+		}
+		stringBuilder.insert(0, '#');
+
+		return stringBuilder.toString();
 	}
 
 	public AbstractCallback inviteUser(Map<String, String> requestBody, HttpServletRequest request){
