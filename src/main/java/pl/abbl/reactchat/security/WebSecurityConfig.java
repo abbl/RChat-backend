@@ -56,10 +56,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.exceptionHandling()
 				.and()
 		.authorizeRequests()
-				.antMatchers("/api/authenticate", "/api/register").permitAll()
-                .antMatchers("/api/secure/**").authenticated()
+				.antMatchers("/authenticate", "/register").permitAll()
+                .antMatchers("/secure/**").authenticated()
 				.and()
-				.addFilterBefore(new JwtAuthenticationFilter("/api/authenticate", authenticationManager(), gson), UsernamePasswordAuthenticationFilter.class)
+				.addFilterBefore(new JwtAuthenticationFilter("/authenticate", authenticationManager(), gson), UsernamePasswordAuthenticationFilter.class)
 				.addFilterBefore(new JwtAuthorizationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class)
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}

@@ -9,7 +9,6 @@ import pl.abbl.reactchat.services.UserService;
 import java.util.Map;
 
 @RestController
-@RequestMapping("api")
 public class AuthenticationController {
 	@Autowired
 	private UserService userService;

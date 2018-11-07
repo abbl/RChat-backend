@@ -15,6 +15,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @EnableJpaRepositories
 public class ReactChat {
 	public static void main(String[] args) {
+		System.setProperty("server.servlet.context-path", "/api");
 		SpringApplication.run(ReactChat.class, args);
 	}
 
