@@ -1,8 +1,7 @@
-package pl.abbl.reactchat.service;
+package pl.abbl.reactchat.services;
 
 import pl.abbl.reactchat.callbacks.AbstractCallback;
-import pl.abbl.reactchat.entity.ChatRoom;
-import pl.abbl.reactchat.entity.ChatUser;
+import pl.abbl.reactchat.entities.ChatUser;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;

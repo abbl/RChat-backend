@@ -1,17 +1,11 @@
-package pl.abbl.reactchat.controller;
+package pl.abbl.reactchat.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.context.request.WebRequest;
 import pl.abbl.reactchat.callbacks.AbstractCallback;
-import pl.abbl.reactchat.callbacks.AuthenticationCallback;
-import pl.abbl.reactchat.service.UserService;
+import pl.abbl.reactchat.services.UserService;
 
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 @RestController

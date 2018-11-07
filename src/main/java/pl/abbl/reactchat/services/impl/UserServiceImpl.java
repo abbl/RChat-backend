@@ -1,4 +1,4 @@
-package pl.abbl.reactchat.service.impl;
+package pl.abbl.reactchat.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -6,17 +6,14 @@ import org.springframework.stereotype.Service;
 import pl.abbl.reactchat.callbacks.AbstractCallback;
 import pl.abbl.reactchat.callbacks.AuthenticationCallback;
 import pl.abbl.reactchat.definitions.PostParametersConstants;
-import pl.abbl.reactchat.entity.ChatRoom;
-import pl.abbl.reactchat.entity.ChatUser;
-import pl.abbl.reactchat.entity.Role;
-import pl.abbl.reactchat.repository.RoleRepository;
-import pl.abbl.reactchat.repository.UserRepository;
-import pl.abbl.reactchat.service.UserService;
+import pl.abbl.reactchat.entities.ChatUser;
+import pl.abbl.reactchat.entities.Role;
+import pl.abbl.reactchat.repositories.RoleRepository;
+import pl.abbl.reactchat.repositories.UserRepository;
+import pl.abbl.reactchat.services.UserService;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.swing.text.html.Option;
 import java.util.Map;
-import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {

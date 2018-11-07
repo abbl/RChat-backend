@@ -1,4 +1,4 @@
-package pl.abbl.reactchat.config;
+package pl.abbl.reactchat.configs;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

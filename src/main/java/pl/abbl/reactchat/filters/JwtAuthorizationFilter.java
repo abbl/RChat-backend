@@ -1,4 +1,4 @@
-package pl.abbl.reactchat.filter;
+package pl.abbl.reactchat.filters;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;

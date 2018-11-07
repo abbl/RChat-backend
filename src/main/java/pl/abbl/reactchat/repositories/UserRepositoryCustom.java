@@ -1,6 +1,6 @@
-package pl.abbl.reactchat.repository;
+package pl.abbl.reactchat.repositories;
 
-import pl.abbl.reactchat.entity.ChatUser;
+import pl.abbl.reactchat.entities.ChatUser;
 
 import javax.servlet.http.HttpServletRequest;
 

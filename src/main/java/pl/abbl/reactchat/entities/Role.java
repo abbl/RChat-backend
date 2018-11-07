@@ -1,4 +1,4 @@
-package pl.abbl.reactchat.entity;
+package pl.abbl.reactchat.entities;
 
 import lombok.Data;
 
