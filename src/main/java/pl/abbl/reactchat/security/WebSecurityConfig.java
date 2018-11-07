@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,8 +31,11 @@ import javax.sql.DataSource;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+
 	@Autowired
+	@Qualifier("generalDataSource")
 	private DataSource dataSource;
+
 	@Autowired
 	private Gson gson;
 
