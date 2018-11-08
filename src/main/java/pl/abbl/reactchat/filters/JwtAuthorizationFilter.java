@@ -48,7 +48,6 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         if(cookies != null){
             for(Cookie cookie : cookies){
                 if(HEADER_STRING.equals(cookie.getName())){
-                    System.out.println("C:" + cookie.getValue());
                     return cookie.getValue().replaceFirst("%20", " ");
                 }
             }
@@ -57,7 +56,6 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
     }
 
     private UsernamePasswordAuthenticationToken detachTokenFromRequestHeader(String token) {
-        System.out.println("Token:" + token);
         if(token != null){
             String user = JWT.require(Algorithm.HMAC512(SECRET.getBytes()))
                     .build()
