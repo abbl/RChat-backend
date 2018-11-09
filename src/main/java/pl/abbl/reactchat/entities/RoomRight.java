@@ -3,6 +3,7 @@ package pl.abbl.reactchat.entities;
 import lombok.Data;
 import pl.abbl.reactchat.entities.enums.RoomRightLevel;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,6 +15,7 @@ import javax.persistence.Id;
  * @Since 2018-11-9
  */
 @Data
+@Entity
 public class RoomRight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
