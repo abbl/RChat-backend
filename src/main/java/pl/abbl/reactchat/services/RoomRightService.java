@@ -1,7 +1,7 @@
 package pl.abbl.reactchat.services;
 
 import pl.abbl.reactchat.entities.RoomRight;
-import pl.abbl.reactchat.entities.enums.RoomRightLevel;
+import pl.abbl.reactchat.definitions.enums.RoomRightLevel;
 
 public interface RoomRightService {
     /**

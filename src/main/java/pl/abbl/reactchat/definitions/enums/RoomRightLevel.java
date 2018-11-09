@@ -1,4 +1,4 @@
-package pl.abbl.reactchat.entities.enums;
+package pl.abbl.reactchat.definitions.enums;
 
 public enum RoomRightLevel {
     OWNER,

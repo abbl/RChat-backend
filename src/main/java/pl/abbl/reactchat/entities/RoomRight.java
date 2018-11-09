@@ -1,13 +1,13 @@
 package pl.abbl.reactchat.entities;
 
 import lombok.Data;
-import pl.abbl.reactchat.entities.enums.RoomRightLevel;
+import pl.abbl.reactchat.definitions.enums.RoomRightLevel;
 
 import javax.persistence.*;
 
 /**
- * This entity represents {@link ChatUser} right in certain ChatRoom.
- *
+ * This entity represents {@link ChatUser} right in certain {@link ChatRoom}.
+ * Available rights are listed in {@link RoomRightLevel}
  * @Version 1.1
  * @Since 2018-11-9
  */

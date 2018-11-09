@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.abbl.reactchat.entities.RoomRight;
-import pl.abbl.reactchat.entities.enums.RoomRightLevel;
+import pl.abbl.reactchat.definitions.enums.RoomRightLevel;
 import pl.abbl.reactchat.repositories.RoomRightRepository;
 import pl.abbl.reactchat.services.RoomRightService;
 
