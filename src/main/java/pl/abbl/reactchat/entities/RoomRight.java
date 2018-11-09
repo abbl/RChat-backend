@@ -25,8 +25,7 @@ public class RoomRight {
     public RoomRight(){
     }
 
-    public RoomRight(int id, int userId, int roomId, RoomRightLevel rightLevel){
-        this.id = id;
+    public RoomRight(int userId, int roomId, RoomRightLevel rightLevel){
         this.userId = userId;
         this.roomId = roomId;
         this.rightLevel = rightLevel;
