@@ -9,6 +9,8 @@ import pl.abbl.reactchat.definitions.enums.RoomRightLevel;
 import pl.abbl.reactchat.repositories.RoomRightRepository;
 import pl.abbl.reactchat.services.RoomRightService;
 
+import java.util.List;
+
 @Service
 public class RoomRightServiceImpl implements RoomRightService {
     @Autowired
@@ -19,6 +21,11 @@ public class RoomRightServiceImpl implements RoomRightService {
     @Override
     public RoomRight getUserRight(int userId, int roomId) {
         return roomRightRepository.getRight(userId, roomId);
+    }
+
+    @Override
+    public List<RoomRight> getAllUserRights(int userId) {
+        return roomRightRepository.getRights(userId);
     }
 
     @Override

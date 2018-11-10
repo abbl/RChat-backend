@@ -2,6 +2,7 @@ package pl.abbl.reactchat.entities;
 
 import lombok.Data;
 import pl.abbl.reactchat.definitions.enums.ChatRoomStatus;
+import pl.abbl.reactchat.definitions.enums.ChatRoomType;
 
 import javax.persistence.*;
 
@@ -14,6 +15,9 @@ public class ChatRoom {
     private int ownerId;
     private String name;
     private String description;
+
+    @Enumerated(EnumType.STRING)
+    private ChatRoomType type;
     @Enumerated(EnumType.STRING)
     private ChatRoomStatus status;
 

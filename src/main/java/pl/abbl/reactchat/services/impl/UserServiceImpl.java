@@ -13,6 +13,7 @@ import pl.abbl.reactchat.repositories.UserRepository;
 import pl.abbl.reactchat.services.UserService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.Map;
 
 @Service
@@ -59,6 +60,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public ChatUser getUserInformationByJwt(HttpServletRequest httpServletRequest) {
         return getUserInformationById(usersRepository.findByJwtToken(httpServletRequest).getId());
+    }
+
+    @Override
+    public ChatUser getUserInformationByPrincipal(Principal principal) {
+        return getUserInformationByUsername(principal.getName());
     }
 
     @Override
