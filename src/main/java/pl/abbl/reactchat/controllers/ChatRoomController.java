@@ -32,13 +32,13 @@ public class ChatRoomController {
 
     @PutMapping("/secure/chatroom")
     public AbstractCallback updateChatRoom(Map<String, Object> json, Principal principal){
-        ChatRoom chatRoom = new ChatRoom((int) json.get("id"),(String) json.get("name"), (String) json.get("description"), (ChatRoomType) json.get("type"), (ChatRoomStatus) json.get("status"));
+        ChatRoom chatRoom = new ChatRoom((int) json.get("id"),(String) json.get("name"), (String) json.get("description"), ChatRoomType.valueOf((String) json.get("type")), ChatRoomStatus.valueOf((String) json.get("status")));
 
         return chatRoomService.updateChatRoom(chatRoom, principal);
     }
 
-    @MessageMapping("/queue/context/roomlist")
+    @MessageMapping("/request/chatroom/list")
     public void subscribeToChatRoomList(Principal principal){
-        simpMessagingTemplate.convertAndSendToUser(principal.getName(), "/queue/context/roomlist", chatRoomService.getUserChatRooms(principal));
+        simpMessagingTemplate.convertAndSendToUser(principal.getName(), "/topic/chatroom/list", chatRoomService.getUserChatRooms(principal));
     }
 }

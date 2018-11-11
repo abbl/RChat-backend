@@ -25,7 +25,6 @@ public class ContextChangeServiceImpl implements ContextChangeService {
     @Autowired
     private RoomRightService roomRightService;
 
-    @Async
     @Override
     public void updateUsersOnRoomChange(ChatRoom chatRoom) {
         Set<SimpUser> users = simpUserRegistry.getUsers();
@@ -35,7 +34,7 @@ public class ContextChangeServiceImpl implements ContextChangeService {
 
             if(chatUser != null){
                 if(roomRightService.getUserRight(chatUser.getId(), chatRoom.getId()) != null){
-                    messagingTemplate.convertAndSendToUser(simpUser.getName(),"/queue/context/roomList", chatRoom);
+                    messagingTemplate.convertAndSendToUser(simpUser.getName(),"/topic/chatroom/list", chatRoom);
                 }
             }
         }
