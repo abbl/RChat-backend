@@ -8,4 +8,5 @@ import pl.abbl.reactchat.entities.ChatRoom;
  */
 public interface ContextChangeService {
     void updateUsersOnRoomChange(ChatRoom chatRoom);
+    void updateUsersOnNewMessage(ChatRoom chatRoom);
 }

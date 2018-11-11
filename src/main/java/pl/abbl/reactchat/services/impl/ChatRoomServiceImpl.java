@@ -3,8 +3,10 @@ package pl.abbl.reactchat.services.impl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import pl.abbl.reactchat.callbacks.AbstractCallback;
 import pl.abbl.reactchat.callbacks.ChatRoomCallback;
+import pl.abbl.reactchat.definitions.enums.ChatRoomStatus;
 import pl.abbl.reactchat.definitions.enums.ChatRoomType;
 import pl.abbl.reactchat.definitions.enums.RoomRightLevel;
 import pl.abbl.reactchat.entities.ChatRoom;
@@ -12,6 +14,7 @@ import pl.abbl.reactchat.entities.ChatUser;
 import pl.abbl.reactchat.entities.RoomRight;
 import pl.abbl.reactchat.repositories.ChatRoomRepository;
 import pl.abbl.reactchat.services.ChatRoomService;
+import pl.abbl.reactchat.services.ContextChangeService;
 import pl.abbl.reactchat.services.RoomRightService;
 import pl.abbl.reactchat.services.UserService;
 
@@ -19,6 +22,7 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class ChatRoomServiceImpl implements ChatRoomService {
     private static Logger logger = LoggerFactory.getLogger(ChatRoomServiceImpl.class);
 
@@ -28,17 +32,26 @@ public class ChatRoomServiceImpl implements ChatRoomService {
     private UserService userService;
     @Autowired
     private RoomRightService roomRightService;
+    @Autowired
+    private ContextChangeService contextChangeService;
+
 
     @Override
     public AbstractCallback createChatRoom(ChatRoom chatRoom, Principal principal) {
         ChatUser chatUser = userService.getUserInformationByPrincipal(principal);
 
+        System.out.println(chatRoom.toString());
+
         if(checkIfAllRequiredFieldsAreFilledUp(chatRoom)){
             if(chatRoomRepository.findByName(chatRoom.getName()) == null){
                 chatRoom.setName(formatChatRoomName(chatRoom.getName()));
+                chatRoom.setOwnerId(chatUser.getId());
+                chatRoom.setStatus(ChatRoomStatus.OPEN);
                 chatRoomRepository.saveAndFlush(chatRoom);
 
                 setUserRightAsOwnerOfRoom(chatUser, chatRoom.getName());
+                contextChangeService.updateUsersOnRoomChange(chatRoom);
+
                 return new ChatRoomCallback(ChatRoomCallback.CHAT_ROOM_CREATED_SUCCESSFULLY);
             }else{
                 return new ChatRoomCallback(ChatRoomCallback.CHAT_ROOM_NAME_TAKEN);
@@ -49,7 +62,7 @@ public class ChatRoomServiceImpl implements ChatRoomService {
     }
 
     private boolean checkIfAllRequiredFieldsAreFilledUp(ChatRoom chatRoom){
-        return chatRoom.getName() != null && chatRoom.getType() != null && chatRoom.getId() == 0;
+        return chatRoom.getName() != null && chatRoom.getType() != null;
     }
 
     private String formatChatRoomName(String name){
@@ -75,7 +88,6 @@ public class ChatRoomServiceImpl implements ChatRoomService {
     }
 
     //TODO Make this function more readable for humans.
-
     @Override
     public AbstractCallback updateChatRoom(ChatRoom chatRoom, Principal principal) {
         ChatUser chatUser = userService.getUserInformationByPrincipal(principal);
@@ -108,6 +120,7 @@ public class ChatRoomServiceImpl implements ChatRoomService {
                 }
 
                 chatRoomRepository.saveAndFlush(databaseChatRoom);
+                contextChangeService.updateUsersOnRoomChange(databaseChatRoom);
 
                 return new ChatRoomCallback(ChatRoomCallback.CHAT_ROOM_UPDATED_SUCCESSFULLY);
             }
