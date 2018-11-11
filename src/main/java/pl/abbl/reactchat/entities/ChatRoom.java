@@ -30,6 +30,14 @@ public class ChatRoom {
         this.type = type;
     }
 
+    public ChatRoom(int id, String name, String description, ChatRoomType type, ChatRoomStatus status){
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.type = type;
+        this.status = status;
+    }
+
     public ChatRoom(int ownerId, String name, String description, ChatRoomStatus status){
         this.ownerId = ownerId;
         this.name = name;

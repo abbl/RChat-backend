@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import pl.abbl.reactchat.callbacks.AbstractCallback;
+import pl.abbl.reactchat.definitions.enums.ChatRoomStatus;
 import pl.abbl.reactchat.definitions.enums.ChatRoomType;
 import pl.abbl.reactchat.entities.ChatRoom;
 import pl.abbl.reactchat.services.ChatRoomService;
@@ -31,7 +32,7 @@ public class ChatRoomController {
 
     @PutMapping("/secure/chatroom")
     public AbstractCallback updateChatRoom(Map<String, Object> json, Principal principal){
-        ChatRoom chatRoom = new ChatRoom((String) json.get("name"), (String) json.get("description"), (ChatRoomType) json.get("type"));
+        ChatRoom chatRoom = new ChatRoom((int) json.get("id"),(String) json.get("name"), (String) json.get("description"), (ChatRoomType) json.get("type"), (ChatRoomStatus) json.get("status"));
 
         return chatRoomService.updateChatRoom(chatRoom, principal);
     }
