@@ -8,6 +8,7 @@ import pl.abbl.reactchat.entities.ChatUser;
 public interface UserRepository extends JpaRepository<ChatUser, Long>, UserRepositoryCustom {
     @Query("SELECT u FROM ChatUser u WHERE u.username = :username")
     ChatUser findByUsername(@Param("username") String username);
+
     @Query("SELECT u FROM ChatUser u WHERE u.id = :id")
     ChatUser findByIdInt(@Param("id") int id);
 }

@@ -74,10 +74,47 @@ public class ChatRoomServiceImpl implements ChatRoomService {
         logger.warn("Couldn't set user rights as a owner of ChatRoom, It might not be created before.");
     }
 
+    //TODO Make this function more readable for humans.
+
     @Override
     public AbstractCallback updateChatRoom(ChatRoom chatRoom, Principal principal) {
-        //TODO
-        return null;
+        ChatUser chatUser = userService.getUserInformationByPrincipal(principal);
+        ChatRoom databaseChatRoom = chatRoomRepository.findById(chatRoom.getId());
+
+        if(databaseChatRoom != null){
+            if(roomRightService.isUserRightLevelHighEnough(chatUser.getId(), databaseChatRoom.getId(), RoomRightLevel.MODERATOR)){
+                RoomRightLevel userRoomRightLevel = roomRightService.getUserRight(chatUser.getId(), databaseChatRoom.getId()).getRightLevel();
+
+                if(!databaseChatRoom.getName().equals(chatRoom.getName())){
+                    if(userRoomRightLevel != RoomRightLevel.OWNER){
+                        return new ChatRoomCallback(ChatRoomCallback.INSUFFICIENT_RIGHTS);
+                    }else{
+                        if(chatRoomRepository.findByName(chatRoom.getName()) != null){
+                            return new ChatRoomCallback(ChatRoomCallback.CHAT_ROOM_NAME_TAKEN);
+                        }
+                        databaseChatRoom.setName(chatRoom.getName());
+                    }
+                }
+
+                if(databaseChatRoom.getStatus() != chatRoom.getStatus()){
+                    if(userRoomRightLevel != RoomRightLevel.OWNER){
+                        return new ChatRoomCallback(ChatRoomCallback.INSUFFICIENT_RIGHTS);
+                    }
+                    databaseChatRoom.setStatus(chatRoom.getStatus());
+                }
+
+                if(!databaseChatRoom.getDescription().equals(chatRoom.getDescription())){
+                    databaseChatRoom.setDescription(chatRoom.getDescription());
+                }
+
+                chatRoomRepository.saveAndFlush(databaseChatRoom);
+
+                return new ChatRoomCallback(ChatRoomCallback.CHAT_ROOM_UPDATED_SUCCESSFULLY);
+            }
+
+            return new ChatRoomCallback(ChatRoomCallback.INSUFFICIENT_RIGHTS);
+        }
+        return new ChatRoomCallback(ChatRoomCallback.CANT_UPDATE_CHAT_ROOM_THAT_DOESNT_EXIST);
     }
 
     @Override
