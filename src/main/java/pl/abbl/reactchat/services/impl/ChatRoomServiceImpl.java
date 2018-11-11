@@ -1,9 +1,12 @@
 package pl.abbl.reactchat.services.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import pl.abbl.reactchat.callbacks.AbstractCallback;
 import pl.abbl.reactchat.callbacks.ChatRoomCallback;
 import pl.abbl.reactchat.definitions.enums.ChatRoomType;
+import pl.abbl.reactchat.definitions.enums.RoomRightLevel;
 import pl.abbl.reactchat.entities.ChatRoom;
 import pl.abbl.reactchat.entities.ChatUser;
 import pl.abbl.reactchat.entities.RoomRight;
@@ -12,12 +15,13 @@ import pl.abbl.reactchat.services.ChatRoomService;
 import pl.abbl.reactchat.services.RoomRightService;
 import pl.abbl.reactchat.services.UserService;
 
-import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ChatRoomServiceImpl implements ChatRoomService {
+    private static Logger logger = LoggerFactory.getLogger(ChatRoomServiceImpl.class);
+
     @Autowired
     private ChatRoomRepository chatRoomRepository;
     @Autowired
@@ -34,6 +38,7 @@ public class ChatRoomServiceImpl implements ChatRoomService {
                 chatRoom.setName(formatChatRoomName(chatRoom.getName()));
                 chatRoomRepository.saveAndFlush(chatRoom);
 
+                setUserRightAsOwnerOfRoom(chatUser, chatRoom.getName());
                 return new ChatRoomCallback(ChatRoomCallback.CHAT_ROOM_CREATED_SUCCESSFULLY);
             }else{
                 return new ChatRoomCallback(ChatRoomCallback.CHAT_ROOM_NAME_TAKEN);
@@ -56,6 +61,17 @@ public class ChatRoomServiceImpl implements ChatRoomService {
         stringBuilder.insert(0, '#');
 
         return stringBuilder.toString();
+    }
+
+    private void setUserRightAsOwnerOfRoom(ChatUser chatUser, String roomName){
+        ChatRoom chatRoom = chatRoomRepository.findByName(roomName);
+
+        if(chatRoom != null){
+            roomRightService.addUserRight(chatUser.getId(), chatRoom.getId(), RoomRightLevel.OWNER);
+
+            return;
+        }
+        logger.warn("Couldn't set user rights as a owner of ChatRoom, It might not be created before.");
     }
 
     @Override
