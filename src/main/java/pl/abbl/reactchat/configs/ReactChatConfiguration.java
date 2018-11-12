@@ -7,7 +7,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableJpaRepositories("pl.abbl.reactchat")
-
 public class ReactChatConfiguration {
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
