@@ -25,6 +25,7 @@ public class ContextChangeServiceImpl implements ContextChangeService {
     @Autowired
     private RoomRightService roomRightService;
 
+    @Async
     @Override
     public void updateUsersOnRoomChange(ChatRoom chatRoom) {
         Set<SimpUser> users = simpUserRegistry.getUsers();
