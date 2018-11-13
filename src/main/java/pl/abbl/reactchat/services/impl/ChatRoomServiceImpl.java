@@ -12,6 +12,7 @@ import pl.abbl.reactchat.definitions.enums.RoomRightLevel;
 import pl.abbl.reactchat.models.ChatRoom;
 import pl.abbl.reactchat.models.ChatUser;
 import pl.abbl.reactchat.models.RoomRight;
+import pl.abbl.reactchat.repositories.ChatContentRepository;
 import pl.abbl.reactchat.repositories.ChatRoomRepository;
 import pl.abbl.reactchat.services.ChatRoomService;
 import pl.abbl.reactchat.services.ContextChangeService;
@@ -34,13 +35,12 @@ public class ChatRoomServiceImpl implements ChatRoomService {
     private RoomRightService roomRightService;
     @Autowired
     private ContextChangeService contextChangeService;
-
+    @Autowired
+    private ChatContentRepository chatContentRepository;
 
     @Override
     public AbstractCallback createChatRoom(ChatRoom chatRoom, Principal principal) {
         ChatUser chatUser = userService.getUserInformationByPrincipal(principal);
-
-        System.out.println(chatRoom.toString());
 
         if(checkIfAllRequiredFieldsAreFilledUp(chatRoom)){
             if(chatRoomRepository.findByName(chatRoom.getName()) == null){
@@ -51,6 +51,7 @@ public class ChatRoomServiceImpl implements ChatRoomService {
 
                 setUserRightAsOwnerOfRoom(chatUser, chatRoom.getName());
                 contextChangeService.updateUsersOnRoomChange(chatRoom);
+                chatContentRepository.createChatContentTable(chatRoom);
 
                 return new ChatRoomCallback(ChatRoomCallback.CHAT_ROOM_CREATED_SUCCESSFULLY);
             }else{

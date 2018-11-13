@@ -6,7 +6,6 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name="user") //For sake of spring security authentication.
 public class ChatUser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
