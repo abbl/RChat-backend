@@ -1,4 +1,4 @@
-package pl.abbl.reactchat.entities;
+package pl.abbl.reactchat.models;
 
 import lombok.Data;
 import pl.abbl.reactchat.definitions.enums.ChatRoomStatus;

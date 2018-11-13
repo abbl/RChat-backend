@@ -1,18 +1,24 @@
 package pl.abbl.reactchat.repositories.impl;
 
 import org.springframework.stereotype.Repository;
-import pl.abbl.reactchat.entities.ChatMessage;
-import pl.abbl.reactchat.entities.ChatRoom;
+import pl.abbl.reactchat.models.ChatMessage;
+import pl.abbl.reactchat.models.ChatRoom;
 import pl.abbl.reactchat.repositories.ChatContentRepository;
 
+import javax.persistence.EntityManager;
 import java.util.List;
+
+import static pl.abbl.reactchat.configs.ReactChatConfiguration.FETCH_RANGE_LIMIT;
 
 /**
  * @inheritDoc
  */
 @Repository
 public class ChatContentRepositoryImpl implements ChatContentRepository {
-    private static final int FETCH_RANGE_LIMIT = 15;
+
+    public ChatContentRepositoryImpl(EntityManager entityManager){
+
+    }
 
     @Override
     public void createChatContentTable(ChatRoom chatRoom) {

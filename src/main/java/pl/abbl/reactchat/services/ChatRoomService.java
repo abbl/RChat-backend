@@ -1,7 +1,7 @@
 package pl.abbl.reactchat.services;
 
 import pl.abbl.reactchat.callbacks.AbstractCallback;
-import pl.abbl.reactchat.entities.ChatRoom;
+import pl.abbl.reactchat.models.ChatRoom;
 import java.security.Principal;
 import java.util.List;
 

@@ -5,7 +5,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
-import pl.abbl.reactchat.entities.ChatUser;
+import pl.abbl.reactchat.models.ChatUser;
 import pl.abbl.reactchat.repositories.UserRepository;
 import pl.abbl.reactchat.repositories.UserRepositoryCustom;
 

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.abbl.reactchat.callbacks.AbstractCallback;
 import pl.abbl.reactchat.definitions.enums.ChatRoomStatus;
 import pl.abbl.reactchat.definitions.enums.ChatRoomType;
-import pl.abbl.reactchat.entities.ChatRoom;
+import pl.abbl.reactchat.models.ChatRoom;
 import pl.abbl.reactchat.services.ChatRoomService;
 
 import java.security.Principal;

@@ -1,12 +1,13 @@
 package pl.abbl.reactchat.repositories;
 
-import pl.abbl.reactchat.entities.*;
+import pl.abbl.reactchat.models.*;
+import pl.abbl.reactchat.models.ChatMessage;
 
 import java.util.List;
 
 /**
  * Each {@link ChatMessage} is stored in certain table related to {@link ChatRoom}
- * (when new room is created there should be also separate table for {@link ChatMessage} 'entities'),
+ * (when new room is created there should be also separate table for {@link ChatMessage} 'models'),
  * and purpose of this repository is to persist It's content.
  *
  * (Its kinda self explanatory by the name of this class but I wanted to clarify that so you

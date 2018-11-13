@@ -1,6 +1,6 @@
 package pl.abbl.reactchat.services;
 
-import pl.abbl.reactchat.entities.ChatRoom;
+import pl.abbl.reactchat.models.ChatRoom;
 
 /**
  * This service has a "power" to update users with context changes through WebSockets.

@@ -9,7 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
-import pl.abbl.reactchat.entities.ChatUser;
+import pl.abbl.reactchat.models.ChatUser;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;

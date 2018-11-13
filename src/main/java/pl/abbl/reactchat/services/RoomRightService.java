@@ -1,6 +1,6 @@
 package pl.abbl.reactchat.services;
 
-import pl.abbl.reactchat.entities.RoomRight;
+import pl.abbl.reactchat.models.RoomRight;
 import pl.abbl.reactchat.definitions.enums.RoomRightLevel;
 
 import java.util.List;

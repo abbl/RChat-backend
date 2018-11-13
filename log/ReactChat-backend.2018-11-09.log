@@ -1763,9 +1763,9 @@
 	Validation Mode: AUTO
 	Jar files URLs []
 	Managed classes names [
-		pl.abbl.reactchat.entities.ChatUser
-		pl.abbl.reactchat.entities.Role
-		pl.abbl.reactchat.entities.RoomRight]
+		pl.abbl.reactchat.models.ChatUser
+		pl.abbl.reactchat.models.Role
+		pl.abbl.reactchat.models.RoomRight]
 	Mapping files names []
 	Properties []
 12:58:54.359 [main] DEBUG o.h.i.internal.IntegratorServiceImpl - Adding Integrator [org.hibernate.cfg.beanvalidation.BeanValidationIntegrator].
@@ -1919,76 +1919,76 @@
 12:58:54.853 [main] DEBUG o.h.i.f.i.DefaultIdentifierGeneratorFactory - Registering IdentifierGenerator strategy [enhanced-sequence] -> [org.hibernate.id.enhanced.SequenceStyleGenerator]
 12:58:54.853 [main] DEBUG o.h.i.f.i.DefaultIdentifierGeneratorFactory - Registering IdentifierGenerator strategy [enhanced-table] -> [org.hibernate.id.enhanced.TableGenerator]
 12:58:54.886 [main] DEBUG o.h.boot.model.relational.Namespace - Created database namespace [logicalName=Name{catalog=null, schema=null}, physicalName=Name{catalog=null, schema=null}]
-12:58:54.926 [main] DEBUG org.hibernate.cfg.AnnotationBinder - Binding entity from annotated class: pl.abbl.reactchat.entities.Role
+12:58:54.926 [main] DEBUG org.hibernate.cfg.AnnotationBinder - Binding entity from annotated class: pl.abbl.reactchat.models.Role
 12:58:54.957 [main] DEBUG org.hibernate.cfg.Ejb3Column - Binding column: Ejb3DiscriminatorColumn{logicalColumnName'DTYPE', discriminatorTypeName='string'}
 12:58:54.961 [main] DEBUG o.h.cfg.annotations.EntityBinder - Import with entity name Role
-12:58:54.964 [main] DEBUG o.h.cfg.annotations.EntityBinder - Bind entity pl.abbl.reactchat.entities.Role on table authorities
+12:58:54.964 [main] DEBUG o.h.cfg.annotations.EntityBinder - Bind entity pl.abbl.reactchat.models.Role on table authorities
 12:58:54.986 [main] DEBUG org.hibernate.cfg.Ejb3Column - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(authorities), mappingColumn=id, insertable=true, updatable=true, unique=false}
 12:58:54.989 [main] DEBUG o.h.cfg.annotations.PropertyBinder - MetadataSourceProcessor property id with lazy=false
-12:58:54.991 [main] DEBUG o.h.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [pl.abbl.reactchat.entities.Role:id]
+12:58:54.991 [main] DEBUG o.h.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [pl.abbl.reactchat.models.Role:id]
 12:58:54.992 [main] DEBUG o.h.c.annotations.SimpleValueBinder - building SimpleValue for id
 12:58:54.993 [main] DEBUG o.h.cfg.annotations.PropertyBinder - Building property id
 12:58:54.996 [main] DEBUG org.hibernate.cfg.Ejb3Column - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(authorities), mappingColumn=authority, insertable=true, updatable=true, unique=false}
 12:58:54.996 [main] DEBUG o.h.cfg.annotations.PropertyBinder - MetadataSourceProcessor property authority with lazy=false
-12:58:54.998 [main] DEBUG o.h.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [pl.abbl.reactchat.entities.Role:authority]
+12:58:54.998 [main] DEBUG o.h.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [pl.abbl.reactchat.models.Role:authority]
 12:58:54.998 [main] DEBUG o.h.c.annotations.SimpleValueBinder - building SimpleValue for authority
 12:58:54.998 [main] DEBUG o.h.cfg.annotations.PropertyBinder - Building property authority
 12:58:55.001 [main] DEBUG org.hibernate.cfg.Ejb3Column - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(authorities), mappingColumn=username, insertable=true, updatable=true, unique=false}
 12:58:55.002 [main] DEBUG o.h.cfg.annotations.PropertyBinder - MetadataSourceProcessor property username with lazy=false
-12:58:55.002 [main] DEBUG o.h.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [pl.abbl.reactchat.entities.Role:username]
+12:58:55.002 [main] DEBUG o.h.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [pl.abbl.reactchat.models.Role:username]
 12:58:55.002 [main] DEBUG o.h.c.annotations.SimpleValueBinder - building SimpleValue for username
 12:58:55.002 [main] DEBUG o.h.cfg.annotations.PropertyBinder - Building property username
-12:58:55.003 [main] DEBUG org.hibernate.cfg.AnnotationBinder - Binding entity from annotated class: pl.abbl.reactchat.entities.ChatUser
+12:58:55.003 [main] DEBUG org.hibernate.cfg.AnnotationBinder - Binding entity from annotated class: pl.abbl.reactchat.models.ChatUser
 12:58:55.003 [main] DEBUG org.hibernate.cfg.Ejb3Column - Binding column: Ejb3DiscriminatorColumn{logicalColumnName'DTYPE', discriminatorTypeName='string'}
 12:58:55.005 [main] DEBUG o.h.cfg.annotations.EntityBinder - Import with entity name ChatUser
-12:58:55.005 [main] DEBUG o.h.cfg.annotations.EntityBinder - Bind entity pl.abbl.reactchat.entities.ChatUser on table user
+12:58:55.005 [main] DEBUG o.h.cfg.annotations.EntityBinder - Bind entity pl.abbl.reactchat.models.ChatUser on table user
 12:58:55.006 [main] DEBUG org.hibernate.cfg.Ejb3Column - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(user), mappingColumn=id, insertable=true, updatable=true, unique=false}
 12:58:55.006 [main] DEBUG o.h.cfg.annotations.PropertyBinder - MetadataSourceProcessor property id with lazy=false
-12:58:55.006 [main] DEBUG o.h.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [pl.abbl.reactchat.entities.ChatUser:id]
+12:58:55.006 [main] DEBUG o.h.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [pl.abbl.reactchat.models.ChatUser:id]
 12:58:55.006 [main] DEBUG o.h.c.annotations.SimpleValueBinder - building SimpleValue for id
 12:58:55.006 [main] DEBUG o.h.cfg.annotations.PropertyBinder - Building property id
 12:58:55.007 [main] DEBUG org.hibernate.cfg.Ejb3Column - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(user), mappingColumn=active, insertable=true, updatable=true, unique=false}
 12:58:55.007 [main] DEBUG o.h.cfg.annotations.PropertyBinder - MetadataSourceProcessor property active with lazy=false
-12:58:55.007 [main] DEBUG o.h.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [pl.abbl.reactchat.entities.ChatUser:active]
+12:58:55.007 [main] DEBUG o.h.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [pl.abbl.reactchat.models.ChatUser:active]
 12:58:55.007 [main] DEBUG o.h.c.annotations.SimpleValueBinder - building SimpleValue for active
 12:58:55.007 [main] DEBUG o.h.cfg.annotations.PropertyBinder - Building property active
 12:58:55.008 [main] DEBUG org.hibernate.cfg.Ejb3Column - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(user), mappingColumn=description, insertable=true, updatable=true, unique=false}
 12:58:55.008 [main] DEBUG o.h.cfg.annotations.PropertyBinder - MetadataSourceProcessor property description with lazy=false
-12:58:55.008 [main] DEBUG o.h.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [pl.abbl.reactchat.entities.ChatUser:description]
+12:58:55.008 [main] DEBUG o.h.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [pl.abbl.reactchat.models.ChatUser:description]
 12:58:55.008 [main] DEBUG o.h.c.annotations.SimpleValueBinder - building SimpleValue for description
 12:58:55.008 [main] DEBUG o.h.cfg.annotations.PropertyBinder - Building property description
 12:58:55.008 [main] DEBUG org.hibernate.cfg.Ejb3Column - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(user), mappingColumn=password, insertable=true, updatable=true, unique=false}
 12:58:55.009 [main] DEBUG o.h.cfg.annotations.PropertyBinder - MetadataSourceProcessor property password with lazy=false
-12:58:55.009 [main] DEBUG o.h.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [pl.abbl.reactchat.entities.ChatUser:password]
+12:58:55.009 [main] DEBUG o.h.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [pl.abbl.reactchat.models.ChatUser:password]
 12:58:55.009 [main] DEBUG o.h.c.annotations.SimpleValueBinder - building SimpleValue for password
 12:58:55.009 [main] DEBUG o.h.cfg.annotations.PropertyBinder - Building property password
 12:58:55.009 [main] DEBUG org.hibernate.cfg.Ejb3Column - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(user), mappingColumn=username, insertable=true, updatable=true, unique=false}
 12:58:55.009 [main] DEBUG o.h.cfg.annotations.PropertyBinder - MetadataSourceProcessor property username with lazy=false
-12:58:55.009 [main] DEBUG o.h.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [pl.abbl.reactchat.entities.ChatUser:username]
+12:58:55.009 [main] DEBUG o.h.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [pl.abbl.reactchat.models.ChatUser:username]
 12:58:55.009 [main] DEBUG o.h.c.annotations.SimpleValueBinder - building SimpleValue for username
 12:58:55.010 [main] DEBUG o.h.cfg.annotations.PropertyBinder - Building property username
-12:58:55.010 [main] DEBUG org.hibernate.cfg.AnnotationBinder - Binding entity from annotated class: pl.abbl.reactchat.entities.RoomRight
+12:58:55.010 [main] DEBUG org.hibernate.cfg.AnnotationBinder - Binding entity from annotated class: pl.abbl.reactchat.models.RoomRight
 12:58:55.010 [main] DEBUG org.hibernate.cfg.Ejb3Column - Binding column: Ejb3DiscriminatorColumn{logicalColumnName'DTYPE', discriminatorTypeName='string'}
 12:58:55.010 [main] DEBUG o.h.cfg.annotations.EntityBinder - Import with entity name RoomRight
-12:58:55.011 [main] DEBUG o.h.cfg.annotations.EntityBinder - Bind entity pl.abbl.reactchat.entities.RoomRight on table room_right
+12:58:55.011 [main] DEBUG o.h.cfg.annotations.EntityBinder - Bind entity pl.abbl.reactchat.models.RoomRight on table room_right
 12:58:55.014 [main] DEBUG org.hibernate.cfg.Ejb3Column - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(room_right), mappingColumn=id, insertable=true, updatable=true, unique=false}
 12:58:55.014 [main] DEBUG o.h.cfg.annotations.PropertyBinder - MetadataSourceProcessor property id with lazy=false
-12:58:55.014 [main] DEBUG o.h.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [pl.abbl.reactchat.entities.RoomRight:id]
+12:58:55.014 [main] DEBUG o.h.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [pl.abbl.reactchat.models.RoomRight:id]
 12:58:55.014 [main] DEBUG o.h.c.annotations.SimpleValueBinder - building SimpleValue for id
 12:58:55.014 [main] DEBUG o.h.cfg.annotations.PropertyBinder - Building property id
 12:58:55.014 [main] DEBUG org.hibernate.cfg.Ejb3Column - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(room_right), mappingColumn=right_level, insertable=true, updatable=true, unique=false}
 12:58:55.014 [main] DEBUG o.h.cfg.annotations.PropertyBinder - MetadataSourceProcessor property rightLevel with lazy=false
-12:58:55.014 [main] DEBUG o.h.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [pl.abbl.reactchat.entities.RoomRight:rightLevel]
+12:58:55.014 [main] DEBUG o.h.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [pl.abbl.reactchat.models.RoomRight:rightLevel]
 12:58:55.015 [main] DEBUG o.h.c.annotations.SimpleValueBinder - building SimpleValue for rightLevel
 12:58:55.016 [main] DEBUG o.h.cfg.annotations.PropertyBinder - Building property rightLevel
 12:58:55.016 [main] DEBUG org.hibernate.cfg.Ejb3Column - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(room_right), mappingColumn=room_id, insertable=true, updatable=true, unique=false}
 12:58:55.016 [main] DEBUG o.h.cfg.annotations.PropertyBinder - MetadataSourceProcessor property roomId with lazy=false
-12:58:55.016 [main] DEBUG o.h.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [pl.abbl.reactchat.entities.RoomRight:roomId]
+12:58:55.016 [main] DEBUG o.h.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [pl.abbl.reactchat.models.RoomRight:roomId]
 12:58:55.016 [main] DEBUG o.h.c.annotations.SimpleValueBinder - building SimpleValue for roomId
 12:58:55.016 [main] DEBUG o.h.cfg.annotations.PropertyBinder - Building property roomId
 12:58:55.016 [main] DEBUG org.hibernate.cfg.Ejb3Column - Binding column: Ejb3Column{table=org.hibernate.mapping.Table(room_right), mappingColumn=user_id, insertable=true, updatable=true, unique=false}
 12:58:55.016 [main] DEBUG o.h.cfg.annotations.PropertyBinder - MetadataSourceProcessor property userId with lazy=false
-12:58:55.016 [main] DEBUG o.h.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [pl.abbl.reactchat.entities.RoomRight:userId]
+12:58:55.016 [main] DEBUG o.h.cfg.AbstractPropertyHolder - Attempting to locate auto-apply AttributeConverter for property [pl.abbl.reactchat.models.RoomRight:userId]
 12:58:55.016 [main] DEBUG o.h.c.annotations.SimpleValueBinder - building SimpleValue for userId
 12:58:55.017 [main] DEBUG o.h.cfg.annotations.PropertyBinder - Building property userId
 12:58:55.019 [main] DEBUG o.h.c.annotations.SimpleValueBinder - Starting fillSimpleValue for id
@@ -2057,28 +2057,28 @@
 12:58:55.119 [main] DEBUG o.h.v.i.engine.ValidatorFactoryImpl - HV000234: Using org.hibernate.validator.internal.util.ExecutableParameterNameProvider as ValidatorFactory-scoped parameter name provider.
 12:58:55.119 [main] DEBUG o.h.v.i.engine.ValidatorFactoryImpl - HV000234: Using org.hibernate.validator.internal.engine.DefaultClockProvider as ValidatorFactory-scoped clock provider.
 12:58:55.119 [main] DEBUG o.h.v.i.engine.ValidatorFactoryImpl - HV000234: Using org.hibernate.validator.internal.engine.scripting.DefaultScriptEvaluatorFactory as ValidatorFactory-scoped script evaluator factory.
-12:58:55.120 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - Not known whether passed class name [pl.abbl.reactchat.entities.Role] is safe
-12:58:55.120 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : pl.abbl.reactchat.entities.Role
-12:58:55.160 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - Not known whether passed class name [pl.abbl.reactchat.entities.ChatUser] is safe
-12:58:55.160 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : pl.abbl.reactchat.entities.ChatUser
-12:58:55.163 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - Not known whether passed class name [pl.abbl.reactchat.entities.RoomRight] is safe
-12:58:55.163 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : pl.abbl.reactchat.entities.RoomRight
+12:58:55.120 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - Not known whether passed class name [pl.abbl.reactchat.models.Role] is safe
+12:58:55.120 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : pl.abbl.reactchat.models.Role
+12:58:55.160 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - Not known whether passed class name [pl.abbl.reactchat.models.ChatUser] is safe
+12:58:55.160 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : pl.abbl.reactchat.models.ChatUser
+12:58:55.163 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - Not known whether passed class name [pl.abbl.reactchat.models.RoomRight] is safe
+12:58:55.163 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : pl.abbl.reactchat.models.RoomRight
 12:58:55.168 [main] DEBUG o.h.secure.spi.JaccIntegrator - Skipping JACC integration as it was not enabled
 12:58:55.170 [main] DEBUG o.hibernate.engine.spi.CascadeStyles - External cascade style registration [persist : STYLE_PERSIST_SKIPLAZY] overrode base registration [STYLE_PERSIST]
 12:58:55.192 [main] DEBUG o.h.internal.SessionFactoryImpl - Instantiated session factory
-12:58:55.218 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - Not known whether passed class name [pl.abbl.reactchat.entities.Role] is safe
-12:58:55.218 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : pl.abbl.reactchat.entities.Role
-12:58:55.223 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - Not known whether passed class name [pl.abbl.reactchat.entities.Role] is safe
-12:58:55.224 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : pl.abbl.reactchat.entities.Role
-12:58:55.244 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - Not known whether passed class name [pl.abbl.reactchat.entities.ChatUser] is safe
-12:58:55.244 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : pl.abbl.reactchat.entities.ChatUser
-12:58:55.245 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - Not known whether passed class name [pl.abbl.reactchat.entities.ChatUser] is safe
-12:58:55.245 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : pl.abbl.reactchat.entities.ChatUser
-12:58:55.248 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - Not known whether passed class name [pl.abbl.reactchat.entities.RoomRight] is safe
-12:58:55.248 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : pl.abbl.reactchat.entities.RoomRight
-12:58:55.248 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - Not known whether passed class name [pl.abbl.reactchat.entities.RoomRight] is safe
-12:58:55.248 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : pl.abbl.reactchat.entities.RoomRight
-12:58:55.254 [main] DEBUG o.h.p.entity.AbstractEntityPersister - Static SQL for entity: pl.abbl.reactchat.entities.Role
+12:58:55.218 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - Not known whether passed class name [pl.abbl.reactchat.models.Role] is safe
+12:58:55.218 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : pl.abbl.reactchat.models.Role
+12:58:55.223 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - Not known whether passed class name [pl.abbl.reactchat.models.Role] is safe
+12:58:55.224 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : pl.abbl.reactchat.models.Role
+12:58:55.244 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - Not known whether passed class name [pl.abbl.reactchat.models.ChatUser] is safe
+12:58:55.244 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : pl.abbl.reactchat.models.ChatUser
+12:58:55.245 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - Not known whether passed class name [pl.abbl.reactchat.models.ChatUser] is safe
+12:58:55.245 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : pl.abbl.reactchat.models.ChatUser
+12:58:55.248 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - Not known whether passed class name [pl.abbl.reactchat.models.RoomRight] is safe
+12:58:55.248 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : pl.abbl.reactchat.models.RoomRight
+12:58:55.248 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - Not known whether passed class name [pl.abbl.reactchat.models.RoomRight] is safe
+12:58:55.248 [main] DEBUG o.h.b.internal.ClassLoaderAccessImpl - No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : pl.abbl.reactchat.models.RoomRight
+12:58:55.254 [main] DEBUG o.h.p.entity.AbstractEntityPersister - Static SQL for entity: pl.abbl.reactchat.models.Role
 12:58:55.254 [main] DEBUG o.h.p.entity.AbstractEntityPersister -  Version select: select id from authorities where id =?
 12:58:55.254 [main] DEBUG o.h.p.entity.AbstractEntityPersister -  Snapshot select: select role_.id, role_.authority as authorit2_0_, role_.username as username3_0_ from authorities role_ where role_.id=?
 12:58:55.254 [main] DEBUG o.h.p.entity.AbstractEntityPersister -  Insert 0: insert into authorities (authority, username, id) values (?, ?, ?)
@@ -2090,169 +2090,169 @@
 12:58:55.273 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : username
 12:58:55.274 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.281 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.283 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.Role)
+12:58:55.283 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.Role)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.Role, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.Role)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.Role, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.Role)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.Role)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.Role)
           - SQL table alias mapping - role0_
           - alias suffix - 0_
           - suffixed key columns - {id1_0_0_}
 
-12:58:55.285 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.Role [NONE]: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=?
+12:58:55.285 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.Role [NONE]: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=?
 12:58:55.285 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@769bd849]
 12:58:55.285 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : authority
 12:58:55.285 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : username
 12:58:55.285 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.285 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.285 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.Role)
+12:58:55.285 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.Role)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.Role, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.Role)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.Role, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.Role)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.Role)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.Role)
           - SQL table alias mapping - role0_
           - alias suffix - 0_
           - suffixed key columns - {id1_0_0_}
 
-12:58:55.285 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.Role [READ]: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=?
+12:58:55.285 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.Role [READ]: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=?
 12:58:55.285 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@20a967fe]
 12:58:55.285 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : authority
 12:58:55.285 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : username
 12:58:55.285 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.285 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.286 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.Role)
+12:58:55.286 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.Role)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.Role, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.Role)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.Role, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.Role)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.Role)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.Role)
           - SQL table alias mapping - role0_
           - alias suffix - 0_
           - suffixed key columns - {id1_0_0_}
 
-12:58:55.286 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.Role [UPGRADE]: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=? for update
+12:58:55.286 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.Role [UPGRADE]: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=? for update
 12:58:55.286 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@682abca7]
 12:58:55.286 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : authority
 12:58:55.286 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : username
 12:58:55.286 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.286 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.286 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.Role)
+12:58:55.286 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.Role)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.Role, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.Role)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.Role, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.Role)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.Role)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.Role)
           - SQL table alias mapping - role0_
           - alias suffix - 0_
           - suffixed key columns - {id1_0_0_}
 
-12:58:55.286 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.Role [UPGRADE_NOWAIT]: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=? for update
+12:58:55.286 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.Role [UPGRADE_NOWAIT]: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=? for update
 12:58:55.286 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@76f881d9]
 12:58:55.286 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : authority
 12:58:55.286 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : username
 12:58:55.286 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.286 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.286 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.Role)
+12:58:55.286 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.Role)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.Role, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.Role)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.Role, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.Role)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.Role)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.Role)
           - SQL table alias mapping - role0_
           - alias suffix - 0_
           - suffixed key columns - {id1_0_0_}
 
-12:58:55.287 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.Role [UPGRADE_SKIPLOCKED]: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=? for update
+12:58:55.287 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.Role [UPGRADE_SKIPLOCKED]: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=? for update
 12:58:55.287 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@50a13c2f]
 12:58:55.287 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : authority
 12:58:55.287 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : username
 12:58:55.287 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.287 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.287 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.Role)
+12:58:55.287 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.Role)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.Role, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.Role)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.Role, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.Role)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.Role)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.Role)
           - SQL table alias mapping - role0_
           - alias suffix - 0_
           - suffixed key columns - {id1_0_0_}
 
-12:58:55.287 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.Role [FORCE]: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=? for update
+12:58:55.287 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.Role [FORCE]: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=? for update
 12:58:55.287 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@53c99b09]
 12:58:55.287 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : authority
 12:58:55.287 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : username
 12:58:55.287 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.287 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.287 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.Role)
+12:58:55.287 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.Role)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.Role, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.Role)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.Role, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.Role)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.Role)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.Role)
           - SQL table alias mapping - role0_
           - alias suffix - 0_
           - suffixed key columns - {id1_0_0_}
 
-12:58:55.287 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.Role [PESSIMISTIC_READ]: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=? lock in share mode
+12:58:55.287 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.Role [PESSIMISTIC_READ]: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=? lock in share mode
 12:58:55.287 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@7c20cdd0]
 12:58:55.287 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : authority
 12:58:55.287 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : username
 12:58:55.287 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.288 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.288 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.Role)
+12:58:55.288 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.Role)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.Role, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.Role)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.Role, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.Role)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.Role)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.Role)
           - SQL table alias mapping - role0_
           - alias suffix - 0_
           - suffixed key columns - {id1_0_0_}
 
-12:58:55.288 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.Role [PESSIMISTIC_WRITE]: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=? for update
+12:58:55.288 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.Role [PESSIMISTIC_WRITE]: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=? for update
 12:58:55.288 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@6b6eae52]
 12:58:55.288 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : authority
 12:58:55.288 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : username
 12:58:55.288 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.288 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.288 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.Role)
+12:58:55.288 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.Role)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.Role, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.Role)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.Role, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.Role)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.Role)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.Role)
           - SQL table alias mapping - role0_
           - alias suffix - 0_
           - suffixed key columns - {id1_0_0_}
 
-12:58:55.288 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.Role [PESSIMISTIC_FORCE_INCREMENT]: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=? for update
+12:58:55.288 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.Role [PESSIMISTIC_FORCE_INCREMENT]: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=? for update
 12:58:55.288 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@7ae0cc89]
 12:58:55.288 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : authority
 12:58:55.288 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : username
 12:58:55.288 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.288 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.289 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.Role)
+12:58:55.289 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.Role)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.Role, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.Role)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.Role, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.Role)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.Role)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.Role)
           - SQL table alias mapping - role0_
           - alias suffix - 0_
           - suffixed key columns - {id1_0_0_}
 
-12:58:55.289 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.Role [OPTIMISTIC]: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=?
+12:58:55.289 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.Role [OPTIMISTIC]: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=?
 12:58:55.289 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@13e5d243]
 12:58:55.289 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : authority
 12:58:55.289 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : username
 12:58:55.289 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.289 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.289 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.Role)
+12:58:55.289 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.Role)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.Role, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.Role)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.Role, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.Role)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.Role)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.Role)
           - SQL table alias mapping - role0_
           - alias suffix - 0_
           - suffixed key columns - {id1_0_0_}
 
-12:58:55.289 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.Role [OPTIMISTIC_FORCE_INCREMENT]: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=?
-12:58:55.298 [main] DEBUG org.hibernate.loader.Loader - Static select for action ACTION_MERGE on entity pl.abbl.reactchat.entities.Role: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=?
-12:58:55.298 [main] DEBUG org.hibernate.loader.Loader - Static select for action ACTION_REFRESH on entity pl.abbl.reactchat.entities.Role: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=?
-12:58:55.298 [main] DEBUG o.h.p.entity.AbstractEntityPersister - Static SQL for entity: pl.abbl.reactchat.entities.ChatUser
+12:58:55.289 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.Role [OPTIMISTIC_FORCE_INCREMENT]: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=?
+12:58:55.298 [main] DEBUG org.hibernate.loader.Loader - Static select for action ACTION_MERGE on entity pl.abbl.reactchat.models.Role: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=?
+12:58:55.298 [main] DEBUG org.hibernate.loader.Loader - Static select for action ACTION_REFRESH on entity pl.abbl.reactchat.models.Role: select role0_.id as id1_0_0_, role0_.authority as authorit2_0_0_, role0_.username as username3_0_0_ from authorities role0_ where role0_.id=?
+12:58:55.298 [main] DEBUG o.h.p.entity.AbstractEntityPersister - Static SQL for entity: pl.abbl.reactchat.models.ChatUser
 12:58:55.298 [main] DEBUG o.h.p.entity.AbstractEntityPersister -  Version select: select id from user where id =?
 12:58:55.298 [main] DEBUG o.h.p.entity.AbstractEntityPersister -  Snapshot select: select chatuser_.id, chatuser_.active as active2_2_, chatuser_.description as descript3_2_, chatuser_.password as password4_2_, chatuser_.username as username5_2_ from user chatuser_ where chatuser_.id=?
 12:58:55.298 [main] DEBUG o.h.p.entity.AbstractEntityPersister -  Insert 0: insert into user (active, description, password, username, id) values (?, ?, ?, ?, ?)
@@ -2266,16 +2266,16 @@
 12:58:55.298 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : username
 12:58:55.298 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.298 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.298 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.ChatUser)
+12:58:55.298 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.ChatUser)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.ChatUser, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.ChatUser)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.ChatUser, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.ChatUser)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.ChatUser)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.ChatUser)
           - SQL table alias mapping - chatuser0_
           - alias suffix - 0_
           - suffixed key columns - {id1_2_0_}
 
-12:58:55.298 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.ChatUser [NONE]: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=?
+12:58:55.298 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.ChatUser [NONE]: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=?
 12:58:55.298 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@23da79eb]
 12:58:55.299 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : active
 12:58:55.299 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : description
@@ -2283,16 +2283,16 @@
 12:58:55.299 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : username
 12:58:55.299 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.299 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.299 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.ChatUser)
+12:58:55.299 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.ChatUser)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.ChatUser, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.ChatUser)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.ChatUser, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.ChatUser)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.ChatUser)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.ChatUser)
           - SQL table alias mapping - chatuser0_
           - alias suffix - 0_
           - suffixed key columns - {id1_2_0_}
 
-12:58:55.299 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.ChatUser [READ]: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=?
+12:58:55.299 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.ChatUser [READ]: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=?
 12:58:55.299 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@3e05586b]
 12:58:55.299 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : active
 12:58:55.299 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : description
@@ -2300,16 +2300,16 @@
 12:58:55.299 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : username
 12:58:55.299 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.299 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.299 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.ChatUser)
+12:58:55.299 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.ChatUser)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.ChatUser, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.ChatUser)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.ChatUser, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.ChatUser)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.ChatUser)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.ChatUser)
           - SQL table alias mapping - chatuser0_
           - alias suffix - 0_
           - suffixed key columns - {id1_2_0_}
 
-12:58:55.299 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.ChatUser [UPGRADE]: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=? for update
+12:58:55.299 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.ChatUser [UPGRADE]: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=? for update
 12:58:55.299 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@45545e7a]
 12:58:55.299 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : active
 12:58:55.299 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : description
@@ -2317,16 +2317,16 @@
 12:58:55.299 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : username
 12:58:55.299 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.299 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.299 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.ChatUser)
+12:58:55.299 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.ChatUser)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.ChatUser, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.ChatUser)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.ChatUser, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.ChatUser)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.ChatUser)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.ChatUser)
           - SQL table alias mapping - chatuser0_
           - alias suffix - 0_
           - suffixed key columns - {id1_2_0_}
 
-12:58:55.300 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.ChatUser [UPGRADE_NOWAIT]: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=? for update
+12:58:55.300 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.ChatUser [UPGRADE_NOWAIT]: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=? for update
 12:58:55.300 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@1da4b3f9]
 12:58:55.300 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : active
 12:58:55.300 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : description
@@ -2334,16 +2334,16 @@
 12:58:55.300 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : username
 12:58:55.300 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.300 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.300 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.ChatUser)
+12:58:55.300 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.ChatUser)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.ChatUser, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.ChatUser)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.ChatUser, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.ChatUser)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.ChatUser)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.ChatUser)
           - SQL table alias mapping - chatuser0_
           - alias suffix - 0_
           - suffixed key columns - {id1_2_0_}
 
-12:58:55.300 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.ChatUser [UPGRADE_SKIPLOCKED]: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=? for update
+12:58:55.300 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.ChatUser [UPGRADE_SKIPLOCKED]: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=? for update
 12:58:55.300 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@448b808a]
 12:58:55.300 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : active
 12:58:55.300 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : description
@@ -2351,16 +2351,16 @@
 12:58:55.300 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : username
 12:58:55.300 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.300 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.300 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.ChatUser)
+12:58:55.300 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.ChatUser)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.ChatUser, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.ChatUser)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.ChatUser, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.ChatUser)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.ChatUser)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.ChatUser)
           - SQL table alias mapping - chatuser0_
           - alias suffix - 0_
           - suffixed key columns - {id1_2_0_}
 
-12:58:55.300 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.ChatUser [FORCE]: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=? for update
+12:58:55.300 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.ChatUser [FORCE]: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=? for update
 12:58:55.300 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@46e190ed]
 12:58:55.300 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : active
 12:58:55.300 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : description
@@ -2368,16 +2368,16 @@
 12:58:55.300 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : username
 12:58:55.300 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.300 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.301 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.ChatUser)
+12:58:55.301 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.ChatUser)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.ChatUser, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.ChatUser)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.ChatUser, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.ChatUser)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.ChatUser)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.ChatUser)
           - SQL table alias mapping - chatuser0_
           - alias suffix - 0_
           - suffixed key columns - {id1_2_0_}
 
-12:58:55.301 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.ChatUser [PESSIMISTIC_READ]: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=? lock in share mode
+12:58:55.301 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.ChatUser [PESSIMISTIC_READ]: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=? lock in share mode
 12:58:55.301 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@20ab76ee]
 12:58:55.301 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : active
 12:58:55.301 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : description
@@ -2385,16 +2385,16 @@
 12:58:55.301 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : username
 12:58:55.301 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.301 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.301 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.ChatUser)
+12:58:55.301 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.ChatUser)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.ChatUser, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.ChatUser)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.ChatUser, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.ChatUser)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.ChatUser)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.ChatUser)
           - SQL table alias mapping - chatuser0_
           - alias suffix - 0_
           - suffixed key columns - {id1_2_0_}
 
-12:58:55.301 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.ChatUser [PESSIMISTIC_WRITE]: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=? for update
+12:58:55.301 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.ChatUser [PESSIMISTIC_WRITE]: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=? for update
 12:58:55.301 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@2703d91]
 12:58:55.301 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : active
 12:58:55.301 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : description
@@ -2402,16 +2402,16 @@
 12:58:55.301 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : username
 12:58:55.301 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.301 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.301 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.ChatUser)
+12:58:55.301 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.ChatUser)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.ChatUser, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.ChatUser)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.ChatUser, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.ChatUser)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.ChatUser)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.ChatUser)
           - SQL table alias mapping - chatuser0_
           - alias suffix - 0_
           - suffixed key columns - {id1_2_0_}
 
-12:58:55.301 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.ChatUser [PESSIMISTIC_FORCE_INCREMENT]: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=? for update
+12:58:55.301 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.ChatUser [PESSIMISTIC_FORCE_INCREMENT]: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=? for update
 12:58:55.301 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@2007435e]
 12:58:55.301 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : active
 12:58:55.301 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : description
@@ -2419,16 +2419,16 @@
 12:58:55.301 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : username
 12:58:55.301 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.302 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.302 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.ChatUser)
+12:58:55.302 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.ChatUser)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.ChatUser, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.ChatUser)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.ChatUser, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.ChatUser)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.ChatUser)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.ChatUser)
           - SQL table alias mapping - chatuser0_
           - alias suffix - 0_
           - suffixed key columns - {id1_2_0_}
 
-12:58:55.302 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.ChatUser [OPTIMISTIC]: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=?
+12:58:55.302 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.ChatUser [OPTIMISTIC]: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=?
 12:58:55.302 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@ebda593]
 12:58:55.302 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : active
 12:58:55.302 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : description
@@ -2436,19 +2436,19 @@
 12:58:55.302 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : username
 12:58:55.302 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.302 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.302 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.ChatUser)
+12:58:55.302 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.ChatUser)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.ChatUser, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.ChatUser)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.ChatUser, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.ChatUser)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.ChatUser)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.ChatUser)
           - SQL table alias mapping - chatuser0_
           - alias suffix - 0_
           - suffixed key columns - {id1_2_0_}
 
-12:58:55.302 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.ChatUser [OPTIMISTIC_FORCE_INCREMENT]: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=?
-12:58:55.302 [main] DEBUG org.hibernate.loader.Loader - Static select for action ACTION_MERGE on entity pl.abbl.reactchat.entities.ChatUser: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=?
-12:58:55.302 [main] DEBUG org.hibernate.loader.Loader - Static select for action ACTION_REFRESH on entity pl.abbl.reactchat.entities.ChatUser: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=?
-12:58:55.302 [main] DEBUG o.h.p.entity.AbstractEntityPersister - Static SQL for entity: pl.abbl.reactchat.entities.RoomRight
+12:58:55.302 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.ChatUser [OPTIMISTIC_FORCE_INCREMENT]: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=?
+12:58:55.302 [main] DEBUG org.hibernate.loader.Loader - Static select for action ACTION_MERGE on entity pl.abbl.reactchat.models.ChatUser: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=?
+12:58:55.302 [main] DEBUG org.hibernate.loader.Loader - Static select for action ACTION_REFRESH on entity pl.abbl.reactchat.models.ChatUser: select chatuser0_.id as id1_2_0_, chatuser0_.active as active2_2_0_, chatuser0_.description as descript3_2_0_, chatuser0_.password as password4_2_0_, chatuser0_.username as username5_2_0_ from user chatuser0_ where chatuser0_.id=?
+12:58:55.302 [main] DEBUG o.h.p.entity.AbstractEntityPersister - Static SQL for entity: pl.abbl.reactchat.models.RoomRight
 12:58:55.302 [main] DEBUG o.h.p.entity.AbstractEntityPersister -  Version select: select id from room_right where id =?
 12:58:55.302 [main] DEBUG o.h.p.entity.AbstractEntityPersister -  Snapshot select: select roomright_.id, roomright_.right_level as right_le2_1_, roomright_.room_id as room_id3_1_, roomright_.user_id as user_id4_1_ from room_right roomright_ where roomright_.id=?
 12:58:55.302 [main] DEBUG o.h.p.entity.AbstractEntityPersister -  Insert 0: insert into room_right (right_level, room_id, user_id, id) values (?, ?, ?, ?)
@@ -2461,178 +2461,178 @@
 12:58:55.303 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : userId
 12:58:55.303 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.303 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.303 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.RoomRight)
+12:58:55.303 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.RoomRight)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.RoomRight, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.RoomRight)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.RoomRight, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.RoomRight)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.RoomRight)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.RoomRight)
           - SQL table alias mapping - roomright0_
           - alias suffix - 0_
           - suffixed key columns - {id1_1_0_}
 
-12:58:55.303 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.RoomRight [NONE]: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=?
+12:58:55.303 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.RoomRight [NONE]: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=?
 12:58:55.303 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@37348491]
 12:58:55.303 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : rightLevel
 12:58:55.303 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : roomId
 12:58:55.303 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : userId
 12:58:55.303 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.303 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.303 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.RoomRight)
+12:58:55.303 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.RoomRight)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.RoomRight, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.RoomRight)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.RoomRight, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.RoomRight)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.RoomRight)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.RoomRight)
           - SQL table alias mapping - roomright0_
           - alias suffix - 0_
           - suffixed key columns - {id1_1_0_}
 
-12:58:55.303 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.RoomRight [READ]: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=?
+12:58:55.303 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.RoomRight [READ]: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=?
 12:58:55.303 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@10b4e7f8]
 12:58:55.303 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : rightLevel
 12:58:55.303 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : roomId
 12:58:55.303 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : userId
 12:58:55.303 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.303 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.304 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.RoomRight)
+12:58:55.304 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.RoomRight)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.RoomRight, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.RoomRight)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.RoomRight, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.RoomRight)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.RoomRight)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.RoomRight)
           - SQL table alias mapping - roomright0_
           - alias suffix - 0_
           - suffixed key columns - {id1_1_0_}
 
-12:58:55.304 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.RoomRight [UPGRADE]: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=? for update
+12:58:55.304 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.RoomRight [UPGRADE]: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=? for update
 12:58:55.304 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@66813e6e]
 12:58:55.304 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : rightLevel
 12:58:55.304 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : roomId
 12:58:55.304 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : userId
 12:58:55.304 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.304 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.304 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.RoomRight)
+12:58:55.304 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.RoomRight)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.RoomRight, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.RoomRight)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.RoomRight, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.RoomRight)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.RoomRight)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.RoomRight)
           - SQL table alias mapping - roomright0_
           - alias suffix - 0_
           - suffixed key columns - {id1_1_0_}
 
-12:58:55.304 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.RoomRight [UPGRADE_NOWAIT]: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=? for update
+12:58:55.304 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.RoomRight [UPGRADE_NOWAIT]: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=? for update
 12:58:55.304 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@3a17b2e3]
 12:58:55.304 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : rightLevel
 12:58:55.304 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : roomId
 12:58:55.304 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : userId
 12:58:55.304 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.304 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.304 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.RoomRight)
+12:58:55.304 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.RoomRight)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.RoomRight, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.RoomRight)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.RoomRight, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.RoomRight)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.RoomRight)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.RoomRight)
           - SQL table alias mapping - roomright0_
           - alias suffix - 0_
           - suffixed key columns - {id1_1_0_}
 
-12:58:55.304 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.RoomRight [UPGRADE_SKIPLOCKED]: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=? for update
+12:58:55.304 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.RoomRight [UPGRADE_SKIPLOCKED]: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=? for update
 12:58:55.304 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@310ed6b4]
 12:58:55.304 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : rightLevel
 12:58:55.304 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : roomId
 12:58:55.304 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : userId
 12:58:55.304 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.305 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.305 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.RoomRight)
+12:58:55.305 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.RoomRight)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.RoomRight, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.RoomRight)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.RoomRight, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.RoomRight)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.RoomRight)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.RoomRight)
           - SQL table alias mapping - roomright0_
           - alias suffix - 0_
           - suffixed key columns - {id1_1_0_}
 
-12:58:55.305 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.RoomRight [FORCE]: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=? for update
+12:58:55.305 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.RoomRight [FORCE]: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=? for update
 12:58:55.305 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@630bf683]
 12:58:55.305 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : rightLevel
 12:58:55.305 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : roomId
 12:58:55.305 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : userId
 12:58:55.305 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.305 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.305 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.RoomRight)
+12:58:55.305 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.RoomRight)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.RoomRight, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.RoomRight)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.RoomRight, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.RoomRight)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.RoomRight)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.RoomRight)
           - SQL table alias mapping - roomright0_
           - alias suffix - 0_
           - suffixed key columns - {id1_1_0_}
 
-12:58:55.305 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.RoomRight [PESSIMISTIC_READ]: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=? lock in share mode
+12:58:55.305 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.RoomRight [PESSIMISTIC_READ]: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=? lock in share mode
 12:58:55.305 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@65afeb6d]
 12:58:55.305 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : rightLevel
 12:58:55.305 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : roomId
 12:58:55.305 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : userId
 12:58:55.305 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.305 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.305 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.RoomRight)
+12:58:55.305 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.RoomRight)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.RoomRight, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.RoomRight)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.RoomRight, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.RoomRight)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.RoomRight)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.RoomRight)
           - SQL table alias mapping - roomright0_
           - alias suffix - 0_
           - suffixed key columns - {id1_1_0_}
 
-12:58:55.305 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.RoomRight [PESSIMISTIC_WRITE]: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=? for update
+12:58:55.305 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.RoomRight [PESSIMISTIC_WRITE]: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=? for update
 12:58:55.305 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@5ba03c82]
 12:58:55.305 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : rightLevel
 12:58:55.305 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : roomId
 12:58:55.305 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : userId
 12:58:55.306 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.306 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.306 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.RoomRight)
+12:58:55.306 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.RoomRight)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.RoomRight, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.RoomRight)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.RoomRight, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.RoomRight)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.RoomRight)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.RoomRight)
           - SQL table alias mapping - roomright0_
           - alias suffix - 0_
           - suffixed key columns - {id1_1_0_}
 
-12:58:55.306 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.RoomRight [PESSIMISTIC_FORCE_INCREMENT]: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=? for update
+12:58:55.306 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.RoomRight [PESSIMISTIC_FORCE_INCREMENT]: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=? for update
 12:58:55.306 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@7ab1127c]
 12:58:55.306 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : rightLevel
 12:58:55.306 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : roomId
 12:58:55.306 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : userId
 12:58:55.306 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.306 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.306 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.RoomRight)
+12:58:55.306 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.RoomRight)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.RoomRight, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.RoomRight)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.RoomRight, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.RoomRight)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.RoomRight)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.RoomRight)
           - SQL table alias mapping - roomright0_
           - alias suffix - 0_
           - suffixed key columns - {id1_1_0_}
 
-12:58:55.306 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.RoomRight [OPTIMISTIC]: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=?
+12:58:55.306 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.RoomRight [OPTIMISTIC]: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=?
 12:58:55.306 [main] DEBUG o.h.l.p.b.i.spaces.QuerySpacesImpl - Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@5cf8676a]
 12:58:55.306 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : rightLevel
 12:58:55.306 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : roomId
 12:58:55.306 [main] DEBUG o.h.p.w.spi.MetamodelGraphWalker - Visiting attribute path : userId
 12:58:55.306 [main] DEBUG o.h.l.p.b.i.FetchStyleLoadPlanBuildingAssociationVisitationStrategy - Building LoadPlan...
 12:58:55.306 [main] DEBUG o.h.l.p.e.i.LoadQueryJoinAndFetchProcessor - processing queryspace <gen:0>
-12:58:55.306 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.entities.RoomRight)
+12:58:55.306 [main] DEBUG o.h.l.p.b.spi.LoadPlanTreePrinter - LoadPlan(entity=pl.abbl.reactchat.models.RoomRight)
     - Returns
-       - EntityReturnImpl(entity=pl.abbl.reactchat.entities.RoomRight, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.entities.RoomRight)
+       - EntityReturnImpl(entity=pl.abbl.reactchat.models.RoomRight, querySpaceUid=<gen:0>, path=pl.abbl.reactchat.models.RoomRight)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.entities.RoomRight)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=pl.abbl.reactchat.models.RoomRight)
           - SQL table alias mapping - roomright0_
           - alias suffix - 0_
           - suffixed key columns - {id1_1_0_}
 
-12:58:55.306 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.entities.RoomRight [OPTIMISTIC_FORCE_INCREMENT]: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=?
-12:58:55.307 [main] DEBUG org.hibernate.loader.Loader - Static select for action ACTION_MERGE on entity pl.abbl.reactchat.entities.RoomRight: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=?
-12:58:55.307 [main] DEBUG org.hibernate.loader.Loader - Static select for action ACTION_REFRESH on entity pl.abbl.reactchat.entities.RoomRight: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=?
+12:58:55.306 [main] DEBUG o.h.loader.entity.plan.EntityLoader - Static select for entity pl.abbl.reactchat.models.RoomRight [OPTIMISTIC_FORCE_INCREMENT]: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=?
+12:58:55.307 [main] DEBUG org.hibernate.loader.Loader - Static select for action ACTION_MERGE on entity pl.abbl.reactchat.models.RoomRight: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=?
+12:58:55.307 [main] DEBUG org.hibernate.loader.Loader - Static select for action ACTION_REFRESH on entity pl.abbl.reactchat.models.RoomRight: select roomright0_.id as id1_1_0_, roomright0_.right_level as right_le2_1_0_, roomright0_.room_id as room_id3_1_0_, roomright0_.user_id as user_id4_1_0_ from room_right roomright0_ where roomright0_.id=?
 12:58:55.319 [main] DEBUG o.h.t.s.s.SchemaManagementToolCoordinator - No actions specified; doing nothing
 12:58:55.319 [main] DEBUG o.h.query.spi.NamedQueryRepository - Checking 0 named HQL queries
 12:58:55.319 [main] DEBUG o.h.query.spi.NamedQueryRepository - Checking 0 named SQL queries
@@ -2734,7 +2734,7 @@
 12:58:55.402 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
 12:58:55.402 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
 12:58:55.408 [main] DEBUG o.s.aop.framework.CglibAopProxy - Creating CGLIB proxy: target source is SingletonTargetSource for target object [pl.abbl.reactchat.repositories.impl.UserRepositoryImpl@2bc7db89]
-12:58:55.418 [main] DEBUG o.s.aop.framework.CglibAopProxy - Unable to apply any optimizations to advised method: public pl.abbl.reactchat.entities.ChatUser pl.abbl.reactchat.repositories.impl.UserRepositoryImpl.findByJwtToken(javax.servlet.http.HttpServletRequest)
+12:58:55.418 [main] DEBUG o.s.aop.framework.CglibAopProxy - Unable to apply any optimizations to advised method: public pl.abbl.reactchat.models.ChatUser pl.abbl.reactchat.repositories.impl.UserRepositoryImpl.findByJwtToken(javax.servlet.http.HttpServletRequest)
 12:58:55.418 [main] DEBUG o.s.aop.framework.CglibAopProxy - Found 'equals' method: public boolean java.lang.Object.equals(java.lang.Object)
 12:58:55.418 [main] DEBUG o.s.aop.framework.CglibAopProxy - Unable to apply any optimizations to advised method: public java.lang.String java.lang.Object.toString()
 12:58:55.418 [main] DEBUG o.s.aop.framework.CglibAopProxy - Found 'hashCode' method: public native int java.lang.Object.hashCode()
@@ -2833,7 +2833,7 @@
 12:58:55.808 [main] DEBUG o.s.o.jpa.EntityManagerFactoryUtils - Closing JPA EntityManager
 12:58:55.828 [main] DEBUG o.h.h.i.QueryTranslatorFactoryInitiator - QueryTranslatorFactory : org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory@445821a6
 12:58:55.828 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
-12:58:55.855 [main] DEBUG o.h.h.i.ast.QueryTranslatorImpl - parse() - HQL: SELECT u FROM pl.abbl.reactchat.entities.ChatUser u WHERE u.username = :username
+12:58:55.855 [main] DEBUG o.h.h.i.ast.QueryTranslatorImpl - parse() - HQL: SELECT u FROM pl.abbl.reactchat.models.ChatUser u WHERE u.username = :username
 12:58:55.861 [main] DEBUG o.h.hql.internal.ast.ErrorCounter - throwQueryException() : no errors
 12:58:55.862 [main] DEBUG o.h.h.i.ast.QueryTranslatorImpl - --- HQL AST ---
  \-[QUERY] Node: 'query'
@@ -2861,7 +2861,7 @@
              \-[IDENT] Node: 'username'
 
 12:58:55.882 [main] DEBUG o.h.h.i.antlr.HqlSqlBaseWalker - select << begin [level=1, statement=select]
-12:58:55.892 [main] DEBUG o.h.h.internal.ast.tree.FromElement - FromClause{level=1} : pl.abbl.reactchat.entities.ChatUser (u) -> chatuser0_
+12:58:55.892 [main] DEBUG o.h.h.internal.ast.tree.FromElement - FromClause{level=1} : pl.abbl.reactchat.models.ChatUser (u) -> chatuser0_
 12:58:55.893 [main] DEBUG o.h.h.i.ast.tree.FromReferenceNode - Resolved : u -> chatuser0_.id
 12:58:55.896 [main] DEBUG o.h.h.i.ast.tree.FromReferenceNode - Resolved : u -> chatuser0_.id
 12:58:55.897 [main] DEBUG o.h.hql.internal.ast.tree.DotNode - getDataType() : username -> org.hibernate.type.StringType@602ae7b6
@@ -2873,25 +2873,25 @@
 12:58:55.904 [main] DEBUG o.h.h.i.ast.QueryTranslatorImpl - --- SQL AST ---
  \-[SELECT] QueryNode: 'SELECT'  querySpaces (user)
     +-[SELECT_CLAUSE] SelectClause: '{select clause}'
-    |  +-[ALIAS_REF] IdentNode: 'chatuser0_.id as id1_2_' {alias=u, className=pl.abbl.reactchat.entities.ChatUser, tableAlias=chatuser0_}
+    |  +-[ALIAS_REF] IdentNode: 'chatuser0_.id as id1_2_' {alias=u, className=pl.abbl.reactchat.models.ChatUser, tableAlias=chatuser0_}
     |  \-[SQL_TOKEN] SqlFragment: 'chatuser0_.active as active2_2_, chatuser0_.description as descript3_2_, chatuser0_.password as password4_2_, chatuser0_.username as username5_2_'
     +-[FROM] FromClause: 'FROM' FromClause{level=1, fromElementCounter=1, fromElements=1, fromElementByClassAlias=[u], fromElementByTableAlias=[chatuser0_], fromElementsByPath=[], collectionJoinFromElementsByPath=[], impliedElements=[]}
-    |  \-[FROM_FRAGMENT] FromElement: 'user chatuser0_' FromElement{explicit,not a collection join,not a fetch join,fetch non-lazy properties,classAlias=u,role=null,tableName=user,tableAlias=chatuser0_,origin=null,columns={,className=pl.abbl.reactchat.entities.ChatUser}}
+    |  \-[FROM_FRAGMENT] FromElement: 'user chatuser0_' FromElement{explicit,not a collection join,not a fetch join,fetch non-lazy properties,classAlias=u,role=null,tableName=user,tableAlias=chatuser0_,origin=null,columns={,className=pl.abbl.reactchat.models.ChatUser}}
     \-[WHERE] SqlNode: 'WHERE'
        \-[EQ] BinaryLogicOperatorNode: '='
-          +-[DOT] DotNode: 'chatuser0_.username' {propertyName=username,dereferenceType=PRIMITIVE,getPropertyPath=username,path=u.username,tableAlias=chatuser0_,className=pl.abbl.reactchat.entities.ChatUser,classAlias=u}
-          |  +-[ALIAS_REF] IdentNode: 'chatuser0_.id' {alias=u, className=pl.abbl.reactchat.entities.ChatUser, tableAlias=chatuser0_}
+          +-[DOT] DotNode: 'chatuser0_.username' {propertyName=username,dereferenceType=PRIMITIVE,getPropertyPath=username,path=u.username,tableAlias=chatuser0_,className=pl.abbl.reactchat.models.ChatUser,classAlias=u}
+          |  +-[ALIAS_REF] IdentNode: 'chatuser0_.id' {alias=u, className=pl.abbl.reactchat.models.ChatUser, tableAlias=chatuser0_}
           |  \-[IDENT] IdentNode: 'username' {originalText=username}
           \-[NAMED_PARAM] ParameterNode: '?' {name=username, expectedType=org.hibernate.type.StringType@602ae7b6}
 
 12:58:55.904 [main] DEBUG o.h.hql.internal.ast.ErrorCounter - throwQueryException() : no errors
-12:58:55.909 [main] DEBUG o.h.h.i.ast.QueryTranslatorImpl - HQL: SELECT u FROM pl.abbl.reactchat.entities.ChatUser u WHERE u.username = :username
+12:58:55.909 [main] DEBUG o.h.h.i.ast.QueryTranslatorImpl - HQL: SELECT u FROM pl.abbl.reactchat.models.ChatUser u WHERE u.username = :username
 12:58:55.909 [main] DEBUG o.h.h.i.ast.QueryTranslatorImpl - SQL: select chatuser0_.id as id1_2_, chatuser0_.active as active2_2_, chatuser0_.description as descript3_2_, chatuser0_.password as password4_2_, chatuser0_.username as username5_2_ from user chatuser0_ where chatuser0_.username=?
 12:58:55.909 [main] DEBUG o.h.hql.internal.ast.ErrorCounter - throwQueryException() : no errors
 12:58:55.916 [main] DEBUG o.s.d.j.r.query.JpaQueryFactory - Looking up query for method findByIdInt
 12:58:55.916 [main] DEBUG o.s.o.j.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler - Creating new EntityManager for shared EntityManager invocation
 12:58:55.916 [main] DEBUG o.s.o.jpa.EntityManagerFactoryUtils - Closing JPA EntityManager
-12:58:55.917 [main] DEBUG o.h.h.i.ast.QueryTranslatorImpl - parse() - HQL: SELECT u FROM pl.abbl.reactchat.entities.ChatUser u WHERE u.id = :id
+12:58:55.917 [main] DEBUG o.h.h.i.ast.QueryTranslatorImpl - parse() - HQL: SELECT u FROM pl.abbl.reactchat.models.ChatUser u WHERE u.id = :id
 12:58:55.917 [main] DEBUG o.h.hql.internal.ast.ErrorCounter - throwQueryException() : no errors
 12:58:55.917 [main] DEBUG o.h.h.i.ast.QueryTranslatorImpl - --- HQL AST ---
  \-[QUERY] Node: 'query'
@@ -2919,7 +2919,7 @@
              \-[IDENT] Node: 'id'
 
 12:58:55.918 [main] DEBUG o.h.h.i.antlr.HqlSqlBaseWalker - select << begin [level=1, statement=select]
-12:58:55.918 [main] DEBUG o.h.h.internal.ast.tree.FromElement - FromClause{level=1} : pl.abbl.reactchat.entities.ChatUser (u) -> chatuser0_
+12:58:55.918 [main] DEBUG o.h.h.internal.ast.tree.FromElement - FromClause{level=1} : pl.abbl.reactchat.models.ChatUser (u) -> chatuser0_
 12:58:55.918 [main] DEBUG o.h.h.i.ast.tree.FromReferenceNode - Resolved : u -> chatuser0_.id
 12:58:55.918 [main] DEBUG o.h.h.i.ast.tree.FromReferenceNode - Resolved : u -> chatuser0_.id
 12:58:55.918 [main] DEBUG o.h.hql.internal.ast.tree.DotNode - getDataType() : id -> org.hibernate.type.IntegerType@3f049056
@@ -2931,19 +2931,19 @@
 12:58:55.919 [main] DEBUG o.h.h.i.ast.QueryTranslatorImpl - --- SQL AST ---
  \-[SELECT] QueryNode: 'SELECT'  querySpaces (user)
     +-[SELECT_CLAUSE] SelectClause: '{select clause}'
-    |  +-[ALIAS_REF] IdentNode: 'chatuser0_.id as id1_2_' {alias=u, className=pl.abbl.reactchat.entities.ChatUser, tableAlias=chatuser0_}
+    |  +-[ALIAS_REF] IdentNode: 'chatuser0_.id as id1_2_' {alias=u, className=pl.abbl.reactchat.models.ChatUser, tableAlias=chatuser0_}
     |  \-[SQL_TOKEN] SqlFragment: 'chatuser0_.active as active2_2_, chatuser0_.description as descript3_2_, chatuser0_.password as password4_2_, chatuser0_.username as username5_2_'
     +-[FROM] FromClause: 'FROM' FromClause{level=1, fromElementCounter=1, fromElements=1, fromElementByClassAlias=[u], fromElementByTableAlias=[chatuser0_], fromElementsByPath=[], collectionJoinFromElementsByPath=[], impliedElements=[]}
-    |  \-[FROM_FRAGMENT] FromElement: 'user chatuser0_' FromElement{explicit,not a collection join,not a fetch join,fetch non-lazy properties,classAlias=u,role=null,tableName=user,tableAlias=chatuser0_,origin=null,columns={,className=pl.abbl.reactchat.entities.ChatUser}}
+    |  \-[FROM_FRAGMENT] FromElement: 'user chatuser0_' FromElement{explicit,not a collection join,not a fetch join,fetch non-lazy properties,classAlias=u,role=null,tableName=user,tableAlias=chatuser0_,origin=null,columns={,className=pl.abbl.reactchat.models.ChatUser}}
     \-[WHERE] SqlNode: 'WHERE'
        \-[EQ] BinaryLogicOperatorNode: '='
-          +-[DOT] DotNode: 'chatuser0_.id' {propertyName=id,dereferenceType=PRIMITIVE,getPropertyPath=id,path=u.id,tableAlias=chatuser0_,className=pl.abbl.reactchat.entities.ChatUser,classAlias=u}
-          |  +-[ALIAS_REF] IdentNode: 'chatuser0_.id' {alias=u, className=pl.abbl.reactchat.entities.ChatUser, tableAlias=chatuser0_}
+          +-[DOT] DotNode: 'chatuser0_.id' {propertyName=id,dereferenceType=PRIMITIVE,getPropertyPath=id,path=u.id,tableAlias=chatuser0_,className=pl.abbl.reactchat.models.ChatUser,classAlias=u}
+          |  +-[ALIAS_REF] IdentNode: 'chatuser0_.id' {alias=u, className=pl.abbl.reactchat.models.ChatUser, tableAlias=chatuser0_}
           |  \-[IDENT] IdentNode: 'id' {originalText=id}
           \-[NAMED_PARAM] ParameterNode: '?' {name=id, expectedType=org.hibernate.type.IntegerType@3f049056}
 
 12:58:55.919 [main] DEBUG o.h.hql.internal.ast.ErrorCounter - throwQueryException() : no errors
-12:58:55.919 [main] DEBUG o.h.h.i.ast.QueryTranslatorImpl - HQL: SELECT u FROM pl.abbl.reactchat.entities.ChatUser u WHERE u.id = :id
+12:58:55.919 [main] DEBUG o.h.h.i.ast.QueryTranslatorImpl - HQL: SELECT u FROM pl.abbl.reactchat.models.ChatUser u WHERE u.id = :id
 12:58:55.919 [main] DEBUG o.h.h.i.ast.QueryTranslatorImpl - SQL: select chatuser0_.id as id1_2_, chatuser0_.active as active2_2_, chatuser0_.description as descript3_2_, chatuser0_.password as password4_2_, chatuser0_.username as username5_2_ from user chatuser0_ where chatuser0_.id=?
 12:58:55.919 [main] DEBUG o.h.hql.internal.ast.ErrorCounter - throwQueryException() : no errors
 12:58:55.920 [main] DEBUG o.s.aop.framework.JdkDynamicAopProxy - Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [org.springframework.data.jpa.repository.support.SimpleJpaRepository@172f4514]
@@ -3485,7 +3485,7 @@
 12:58:56.340 [main] DEBUG o.s.d.j.r.query.JpaQueryFactory - Looking up query for method getRight
 12:58:56.340 [main] DEBUG o.s.o.j.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler - Creating new EntityManager for shared EntityManager invocation
 12:58:56.340 [main] DEBUG o.s.o.jpa.EntityManagerFactoryUtils - Closing JPA EntityManager
-12:58:56.353 [main] DEBUG o.h.h.i.ast.QueryTranslatorImpl - parse() - HQL: SELECT rr FROM pl.abbl.reactchat.entities.RoomRight rr WHERE rr.userId = :userId AND rr.roomId = :roomId
+12:58:56.353 [main] DEBUG o.h.h.i.ast.QueryTranslatorImpl - parse() - HQL: SELECT rr FROM pl.abbl.reactchat.models.RoomRight rr WHERE rr.userId = :userId AND rr.roomId = :roomId
 12:58:56.354 [main] DEBUG o.h.hql.internal.ast.ErrorCounter - throwQueryException() : no errors
 12:58:56.354 [main] DEBUG o.h.h.i.ast.QueryTranslatorImpl - --- HQL AST ---
  \-[QUERY] Node: 'query'
@@ -3520,7 +3520,7 @@
                 \-[IDENT] Node: 'roomId'
 
 12:58:56.354 [main] DEBUG o.h.h.i.antlr.HqlSqlBaseWalker - select << begin [level=1, statement=select]
-12:58:56.354 [main] DEBUG o.h.h.internal.ast.tree.FromElement - FromClause{level=1} : pl.abbl.reactchat.entities.RoomRight (rr) -> roomright0_
+12:58:56.354 [main] DEBUG o.h.h.internal.ast.tree.FromElement - FromClause{level=1} : pl.abbl.reactchat.models.RoomRight (rr) -> roomright0_
 12:58:56.354 [main] DEBUG o.h.h.i.ast.tree.FromReferenceNode - Resolved : rr -> roomright0_.id
 12:58:56.354 [main] DEBUG o.h.h.i.ast.tree.FromReferenceNode - Resolved : rr -> roomright0_.id
 12:58:56.354 [main] DEBUG o.h.hql.internal.ast.tree.DotNode - getDataType() : userId -> org.hibernate.type.IntegerType@3f049056
@@ -3535,25 +3535,25 @@
 12:58:56.355 [main] DEBUG o.h.h.i.ast.QueryTranslatorImpl - --- SQL AST ---
  \-[SELECT] QueryNode: 'SELECT'  querySpaces (room_right)
     +-[SELECT_CLAUSE] SelectClause: '{select clause}'
-    |  +-[ALIAS_REF] IdentNode: 'roomright0_.id as id1_1_' {alias=rr, className=pl.abbl.reactchat.entities.RoomRight, tableAlias=roomright0_}
+    |  +-[ALIAS_REF] IdentNode: 'roomright0_.id as id1_1_' {alias=rr, className=pl.abbl.reactchat.models.RoomRight, tableAlias=roomright0_}
     |  \-[SQL_TOKEN] SqlFragment: 'roomright0_.right_level as right_le2_1_, roomright0_.room_id as room_id3_1_, roomright0_.user_id as user_id4_1_'
     +-[FROM] FromClause: 'FROM' FromClause{level=1, fromElementCounter=1, fromElements=1, fromElementByClassAlias=[rr], fromElementByTableAlias=[roomright0_], fromElementsByPath=[], collectionJoinFromElementsByPath=[], impliedElements=[]}
-    |  \-[FROM_FRAGMENT] FromElement: 'room_right roomright0_' FromElement{explicit,not a collection join,not a fetch join,fetch non-lazy properties,classAlias=rr,role=null,tableName=room_right,tableAlias=roomright0_,origin=null,columns={,className=pl.abbl.reactchat.entities.RoomRight}}
+    |  \-[FROM_FRAGMENT] FromElement: 'room_right roomright0_' FromElement{explicit,not a collection join,not a fetch join,fetch non-lazy properties,classAlias=rr,role=null,tableName=room_right,tableAlias=roomright0_,origin=null,columns={,className=pl.abbl.reactchat.models.RoomRight}}
     \-[WHERE] SqlNode: 'WHERE'
        \-[AND] SqlNode: 'AND'
           +-[EQ] BinaryLogicOperatorNode: '='
-          |  +-[DOT] DotNode: 'roomright0_.user_id' {propertyName=userId,dereferenceType=PRIMITIVE,getPropertyPath=userId,path=rr.userId,tableAlias=roomright0_,className=pl.abbl.reactchat.entities.RoomRight,classAlias=rr}
-          |  |  +-[ALIAS_REF] IdentNode: 'roomright0_.id' {alias=rr, className=pl.abbl.reactchat.entities.RoomRight, tableAlias=roomright0_}
+          |  +-[DOT] DotNode: 'roomright0_.user_id' {propertyName=userId,dereferenceType=PRIMITIVE,getPropertyPath=userId,path=rr.userId,tableAlias=roomright0_,className=pl.abbl.reactchat.models.RoomRight,classAlias=rr}
+          |  |  +-[ALIAS_REF] IdentNode: 'roomright0_.id' {alias=rr, className=pl.abbl.reactchat.models.RoomRight, tableAlias=roomright0_}
           |  |  \-[IDENT] IdentNode: 'userId' {originalText=userId}
           |  \-[NAMED_PARAM] ParameterNode: '?' {name=userId, expectedType=org.hibernate.type.IntegerType@3f049056}
           \-[EQ] BinaryLogicOperatorNode: '='
-             +-[DOT] DotNode: 'roomright0_.room_id' {propertyName=roomId,dereferenceType=PRIMITIVE,getPropertyPath=roomId,path=rr.roomId,tableAlias=roomright0_,className=pl.abbl.reactchat.entities.RoomRight,classAlias=rr}
-             |  +-[ALIAS_REF] IdentNode: 'roomright0_.id' {alias=rr, className=pl.abbl.reactchat.entities.RoomRight, tableAlias=roomright0_}
+             +-[DOT] DotNode: 'roomright0_.room_id' {propertyName=roomId,dereferenceType=PRIMITIVE,getPropertyPath=roomId,path=rr.roomId,tableAlias=roomright0_,className=pl.abbl.reactchat.models.RoomRight,classAlias=rr}
+             |  +-[ALIAS_REF] IdentNode: 'roomright0_.id' {alias=rr, className=pl.abbl.reactchat.models.RoomRight, tableAlias=roomright0_}
              |  \-[IDENT] IdentNode: 'roomId' {originalText=roomId}
              \-[NAMED_PARAM] ParameterNode: '?' {name=roomId, expectedType=org.hibernate.type.IntegerType@3f049056}
 
 12:58:56.355 [main] DEBUG o.h.hql.internal.ast.ErrorCounter - throwQueryException() : no errors
-12:58:56.356 [main] DEBUG o.h.h.i.ast.QueryTranslatorImpl - HQL: SELECT rr FROM pl.abbl.reactchat.entities.RoomRight rr WHERE rr.userId = :userId AND rr.roomId = :roomId
+12:58:56.356 [main] DEBUG o.h.h.i.ast.QueryTranslatorImpl - HQL: SELECT rr FROM pl.abbl.reactchat.models.RoomRight rr WHERE rr.userId = :userId AND rr.roomId = :roomId
 12:58:56.356 [main] DEBUG o.h.h.i.ast.QueryTranslatorImpl - SQL: select roomright0_.id as id1_1_, roomright0_.right_level as right_le2_1_, roomright0_.room_id as room_id3_1_, roomright0_.user_id as user_id4_1_ from room_right roomright0_ where roomright0_.user_id=? and roomright0_.room_id=?
 12:58:56.356 [main] DEBUG o.h.hql.internal.ast.ErrorCounter - throwQueryException() : no errors
 12:58:56.359 [main] DEBUG o.s.aop.framework.JdkDynamicAopProxy - Creating JDK dynamic proxy: target source is SingletonTargetSource for target object [org.springframework.data.jpa.repository.support.SimpleJpaRepository@764fffa0]
