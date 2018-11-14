@@ -9,6 +9,7 @@ import pl.abbl.reactchat.repositories.ChatContentRepository;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 import static pl.abbl.reactchat.configs.ReactChatConfiguration.FETCH_RANGE_LIMIT;
@@ -35,26 +36,31 @@ public class ChatContentRepositoryImpl implements ChatContentRepository {
                 .executeUpdate();
     }
 
+    @Transactional
     @Override
     public void saveAndFlush(ChatRoom chatRoom, ChatMessage chatMessage) {
+        entityManager.joinTransaction();
 
+        entityManager.createNativeQuery("INSERT INTO `" + chatRoom.getId() + "` (author, content, time) VALUES (:author, :content, :time)")
+                .setParameter("author", chatMessage.getAuthor())
+                .setParameter("content", chatMessage.getContent())
+                .setParameter("time", chatMessage.getTime())
+                .executeUpdate();
     }
 
     @Override
     public List<ChatMessage> findLastMessagesByRange(ChatRoom chatRoom, int range) {
         if(chatRoom != null && range <= FETCH_RANGE_LIMIT){
-
+            return entityManager.createNativeQuery("SELECT * FROM `" + chatRoom.getId() + "` LIMIT " + range, ChatMessage.class).getResultList();
         }
-        return null;
+        return new ArrayList<>();
     }
 
     @Override
     public List<ChatMessage> findMessagesByIndexRange(ChatRoom chatRoom, int start, int end) {
+        if(chatRoom != null && Math.abs(start - end) <= FETCH_RANGE_LIMIT){
+            return entityManager.createNativeQuery("SELECT * FROM `" + chatRoom.getId() + "` LIMIT " + end + "OFFSET " + (start - 1), ChatMessage.class).getResultList();
+        }
         return null;
-    }
-
-    private void testMethod(){
-        List list = entityManager.createNativeQuery("SELECT * FROM `1`", ChatMessage.class).getResultList();
-        System.out.println("Test:" + list.toString());
     }
 }

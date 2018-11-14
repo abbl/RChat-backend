@@ -19,6 +19,6 @@ import java.util.List;
 public interface ChatContentRepository {
     void createChatContentTable(ChatRoom chatRoom);
     void saveAndFlush(ChatRoom chatRoom, ChatMessage chatMessage);
-    List<ChatMessage> findLastMessagesByRange(ChatRoom chatRoom, int range);
+    List findLastMessagesByRange(ChatRoom chatRoom, int range);
     List<ChatMessage> findMessagesByIndexRange(ChatRoom chatRoom, int start, int end);
 }
