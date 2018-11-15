@@ -6,6 +6,7 @@ import org.springframework.messaging.simp.user.SimpUser;
 import org.springframework.messaging.simp.user.SimpUserRegistry;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import pl.abbl.reactchat.models.ChatMessage;
 import pl.abbl.reactchat.models.ChatRoom;
 import pl.abbl.reactchat.models.ChatUser;
 import pl.abbl.reactchat.services.ContextChangeService;
@@ -42,7 +43,7 @@ public class ContextChangeServiceImpl implements ContextChangeService {
     }
 
     @Override
-    public void updateUsersOnNewMessage(ChatRoom chatRoom) {
-
+    public void updateUsersOnNewMessage(ChatRoom chatRoom, ChatMessage chatMessage) {
+        messagingTemplate.convertAndSend("/topic/chatroom/" + chatRoom.getId(), chatMessage);
     }
 }

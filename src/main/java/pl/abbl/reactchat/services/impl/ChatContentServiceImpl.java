@@ -6,28 +6,17 @@ import pl.abbl.reactchat.models.ChatMessage;
 import pl.abbl.reactchat.models.ChatRoom;
 import pl.abbl.reactchat.repositories.ChatContentRepository;
 import pl.abbl.reactchat.services.ChatContentService;
+import pl.abbl.reactchat.services.ContextChangeService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ChatContentServiceImpl implements ChatContentService {
+    @Autowired
     private ChatContentRepository chatContentRepository;
-
-    public ChatContentServiceImpl(@Autowired ChatContentRepository chatContentRepository){
-        this.chatContentRepository = chatContentRepository;
-
-        ChatRoom chatRoom = new ChatRoom();
-        chatRoom.setId(1);
-        ChatMessage chatMessage = new ChatMessage();
-        chatMessage.setAuthor("Abbl");
-        chatMessage.setContent("Test");
-        chatMessage.setTime("Testtest");
-
-        saveAndFlush(chatRoom, chatMessage);
-        System.out.println(findLastMessagesByRange(chatRoom, 15).toString());
-        System.out.println(findMessagesByIndexRange(chatRoom, 1, 2).toString());
-    }
+    @Autowired
+    private ContextChangeService contextChangeService;
 
     @Override
     public void createChatContentTable(ChatRoom chatRoom) {
@@ -37,6 +26,8 @@ public class ChatContentServiceImpl implements ChatContentService {
     @Override
     public void saveAndFlush(ChatRoom chatRoom, ChatMessage chatMessage) {
         chatContentRepository.saveAndFlush(chatRoom, chatMessage);
+
+        contextChangeService.updateUsersOnNewMessage(chatRoom, chatMessage);
     }
 
     @Override
