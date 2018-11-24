@@ -1,5 +1,6 @@
 package pl.abbl.reactchat.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import pl.abbl.reactchat.definitions.enums.ChatRoomStatus;
 import pl.abbl.reactchat.definitions.enums.ChatRoomType;
@@ -12,6 +13,7 @@ public class ChatRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @JsonIgnore
     private int ownerId;
     private String name;
     private String description;

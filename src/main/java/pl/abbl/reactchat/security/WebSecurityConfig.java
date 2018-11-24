@@ -20,6 +20,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import pl.abbl.reactchat.definitions.SecurityConstants;
 import pl.abbl.reactchat.filters.JwtAuthenticationFilter;
 import pl.abbl.reactchat.filters.JwtAuthorizationFilter;
 
@@ -60,10 +61,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.exceptionHandling()
 				.and()
 		.authorizeRequests()
-				.antMatchers("/authenticate", "/register").permitAll()
+				.antMatchers(SecurityConstants.SIGN_IN_URL, "/register").permitAll()
                 .antMatchers("/secure/**").authenticated()
 				.and()
-				.addFilterBefore(new JwtAuthenticationFilter("/authenticate", authenticationManager(), gson), UsernamePasswordAuthenticationFilter.class)
+				.addFilterBefore(new JwtAuthenticationFilter(SecurityConstants.SIGN_IN_URL, authenticationManager(), gson), UsernamePasswordAuthenticationFilter.class)
 				.addFilterBefore(new JwtAuthorizationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class)
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
