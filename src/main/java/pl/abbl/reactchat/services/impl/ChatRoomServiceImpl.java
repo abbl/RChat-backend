@@ -98,6 +98,7 @@ public class ChatRoomServiceImpl implements ChatRoomService {
             if(roomRightService.isUserRightLevelHighEnough(chatUser.getId(), databaseChatRoom.getId(), RoomRightLevel.MODERATOR)){
                 RoomRightLevel userRoomRightLevel = roomRightService.getUserRight(chatUser.getId(), databaseChatRoom.getId()).getRightLevel();
 
+                //ChatRoom name update
                 if(!databaseChatRoom.getName().equals(chatRoom.getName())){
                     if(userRoomRightLevel != RoomRightLevel.OWNER){
                         return new ChatRoomCallback(ChatRoomCallback.INSUFFICIENT_RIGHTS);
@@ -109,6 +110,7 @@ public class ChatRoomServiceImpl implements ChatRoomService {
                     }
                 }
 
+                //ChatRoom status update
                 if(databaseChatRoom.getStatus() != chatRoom.getStatus()){
                     if(userRoomRightLevel != RoomRightLevel.OWNER){
                         return new ChatRoomCallback(ChatRoomCallback.INSUFFICIENT_RIGHTS);
@@ -116,6 +118,7 @@ public class ChatRoomServiceImpl implements ChatRoomService {
                     databaseChatRoom.setStatus(chatRoom.getStatus());
                 }
 
+                //ChatRoom desc update
                 if(!databaseChatRoom.getDescription().equals(chatRoom.getDescription())){
                     databaseChatRoom.setDescription(chatRoom.getDescription());
                 }
@@ -161,5 +164,10 @@ public class ChatRoomServiceImpl implements ChatRoomService {
     @Override
     public List<ChatRoom> getChatRoomByListOfId(List<Integer> idList) {
         return chatRoomRepository.findChatRoomsByListOfId(idList);
+    }
+
+    @Override
+    public ChatRoom getChatRoomById(int id) {
+        return chatRoomRepository.findById(id);
     }
 }

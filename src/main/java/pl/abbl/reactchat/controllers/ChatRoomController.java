@@ -31,8 +31,9 @@ public class ChatRoomController {
     }
 
     @PutMapping("/secure/chatroom")
-    public AbstractCallback updateChatRoom(Map<String, Object> json, Principal principal){
-        ChatRoom chatRoom = new ChatRoom((int) json.get("id"),(String) json.get("name"), (String) json.get("description"), ChatRoomType.valueOf((String) json.get("type")), ChatRoomStatus.valueOf((String) json.get("status")));
+    public AbstractCallback updateChatRoom(@RequestBody Map<String, Object> requestBody, Principal principal){
+        ChatRoom chatRoom = new ChatRoom((int) requestBody.get("id"),(String) requestBody.get("name"), (String) requestBody.get("description"),
+                ChatRoomType.valueOf((String) requestBody.get("type")), ChatRoomStatus.valueOf((String) requestBody.get("status")));
 
         return chatRoomService.updateChatRoom(chatRoom, principal);
     }

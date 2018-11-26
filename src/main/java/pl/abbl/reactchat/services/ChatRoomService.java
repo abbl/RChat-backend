@@ -11,4 +11,5 @@ public interface ChatRoomService {
     List<ChatRoom> getUserChatRooms(Principal principal);
     List<ChatRoom> getPublicChatRooms();
     List<ChatRoom> getChatRoomByListOfId(List<Integer> idList);
+    ChatRoom getChatRoomById(int id);
 }

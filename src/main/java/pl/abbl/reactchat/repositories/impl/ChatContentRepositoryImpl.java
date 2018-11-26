@@ -58,9 +58,9 @@ public class ChatContentRepositoryImpl implements ChatContentRepository {
 
     @Override
     public List<ChatMessage> findMessagesByIndexRange(ChatRoom chatRoom, int start, int end) {
-        if(chatRoom != null && Math.abs(start - end) <= FETCH_RANGE_LIMIT){
-            return entityManager.createNativeQuery("SELECT * FROM `" + chatRoom.getId() + "` LIMIT " + end + " OFFSET " + (start - 1), ChatMessage.class).getResultList();
+        if(chatRoom != null && Math.abs((start) - end) < FETCH_RANGE_LIMIT){
+            return entityManager.createNativeQuery("SELECT * FROM `" + chatRoom.getId() + "` LIMIT " + end + " OFFSET " + (--start) , ChatMessage.class).getResultList();
         }
-        return null;
+        return new ArrayList<>();
     }
 }

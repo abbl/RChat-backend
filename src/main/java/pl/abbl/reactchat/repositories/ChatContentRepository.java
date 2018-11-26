@@ -14,7 +14,7 @@ import java.util.List;
  * wouldn't think that this repository is persisting all {@link ChatMessage} in one table,
  * Its actually opposite to that)
  *
- * More explanation should be written in Service using this @Repository, at least I think it will be written.
+ * More explanation should be written in Service using this @Repository, at least I think It will be written.
  */
 public interface ChatContentRepository {
     void createChatContentTable(ChatRoom chatRoom);

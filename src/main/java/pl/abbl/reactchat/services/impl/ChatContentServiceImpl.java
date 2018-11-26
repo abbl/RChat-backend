@@ -37,7 +37,7 @@ public class ChatContentServiceImpl implements ChatContentService {
 
     @Override
     public List<ChatMessage> findMessagesByIndexRange(ChatRoom chatRoom, int start, int end) {
-        if(start == 0)
+        if(start == 0) //There shouldn't be a message with id 0.
             return new ArrayList<>();
 
         return chatContentRepository.findMessagesByIndexRange(chatRoom, start, end);
