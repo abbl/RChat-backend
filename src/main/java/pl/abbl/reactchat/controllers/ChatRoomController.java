@@ -40,6 +40,6 @@ public class ChatRoomController {
 
     @MessageMapping("/request/chatroom/list")
     public void getUserChatRoomList(Principal principal){
-        simpMessagingTemplate.convertAndSendToUser(principal.getName(), "/topic/chatroom/list", chatRoomService.getUserChatRooms(principal));
+        simpMessagingTemplate.convertAndSendToUser(principal.getName(), "/topic/chatRoomList", chatRoomService.getUserChatRooms(principal));
     }
 }
