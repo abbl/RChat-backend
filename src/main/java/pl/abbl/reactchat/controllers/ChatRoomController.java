@@ -3,15 +3,13 @@ package pl.abbl.reactchat.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.abbl.reactchat.callbacks.AbstractCallback;
 import pl.abbl.reactchat.models.ChatRoom;
 import pl.abbl.reactchat.services.ChatRoomService;
 
 import java.security.Principal;
+import java.util.List;
 
 @RestController
 public class ChatRoomController {
@@ -28,6 +26,11 @@ public class ChatRoomController {
     @PutMapping("/secure/chatroom")
     public AbstractCallback updateChatRoom(@RequestBody ChatRoom chatRoom, Principal principal){
         return chatRoomService.updateChatRoom(chatRoom, principal);
+    }
+
+    @GetMapping("/secure/chatroom")
+    public List<ChatRoom> getPublicChatRoomList(){
+        return chatRoomService.getPublicChatRooms();
     }
 
     @PostMapping("/secure/chatroom/join")
