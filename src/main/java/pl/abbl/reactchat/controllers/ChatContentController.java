@@ -7,11 +7,10 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import pl.abbl.reactchat.configs.ReactChatConfiguration;
+import pl.abbl.reactchat.models.ChatMessage;
 import pl.abbl.reactchat.services.ChatContentService;
-import pl.abbl.reactchat.services.ChatRoomService;
 
 import java.security.Principal;
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -19,19 +18,22 @@ public class ChatContentController {
     @Autowired
     private ChatContentService chatContentService;
     @Autowired
-    private ChatRoomService chatRoomService;
-    @Autowired
     private SimpMessagingTemplate simpMessagingTemplate;
 
     @MessageMapping("/request/chatroom/{chatRoomId}")
     public void getLastMessages(@DestinationVariable int chatRoomId, Principal principal){
         simpMessagingTemplate.convertAndSendToUser(principal.getName(), "/topic/chatroom/" + chatRoomId,
-                chatContentService.findLastMessagesByRange(chatRoomService.getChatRoomById(chatRoomId), ReactChatConfiguration.FETCH_RANGE_LIMIT));
+                chatContentService.findLastMessagesByRange(chatRoomId, ReactChatConfiguration.FETCH_RANGE_LIMIT));
     }
 
     @MessageMapping("/request/chatroom/{chatRoomId}/range")
     public void getMessagesByIdRange(@DestinationVariable int chatRoomId, @RequestBody Map<String, Object> requestBody, Principal principal){
         simpMessagingTemplate.convertAndSendToUser(principal.getName(), "/topic/chatroom/" + chatRoomId,
-                chatContentService.findMessagesByIndexRange(chatRoomService.getChatRoomById(chatRoomId), (int) requestBody.get("start"), (int) requestBody.get("end")));
+                chatContentService.findMessagesByIndexRange(chatRoomId, (int) requestBody.get("start"), (int) requestBody.get("end")));
+    }
+
+    @MessageMapping("/request/chatroom/{chatRoomId}/send")
+    public void receiveChatMessage(@DestinationVariable int chatRoomId, @RequestBody ChatMessage chatMessage, Principal principal){
+        chatContentService.saveChatMessage(chatRoomId, chatMessage, principal);
     }
 }

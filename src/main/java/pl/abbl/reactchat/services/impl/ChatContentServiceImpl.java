@@ -2,12 +2,14 @@ package pl.abbl.reactchat.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.abbl.reactchat.definitions.enums.RoomRightLevel;
 import pl.abbl.reactchat.models.ChatMessage;
 import pl.abbl.reactchat.models.ChatRoom;
+import pl.abbl.reactchat.models.ChatUser;
 import pl.abbl.reactchat.repositories.ChatContentRepository;
-import pl.abbl.reactchat.services.ChatContentService;
-import pl.abbl.reactchat.services.ContextChangeService;
+import pl.abbl.reactchat.services.*;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,30 +18,38 @@ public class ChatContentServiceImpl implements ChatContentService {
     @Autowired
     private ChatContentRepository chatContentRepository;
     @Autowired
-    private ContextChangeService contextChangeService;
+    private ChatRoomService chatRoomService;
+    @Autowired
+    private RoomRightService rightService;
+    @Autowired
+    private UserService userService;
 
     @Override
-    public void createChatContentTable(ChatRoom chatRoom) {
-        chatContentRepository.createChatContentTable(chatRoom);
+    public void saveChatMessage(int chatRoomId, ChatMessage chatMessage, Principal principal) {
+        ChatUser chatUser = userService.getUserInformationByPrincipal(principal);
+        ChatRoom chatRoom = chatRoomService.getChatRoomById(chatRoomId);
+
+        if(chatUser != null && chatRoom != null){
+            if(rightService.isUserRightLevelHighEnough(chatUser.getId(), chatRoom.getId(), RoomRightLevel.PARTICIPANT)){
+                if(!chatMessage.getContent().isEmpty()){
+                    chatMessage.setAuthor(chatUser.getUsername());
+
+                    chatContentRepository.saveAndFlush(chatRoom, chatMessage);
+                }
+            }
+        }
     }
 
     @Override
-    public void saveAndFlush(ChatRoom chatRoom, ChatMessage chatMessage) {
-        chatContentRepository.saveAndFlush(chatRoom, chatMessage);
-
-        contextChangeService.updateUsersOnNewMessage(chatRoom, chatMessage);
+    public List findLastMessagesByRange(int chatRoomId, int range) {
+        return chatContentRepository.findLastMessagesByRange(chatRoomService.getChatRoomById(chatRoomId), range);
     }
 
     @Override
-    public List findLastMessagesByRange(ChatRoom chatRoom, int range) {
-        return chatContentRepository.findLastMessagesByRange(chatRoom, range);
-    }
-
-    @Override
-    public List<ChatMessage> findMessagesByIndexRange(ChatRoom chatRoom, int start, int end) {
+    public List<ChatMessage> findMessagesByIndexRange(int chatRoomId, int start, int end) {
         if(start == 0) //There shouldn't be a message with id 0.
             return new ArrayList<>();
 
-        return chatContentRepository.findMessagesByIndexRange(chatRoom, start, end);
+        return chatContentRepository.findMessagesByIndexRange(chatRoomService.getChatRoomById(chatRoomId), start, end);
     }
 }

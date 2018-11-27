@@ -1,13 +1,12 @@
 package pl.abbl.reactchat.services;
 
 import pl.abbl.reactchat.models.ChatMessage;
-import pl.abbl.reactchat.models.ChatRoom;
 
+import java.security.Principal;
 import java.util.List;
 
 public interface ChatContentService {
-    void createChatContentTable(ChatRoom chatRoom);
-    void saveAndFlush(ChatRoom chatRoom, ChatMessage chatMessage);
-    List findLastMessagesByRange(ChatRoom chatRoom, int range);
-    List<ChatMessage> findMessagesByIndexRange(ChatRoom chatRoom, int start, int end);
+    void saveChatMessage(int chatRoomId, ChatMessage chatMessage, Principal principal);
+    List findLastMessagesByRange(int chatRoomId, int range);
+    List<ChatMessage> findMessagesByIndexRange(int chatRoomId, int start, int end);
 }

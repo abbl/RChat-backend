@@ -31,7 +31,7 @@ public class ChatContentRepositoryImpl implements ChatContentRepository {
         entityManager.createNativeQuery("CREATE TABLE `" + chatRoom.getId() + "` (" +
                 "`id` INT NOT NULL AUTO_INCREMENT, " +
                 "`author` VARCHAR(64) NOT NULL, `content` TEXT NOT NULL, " +
-                "`time` VARCHAR(255) NOT NULL, PRIMARY KEY (`id`)) " +
+                "`time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (`id`)) " +
                 "ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci")
                 .executeUpdate();
     }
@@ -41,10 +41,9 @@ public class ChatContentRepositoryImpl implements ChatContentRepository {
     public void saveAndFlush(ChatRoom chatRoom, ChatMessage chatMessage) {
         entityManager.joinTransaction();
 
-        entityManager.createNativeQuery("INSERT INTO `" + chatRoom.getId() + "` (author, content, time) VALUES (:author, :content, :time)")
+        entityManager.createNativeQuery("INSERT INTO `" + chatRoom.getId() + "` (author, content) VALUES (:author, :content)")
                 .setParameter("author", chatMessage.getAuthor())
                 .setParameter("content", chatMessage.getContent())
-                .setParameter("time", chatMessage.getTime())
                 .executeUpdate();
     }
 

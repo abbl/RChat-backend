@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.sql.Timestamp;
 
 @Data
 @Entity
@@ -15,7 +16,7 @@ public class ChatMessage {
     private int id;
     private String author;
     private String content;
-    private String time;
+    private Timestamp time;
 
     public ChatMessage(){
 
