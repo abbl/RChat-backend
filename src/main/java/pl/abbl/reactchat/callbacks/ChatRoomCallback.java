@@ -22,6 +22,8 @@ public class ChatRoomCallback extends AbstractCallback{
 	@JsonIgnore
 	public static final String SUCCESSFULLY_JOINED_CHAT_ROOM = "SUCCESSFULLY_JOINED_CHAT_ROOM";
 	@JsonIgnore
+	public static final String NO_SUCH_CHAT_ROOM_FIND = "NO_SUCH_CHAT_ROOM_FIND";
+	@JsonIgnore
 	public static final String CANT_UPDATE_CHAT_ROOM_THAT_DOESNT_EXIST = "CANT_UPDATE_CHAT_ROOM_THAT_DOESNT_EXISTS";
 	@JsonIgnore
 	public static final String CHAT_ROOM_UPDATED_SUCCESSFULLY = "CHAT_ROOM_UPDATED_SUCCESSFULLY";

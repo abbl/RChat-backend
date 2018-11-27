@@ -30,6 +30,11 @@ public class ChatRoomController {
         return chatRoomService.updateChatRoom(chatRoom, principal);
     }
 
+    @PostMapping("/secure/chatroom/join")
+    public AbstractCallback joinChatRoom(@RequestBody ChatRoom chatRoom, Principal principal){
+        return chatRoomService.joinChatRoom(chatRoom, principal);
+    }
+
     @MessageMapping("/request/chatroom/list")
     public void getUserChatRoomList(Principal principal){
         simpMessagingTemplate.convertAndSendToUser(principal.getName(), "/topic/chatroom/list", chatRoomService.getUserChatRooms(principal));

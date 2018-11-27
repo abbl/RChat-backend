@@ -135,6 +135,21 @@ public class ChatRoomServiceImpl implements ChatRoomService {
     }
 
     @Override
+    public AbstractCallback joinChatRoom(ChatRoom chatRoom, Principal principal) {
+        ChatUser chatUser = userService.getUserInformationByPrincipal(principal);
+
+        if(chatRoomRepository.findById(chatRoom.getId()) != null){
+            if(!roomRightService.doesUserHaveAnyRight(chatUser.getId(), chatRoom.getId())){
+                roomRightService.addUserRight(chatUser.getId(), chatRoom.getId(), RoomRightLevel.PARTICIPANT);
+
+                return new ChatRoomCallback(ChatRoomCallback.SUCCESSFULLY_JOINED_CHAT_ROOM);
+            }
+            return new ChatRoomCallback(ChatRoomCallback.YOU_ARE_ALREADY_MEMBER_OF_THIS_CHANNEL);
+        }
+        return new ChatRoomCallback(ChatRoomCallback.NO_SUCH_CHAT_ROOM_FIND);
+    }
+
+    @Override
     public List<ChatRoom> getUserChatRooms(Principal principal) {
         ChatUser chatUser = userService.getUserInformationByPrincipal(principal);
         List<Integer> chatRooms = new ArrayList<>();
