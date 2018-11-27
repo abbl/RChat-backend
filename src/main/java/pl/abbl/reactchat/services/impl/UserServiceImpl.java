@@ -58,11 +58,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ChatUser getUserInformationByJwt(HttpServletRequest httpServletRequest) {
-        return getUserInformationById(usersRepository.findByJwtToken(httpServletRequest).getId());
-    }
-
-    @Override
     public ChatUser getUserInformationByPrincipal(Principal principal) {
         return getUserInformationByUsername(principal.getName());
     }

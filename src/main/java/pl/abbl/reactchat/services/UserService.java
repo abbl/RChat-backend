@@ -11,6 +11,5 @@ public interface UserService {
     AbstractCallback register(Map<String, String> userCredentials);
     ChatUser getUserInformationByUsername(String username);
     ChatUser getUserInformationById(int userId);
-    ChatUser getUserInformationByJwt(HttpServletRequest httpServletRequest);
     ChatUser getUserInformationByPrincipal(Principal principal);
 }

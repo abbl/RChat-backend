@@ -25,7 +25,7 @@ public class ChatContentController {
         simpMessagingTemplate.convertAndSendToUser(principal.getName(), "/topic/chatroom/" + chatRoomId,
                 chatContentService.findLastMessagesByRange(chatRoomId, ReactChatConfiguration.FETCH_RANGE_LIMIT));
     }
-
+    
     @MessageMapping("/request/chatroom/{chatRoomId}/range")
     public void getMessagesByIdRange(@DestinationVariable int chatRoomId, @RequestBody Map<String, Object> requestBody, Principal principal){
         simpMessagingTemplate.convertAndSendToUser(principal.getName(), "/topic/chatroom/" + chatRoomId,

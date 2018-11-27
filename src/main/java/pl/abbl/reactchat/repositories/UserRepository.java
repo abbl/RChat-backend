@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import pl.abbl.reactchat.models.ChatUser;
 
-public interface UserRepository extends JpaRepository<ChatUser, Long>, UserRepositoryCustom {
+public interface UserRepository extends JpaRepository<ChatUser, Long>{
     @Query("SELECT u FROM ChatUser u WHERE u.username = :username")
     ChatUser findByUsername(@Param("username") String username);
 
