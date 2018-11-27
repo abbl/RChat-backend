@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import pl.abbl.reactchat.configs.ReactChatConfiguration;
 import pl.abbl.reactchat.models.ChatMessage;
+import pl.abbl.reactchat.repositories.parameters.RangeParameter;
 import pl.abbl.reactchat.services.ChatContentService;
 
 import java.security.Principal;
@@ -25,11 +26,11 @@ public class ChatContentController {
         simpMessagingTemplate.convertAndSendToUser(principal.getName(), "/topic/chatroom/" + chatRoomId,
                 chatContentService.findLastMessagesByRange(chatRoomId, ReactChatConfiguration.FETCH_RANGE_LIMIT));
     }
-    
+
     @MessageMapping("/request/chatroom/{chatRoomId}/range")
-    public void getMessagesByIdRange(@DestinationVariable int chatRoomId, @RequestBody Map<String, Object> requestBody, Principal principal){
+    public void getMessagesByIdRange(@DestinationVariable int chatRoomId, @RequestBody RangeParameter rangeParameter, Principal principal){
         simpMessagingTemplate.convertAndSendToUser(principal.getName(), "/topic/chatroom/" + chatRoomId,
-                chatContentService.findMessagesByIndexRange(chatRoomId, (int) requestBody.get("start"), (int) requestBody.get("end")));
+                chatContentService.findMessagesByIndexRange(chatRoomId, rangeParameter));
     }
 
     @MessageMapping("/request/chatroom/{chatRoomId}/send")

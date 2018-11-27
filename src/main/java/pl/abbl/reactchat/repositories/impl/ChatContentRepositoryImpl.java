@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import pl.abbl.reactchat.models.ChatMessage;
 import pl.abbl.reactchat.models.ChatRoom;
 import pl.abbl.reactchat.repositories.ChatContentRepository;
+import pl.abbl.reactchat.repositories.parameters.RangeParameter;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
@@ -48,17 +49,17 @@ public class ChatContentRepositoryImpl implements ChatContentRepository {
     }
 
     @Override
-    public List<ChatMessage> findLastMessagesByRange(ChatRoom chatRoom, int range) {
-        if(chatRoom != null && range <= FETCH_RANGE_LIMIT){
-            return entityManager.createNativeQuery("SELECT * FROM `" + chatRoom.getId() + "` LIMIT " + range, ChatMessage.class).getResultList();
+    public List getMessagesByAmount(ChatRoom chatRoom, int amount) {
+        if(chatRoom != null && amount <= FETCH_RANGE_LIMIT){
+            return entityManager.createNativeQuery("SELECT * FROM `" + chatRoom.getId() + "` LIMIT " + amount, ChatMessage.class).getResultList();
         }
         return new ArrayList<>();
     }
 
     @Override
-    public List<ChatMessage> findMessagesByIndexRange(ChatRoom chatRoom, int start, int end) {
-        if(chatRoom != null && Math.abs((start) - end) < FETCH_RANGE_LIMIT){
-            return entityManager.createNativeQuery("SELECT * FROM `" + chatRoom.getId() + "` LIMIT " + end + " OFFSET " + (--start) , ChatMessage.class).getResultList();
+    public List findMessagesByIndexRange(ChatRoom chatRoom, RangeParameter rangeParameter) {
+        if(chatRoom != null && Math.abs((rangeParameter.getStart()) - rangeParameter.getEnd()) < FETCH_RANGE_LIMIT){
+            return entityManager.createNativeQuery("SELECT * FROM `" + chatRoom.getId() + "` LIMIT " + rangeParameter.getEnd() + " OFFSET " + (rangeParameter.getStart() - 1) , ChatMessage.class).getResultList();
         }
         return new ArrayList<>();
     }

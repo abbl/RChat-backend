@@ -2,6 +2,7 @@ package pl.abbl.reactchat.repositories;
 
 import pl.abbl.reactchat.models.*;
 import pl.abbl.reactchat.models.ChatMessage;
+import pl.abbl.reactchat.repositories.parameters.RangeParameter;
 
 import java.util.List;
 
@@ -19,6 +20,6 @@ import java.util.List;
 public interface ChatContentRepository {
     void createChatContentTable(ChatRoom chatRoom);
     void saveAndFlush(ChatRoom chatRoom, ChatMessage chatMessage);
-    List<ChatMessage> findLastMessagesByRange(ChatRoom chatRoom, int range);
-    List<ChatMessage> findMessagesByIndexRange(ChatRoom chatRoom, int start, int end);
+    List getMessagesByAmount(ChatRoom chatRoom, int amount);
+    List findMessagesByIndexRange(ChatRoom chatRoom, RangeParameter rangeParameter);
 }

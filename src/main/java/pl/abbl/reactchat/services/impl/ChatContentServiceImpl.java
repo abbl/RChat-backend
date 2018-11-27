@@ -7,6 +7,7 @@ import pl.abbl.reactchat.models.ChatMessage;
 import pl.abbl.reactchat.models.ChatRoom;
 import pl.abbl.reactchat.models.ChatUser;
 import pl.abbl.reactchat.repositories.ChatContentRepository;
+import pl.abbl.reactchat.repositories.parameters.RangeParameter;
 import pl.abbl.reactchat.services.*;
 
 import java.security.Principal;
@@ -42,14 +43,14 @@ public class ChatContentServiceImpl implements ChatContentService {
 
     @Override
     public List findLastMessagesByRange(int chatRoomId, int range) {
-        return chatContentRepository.findLastMessagesByRange(chatRoomService.getChatRoomById(chatRoomId), range);
+        return chatContentRepository.getMessagesByAmount(chatRoomService.getChatRoomById(chatRoomId), range);
     }
 
     @Override
-    public List<ChatMessage> findMessagesByIndexRange(int chatRoomId, int start, int end) {
-        if(start == 0) //There shouldn't be a message with id 0.
+    public List<ChatMessage> findMessagesByIndexRange(int chatRoomId, RangeParameter rangeParameter) {
+        if(rangeParameter.getStart() == 0) //There shouldn't be a message with id 0.
             return new ArrayList<>();
 
-        return chatContentRepository.findMessagesByIndexRange(chatRoomService.getChatRoomById(chatRoomId), start, end);
+        return chatContentRepository.findMessagesByIndexRange(chatRoomService.getChatRoomById(chatRoomId), rangeParameter);
     }
 }
