@@ -41,6 +41,6 @@ public class ChatRoomTopicAccessInterceptor implements ChannelInterceptor {
     }
 
     private boolean checkIfUserIsParticipantOfThisRoom(int userId, int roomId){
-        return roomRightService.isUserRightLevelHighEnough(userId, roomId, RoomRightLevel.PARTICIPANT);
+        return roomRightService.isUserRightLevelHighEnough(userId, roomId, RoomRightLevel.MUTED);
     }
 }

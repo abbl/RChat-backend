@@ -13,7 +13,6 @@ public class ChatRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @JsonIgnore
     private int ownerId;
     private String name;
     private String description;
