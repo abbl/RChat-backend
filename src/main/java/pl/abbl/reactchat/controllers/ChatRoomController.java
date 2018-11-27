@@ -8,13 +8,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import pl.abbl.reactchat.callbacks.AbstractCallback;
-import pl.abbl.reactchat.definitions.enums.ChatRoomStatus;
-import pl.abbl.reactchat.definitions.enums.ChatRoomType;
 import pl.abbl.reactchat.models.ChatRoom;
 import pl.abbl.reactchat.services.ChatRoomService;
 
 import java.security.Principal;
-import java.util.Map;
 
 @RestController
 public class ChatRoomController {
@@ -24,17 +21,12 @@ public class ChatRoomController {
     private SimpMessagingTemplate simpMessagingTemplate;
 
     @PostMapping("/secure/chatroom")
-    public AbstractCallback createChatRoom(@RequestBody Map<String, Object> requestBody, Principal principal){
-        ChatRoom chatRoom = new ChatRoom((String) requestBody.get("name"), (String) requestBody.get("description"), ChatRoomType.valueOf((String) requestBody.get("type")));
-
+    public AbstractCallback createChatRoom(@RequestBody ChatRoom chatRoom, Principal principal){
         return chatRoomService.createChatRoom(chatRoom, principal);
     }
 
     @PutMapping("/secure/chatroom")
-    public AbstractCallback updateChatRoom(@RequestBody Map<String, Object> requestBody, Principal principal){
-        ChatRoom chatRoom = new ChatRoom((int) requestBody.get("id"),(String) requestBody.get("name"), (String) requestBody.get("description"),
-                ChatRoomType.valueOf((String) requestBody.get("type")), ChatRoomStatus.valueOf((String) requestBody.get("status")));
-
+    public AbstractCallback updateChatRoom(@RequestBody ChatRoom chatRoom, Principal principal){
         return chatRoomService.updateChatRoom(chatRoom, principal);
     }
 

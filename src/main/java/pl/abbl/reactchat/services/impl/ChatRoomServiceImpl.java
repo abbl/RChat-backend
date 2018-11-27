@@ -99,7 +99,7 @@ public class ChatRoomServiceImpl implements ChatRoomService {
                 RoomRightLevel userRoomRightLevel = roomRightService.getUserRight(chatUser.getId(), databaseChatRoom.getId()).getRightLevel();
 
                 //ChatRoom name update
-                if(!databaseChatRoom.getName().equals(chatRoom.getName())){
+                if(!databaseChatRoom.getName().equals(chatRoom.getName()) && chatRoom.getName() != null && !chatRoom.getName().isEmpty()){
                     if(userRoomRightLevel != RoomRightLevel.OWNER){
                         return new ChatRoomCallback(ChatRoomCallback.INSUFFICIENT_RIGHTS);
                     }else{
@@ -111,7 +111,7 @@ public class ChatRoomServiceImpl implements ChatRoomService {
                 }
 
                 //ChatRoom status update
-                if(databaseChatRoom.getStatus() != chatRoom.getStatus()){
+                if(databaseChatRoom.getStatus() != chatRoom.getStatus() && chatRoom.getStatus() != null){
                     if(userRoomRightLevel != RoomRightLevel.OWNER){
                         return new ChatRoomCallback(ChatRoomCallback.INSUFFICIENT_RIGHTS);
                     }
@@ -119,7 +119,7 @@ public class ChatRoomServiceImpl implements ChatRoomService {
                 }
 
                 //ChatRoom desc update
-                if(!databaseChatRoom.getDescription().equals(chatRoom.getDescription())){
+                if(!databaseChatRoom.getDescription().equals(chatRoom.getDescription()) && chatRoom.getDescription() != null){
                     databaseChatRoom.setDescription(chatRoom.getDescription());
                 }
 
