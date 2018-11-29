@@ -24,6 +24,8 @@ public class ChatContentServiceImpl implements ChatContentService {
     private RoomRightService rightService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private ContextChangeService contextChangeService;
 
     @Override
     public void saveChatMessage(int chatRoomId, ChatMessage chatMessage, Principal principal) {
@@ -34,11 +36,14 @@ public class ChatContentServiceImpl implements ChatContentService {
             if(rightService.isUserRightLevelHighEnough(chatUser.getId(), chatRoom.getId(), RoomRightLevel.PARTICIPANT)){
                 if(!chatMessage.getContent().isEmpty()){
                     chatMessage.setAuthor(chatUser.getUsername());
-
                     chatContentRepository.saveAndFlush(chatRoom, chatMessage);
+
+                    ChatMessage savedMessage = chatContentRepository.getLastMessage(chatRoom);
+                    contextChangeService.updateUsersOnNewMessage(chatRoom, savedMessage);
                 }
             }
         }
+
     }
 
     @Override

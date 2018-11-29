@@ -8,7 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableJpaRepositories("pl.abbl.reactchat")
 public class ReactChatConfiguration {
-    public static final int FETCH_RANGE_LIMIT = 15;
+    public static final int FETCH_RANGE_LIMIT = 32;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){

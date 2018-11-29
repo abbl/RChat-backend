@@ -49,9 +49,14 @@ public class ChatContentRepositoryImpl implements ChatContentRepository {
     }
 
     @Override
+    public ChatMessage getLastMessage(ChatRoom chatRoom) {
+        return (ChatMessage) getMessagesByAmount(chatRoom, 1).get(0);
+    }
+
+    @Override
     public List getMessagesByAmount(ChatRoom chatRoom, int amount) {
         if(chatRoom != null && amount <= FETCH_RANGE_LIMIT){
-            return entityManager.createNativeQuery("SELECT * FROM `" + chatRoom.getId() + "` LIMIT " + amount, ChatMessage.class).getResultList();
+            return entityManager.createNativeQuery("SELECT * FROM `" + chatRoom.getId() + "` ORDER BY id DESC LIMIT " + amount, ChatMessage.class).getResultList();
         }
         return new ArrayList<>();
     }

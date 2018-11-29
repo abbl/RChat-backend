@@ -20,6 +20,7 @@ import java.util.List;
 public interface ChatContentRepository {
     void createChatContentTable(ChatRoom chatRoom);
     void saveAndFlush(ChatRoom chatRoom, ChatMessage chatMessage);
+    ChatMessage getLastMessage(ChatRoom chatRoom);
     List getMessagesByAmount(ChatRoom chatRoom, int amount);
     List findMessagesByIndexRange(ChatRoom chatRoom, RangeParameter rangeParameter);
 }
