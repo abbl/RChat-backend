@@ -61,7 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.exceptionHandling()
 				.and()
 		.authorizeRequests()
-				.antMatchers(SecurityConstants.SIGN_IN_URL, "/register").permitAll()
+				.antMatchers(SecurityConstants.SIGN_IN_URL, SecurityConstants.SIGN_UP_URL).permitAll()
                 .antMatchers("/secure/**").authenticated()
 				.and()
 				.addFilterBefore(new JwtAuthenticationFilter(SecurityConstants.SIGN_IN_URL, authenticationManager(), gson), UsernamePasswordAuthenticationFilter.class)
