@@ -6,13 +6,15 @@ import org.springframework.stereotype.Service;
 import pl.abbl.reactchat.callbacks.AbstractCallback;
 import pl.abbl.reactchat.callbacks.AuthenticationCallback;
 import pl.abbl.reactchat.definitions.PostParametersConstants;
+import pl.abbl.reactchat.models.ChatRoom;
 import pl.abbl.reactchat.models.ChatUser;
 import pl.abbl.reactchat.models.Role;
+import pl.abbl.reactchat.models.RoomRight;
 import pl.abbl.reactchat.repositories.RoleRepository;
 import pl.abbl.reactchat.repositories.UserRepository;
+import pl.abbl.reactchat.services.RoomRightService;
 import pl.abbl.reactchat.services.UserService;
 
-import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.Map;
 
@@ -24,6 +26,8 @@ public class UserServiceImpl implements UserService {
     private UserRepository usersRepository;
     @Autowired
     private RoleRepository roleRepository;
+    @Autowired
+    private RoomRightService roomRightService;
 
     @Override
     public AbstractCallback register(Map<String, String> userCredentials) {
@@ -71,6 +75,14 @@ public class UserServiceImpl implements UserService {
             limitedChatUser.setUsername(chatUser.getUsername());
             limitedChatUser.setDescription(chatUser.getDescription());
             return limitedChatUser;
+        }
+        return null;
+    }
+
+    @Override
+    public RoomRight getUserRoleInChatRoom(ChatUser chatUser, ChatRoom chatRoom) {
+        if(chatUser.getId() != 0 && chatRoom.getId() != 0){
+            return roomRightService.getUserRight(chatUser.getId(), chatRoom.getId());
         }
         return null;
     }

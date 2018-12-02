@@ -82,7 +82,6 @@ public class ChatRoomServiceImpl implements ChatRoomService {
 
         if(chatRoom != null){
             roomRightService.addUserRight(chatUser.getId(), chatRoom.getId(), RoomRightLevel.OWNER);
-
             return;
         }
         logger.warn("Couldn't set user rights as a owner of ChatRoom, It might not be created before.");
