@@ -14,5 +14,5 @@ public interface UserService {
     ChatUser getUserInformationByUsername(String username);
     ChatUser getUserInformationById(int userId);
     ChatUser getUserInformationByPrincipal(Principal principal);
-    RoomRight getUserRoleInChatRoom(ChatUser chatUser, ChatRoom chatRoom);
+    RoomRight getUserRoleInChatRoom(int userId, int roomId);
 }

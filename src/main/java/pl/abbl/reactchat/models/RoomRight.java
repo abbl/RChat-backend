@@ -1,5 +1,6 @@
 package pl.abbl.reactchat.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import pl.abbl.reactchat.definitions.enums.RoomRightLevel;
 
@@ -14,10 +15,13 @@ import javax.persistence.*;
 @Data
 @Entity
 public class RoomRight {
+    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @JsonIgnore
     private int userId;
+    @JsonIgnore
     private int roomId;
     @Enumerated(EnumType.STRING)
     private RoomRightLevel rightLevel;

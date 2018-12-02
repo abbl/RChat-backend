@@ -80,9 +80,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public RoomRight getUserRoleInChatRoom(ChatUser chatUser, ChatRoom chatRoom) {
-        if(chatUser.getId() != 0 && chatRoom.getId() != 0){
-            return roomRightService.getUserRight(chatUser.getId(), chatRoom.getId());
+    public RoomRight getUserRoleInChatRoom(int userId, int roomId) {
+        if(userId != 0 && roomId != 0){
+            return roomRightService.getUserRight(userId, roomId);
         }
         return null;
     }
