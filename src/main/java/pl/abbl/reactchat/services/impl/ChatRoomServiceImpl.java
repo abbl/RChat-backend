@@ -77,14 +77,15 @@ public class ChatRoomServiceImpl implements ChatRoomService {
         return stringBuilder.toString();
     }
 
-    private void setUserRightAsOwnerOfRoom(ChatUser chatUser, String roomName){
+    private boolean setUserRightAsOwnerOfRoom(ChatUser chatUser, String roomName){
         ChatRoom chatRoom = chatRoomRepository.findByName(roomName);
 
         if(chatRoom != null){
             roomRightService.addUserRight(chatUser.getId(), chatRoom.getId(), RoomRightLevel.OWNER);
-            return;
+            return true;
         }
         logger.warn("Couldn't set user rights as a owner of ChatRoom, It might not be created before.");
+        return false;
     }
 
     //TODO Make this function more readable for humans.

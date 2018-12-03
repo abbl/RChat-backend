@@ -36,7 +36,7 @@ public class ContextChangeServiceImpl implements ContextChangeService {
 
             if(chatUser != null){
                 if(roomRightService.getUserRight(chatUser.getId(), chatRoom.getId()) != null){
-                    messagingTemplate.convertAndSendToUser(simpUser.getName(),"/topic/chatroom/list", chatRoom);
+                    messagingTemplate.convertAndSendToUser(simpUser.getName(),"/topic/chatRoomList", chatRoom);
                 }
             }
         }
