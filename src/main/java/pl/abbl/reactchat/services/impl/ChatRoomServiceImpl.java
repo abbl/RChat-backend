@@ -98,17 +98,19 @@ public class ChatRoomServiceImpl implements ChatRoomService {
                 RoomRightLevel userRoomRightLevel = roomRightService.getUserRight(chatUser.getId(), databaseChatRoom.getId()).getRightLevel();
 
                 //ChatRoom name update
-                if(!databaseChatRoom.getName().equals(chatRoom.getName()) && chatRoom.getName() != null && !chatRoom.getName().isEmpty()){
-                    if(userRoomRightLevel != RoomRightLevel.OWNER){
-                        return new ChatRoomCallback(ChatRoomCallback.INSUFFICIENT_RIGHTS);
-                    }else{
-                        if(chatRoomRepository.findByName(chatRoom.getName()) != null){
-                            return new ChatRoomCallback(ChatRoomCallback.CHAT_ROOM_NAME_TAKEN);
+                if(!chatRoom.getName().isEmpty()) {
+                   chatRoom.setName(formatChatRoomName(chatRoom.getName()));
+                    if (!databaseChatRoom.getName().equals(chatRoom.getName()) && chatRoom.getName() != null) {
+                        if (userRoomRightLevel != RoomRightLevel.OWNER) {
+                            return new ChatRoomCallback(ChatRoomCallback.INSUFFICIENT_RIGHTS);
+                        } else {
+                            if (chatRoomRepository.findByName(chatRoom.getName()) != null) {
+                                return new ChatRoomCallback(ChatRoomCallback.CHAT_ROOM_NAME_TAKEN);
+                            }
+                            databaseChatRoom.setName(chatRoom.getName());
                         }
-                        databaseChatRoom.setName(chatRoom.getName());
                     }
                 }
-
                 //ChatRoom status update
                 if(databaseChatRoom.getStatus() != chatRoom.getStatus() && chatRoom.getStatus() != null){
                     if(userRoomRightLevel != RoomRightLevel.OWNER){
