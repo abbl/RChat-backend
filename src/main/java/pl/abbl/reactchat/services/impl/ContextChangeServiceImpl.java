@@ -13,6 +13,7 @@ import pl.abbl.reactchat.services.ContextChangeService;
 import pl.abbl.reactchat.services.RoomRightService;
 import pl.abbl.reactchat.services.UserService;
 
+import java.security.Principal;
 import java.util.Set;
 
 @Service
@@ -45,5 +46,10 @@ public class ContextChangeServiceImpl implements ContextChangeService {
     @Override
     public void updateUsersOnNewMessage(ChatRoom chatRoom, ChatMessage chatMessage) {
         messagingTemplate.convertAndSend("/topic/chatroom/" + chatRoom.getId(), chatMessage);
+    }
+
+    @Override
+    public void updateUserOnRoomListChange(ChatRoom chatRoom, Principal principal) {
+        messagingTemplate.convertAndSendToUser(principal.getName(), "/topic/chatRoomList", chatRoom);
     }
 }

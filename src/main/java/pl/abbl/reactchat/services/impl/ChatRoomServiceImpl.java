@@ -43,8 +43,8 @@ public class ChatRoomServiceImpl implements ChatRoomService {
         ChatUser chatUser = userService.getUserInformationByPrincipal(principal);
 
         if(checkIfAllRequiredFieldsAreFilledUp(chatRoom)){
+            chatRoom.setName(formatChatRoomName(chatRoom.getName()));
             if(chatRoomRepository.findByName(chatRoom.getName()) == null){
-                chatRoom.setName(formatChatRoomName(chatRoom.getName()));
                 chatRoom.setOwnerId(chatUser.getId());
                 chatRoom.setStatus(ChatRoomStatus.OPEN);
                 chatRoomRepository.saveAndFlush(chatRoom);
@@ -138,10 +138,12 @@ public class ChatRoomServiceImpl implements ChatRoomService {
     @Override
     public AbstractCallback joinChatRoom(ChatRoom chatRoom, Principal principal) {
         ChatUser chatUser = userService.getUserInformationByPrincipal(principal);
+        ChatRoom databaseChatRoom = chatRoomRepository.findById(chatRoom.getId());
 
-        if(chatRoomRepository.findById(chatRoom.getId()) != null){
+        if(databaseChatRoom != null){
             if(!roomRightService.doesUserHaveAnyRight(chatUser.getId(), chatRoom.getId())){
                 roomRightService.addUserRight(chatUser.getId(), chatRoom.getId(), RoomRightLevel.PARTICIPANT);
+                contextChangeService.updateUserOnRoomListChange(databaseChatRoom, principal);
 
                 return new ChatRoomCallback(ChatRoomCallback.SUCCESSFULLY_JOINED_CHAT_ROOM);
             }
