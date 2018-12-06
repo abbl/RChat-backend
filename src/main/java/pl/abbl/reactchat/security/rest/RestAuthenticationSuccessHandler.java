@@ -14,7 +14,7 @@ import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-@Component
+@Deprecated
 public class RestAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 	private RequestCache requestCache;
 	
