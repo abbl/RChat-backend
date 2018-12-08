@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import pl.abbl.reactchat.callbacks.AbstractCallback;
 import pl.abbl.reactchat.callbacks.AuthenticationCallback;
 import pl.abbl.reactchat.definitions.PostParametersConstants;
-import pl.abbl.reactchat.models.ChatRoom;
 import pl.abbl.reactchat.models.ChatUser;
 import pl.abbl.reactchat.models.Role;
 import pl.abbl.reactchat.models.RoomRight;
@@ -80,9 +79,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public RoomRight getUserRoleInChatRoom(int userId, int roomId) {
-        if(userId != 0 && roomId != 0){
-            return roomRightService.getUserRight(userId, roomId);
+    public RoomRight getUserRoleInChatRoom(Principal principal, int roomId) {
+        ChatUser chatUser = usersRepository.findByUsername(principal.getName());
+
+        if(chatUser != null && roomId != 0){
+            return roomRightService.getUserRight(chatUser.getId(), roomId);
         }
         return null;
     }
