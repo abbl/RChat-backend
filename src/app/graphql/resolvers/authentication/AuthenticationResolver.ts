@@ -23,8 +23,6 @@ export default class AuthenticationResolver {
     public async signUp(@Arg('data') signUpInput: SignUpInput) {
         const result = await this.userService.createUser(signUpInput);
 
-        console.log(result);
-
         return Boolean(result);
     }
 
