@@ -14,14 +14,16 @@ export default class AuthenticationResolver {
 
     @Query(returns => Boolean)
     public async signIn(@Arg('data') signInInput: SignInInput) {
-        this.authenticationService.signIn(signInInput);
+        const result = this.authenticationService.signIn(signInInput.username, signInInput.password);
+
+        console.log(await result);
 
         return false;
     }
 
     @Query(returns => Boolean)
     public async signUp(@Arg('data') signUpInput: SignUpInput) {
-        const result = await this.userService.createUser(signUpInput);
+        const result = await this.userService.createUser(signUpInput.username, signUpInput.password, signUpInput.email);
 
         return Boolean(result);
     }

@@ -1,25 +1,20 @@
 import bcrypt from 'bcrypt';
 import { Service } from 'typedi';
-import { Connection, getConnection, Repository } from 'typeorm';
+import { getConnection, Repository } from 'typeorm';
 import { ROLES } from '../constants/Roles';
-import { SignUpInput } from '../graphql/resolvers/authentication/AuthenticationInputs';
 import User from '../models/User';
 
 @Service()
 export default class UserService {
-    private dbConnection: Connection = getConnection();
-    private userRepository: Repository<User> = this.dbConnection.getRepository(User);
+    private userRepository: Repository<User> = getConnection().getRepository(User);
 
-    public async createUser(signUpInput: SignUpInput): Promise<User | null> {
-        if (
-            (await this.isUsernameAvailable(signUpInput.username)) &&
-            (await this.isEmailAvailable(signUpInput.email))
-        ) {
-            return await bcrypt.hash(signUpInput.password, 10).then(async encryptedPassword => {
+    public async createUser(username: string, password: string, email: string): Promise<User | null> {
+        if ((await this.isUsernameAvailable(username)) && (await this.isEmailAvailable(email))) {
+            return await bcrypt.hash(password, 10).then(async encryptedPassword => {
                 const user: User = {
-                    username: signUpInput.username,
+                    username: username,
                     password: encryptedPassword,
-                    email: signUpInput.email,
+                    email: email,
                     role: ROLES.user,
                 };
 
@@ -29,13 +24,17 @@ export default class UserService {
         return null;
     }
 
+    public async findOneByUsername(username: string): Promise<User> {
+        return this.userRepository.findOne({ where: { username: { $eq: username } } });
+    }
+
     public async isUsernameAvailable(username: string): Promise<boolean> {
-        return this.userRepository.findOne({ where: { username: { $eq: username } } }).then(result => {
+        return this.findOneByUsername(username).then(result => {
             return !Boolean(result);
         });
     }
 
-    public async isEmailAvailable(email: string) {
+    public async isEmailAvailable(email: string): Promise<boolean> {
         return this.userRepository.findOne({ where: { email: { $eq: email } } }).then(result => !Boolean(result));
     }
 }
