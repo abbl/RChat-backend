@@ -1,5 +1,5 @@
-import { Entity, Column, ObjectIdColumn, ObjectID } from 'typeorm';
-import { ObjectType, ID, Field } from 'type-graphql';
+import { Field, ID, ObjectType } from 'type-graphql';
+import { Column, Entity, ObjectID, PrimaryGeneratedColumn } from 'typeorm';
 
 /**
  * Model representing ChatRoom entity.
@@ -7,7 +7,7 @@ import { ObjectType, ID, Field } from 'type-graphql';
 @Entity()
 @ObjectType()
 export class ChatRoom {
-    @ObjectIdColumn()
+    @PrimaryGeneratedColumn()
     @Field(type => ID)
     _id: ObjectID;
 

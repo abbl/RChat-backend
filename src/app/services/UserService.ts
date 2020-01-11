@@ -25,7 +25,7 @@ export default class UserService {
     }
 
     public async findOneByUsername(username: string): Promise<User> {
-        return this.userRepository.findOne({ where: { username: { $eq: username } } });
+        return await this.userRepository.findOne({ where: { username: username } });
     }
 
     public async isUsernameAvailable(username: string): Promise<boolean> {
@@ -35,6 +35,6 @@ export default class UserService {
     }
 
     public async isEmailAvailable(email: string): Promise<boolean> {
-        return this.userRepository.findOne({ where: { email: { $eq: email } } }).then(result => !Boolean(result));
+        return this.userRepository.findOne({ where: { email: email } }).then(result => !Boolean(result));
     }
 }

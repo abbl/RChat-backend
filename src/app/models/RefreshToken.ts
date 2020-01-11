@@ -1,9 +1,9 @@
-import { Column, Entity, JoinColumn, ObjectID, ObjectIdColumn, OneToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, ObjectID, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import User from './User';
 
 @Entity()
 export default class RefreshToken {
-    @ObjectIdColumn()
+    @PrimaryGeneratedColumn()
     _id?: ObjectID;
 
     @Column()

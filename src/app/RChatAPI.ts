@@ -34,10 +34,13 @@ export default class RChatAPI {
 
     private async setupDatabase(): Promise<void> {
         await createConnection({
-            type: 'mongodb',
-            url: 'mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false',
-            logging: true,
-            useUnifiedTopology: true,
+            type: 'postgres',
+            host: 'localhost',
+            port: 5432,
+            username: 'postgres',
+            password: '123',
+            database: 'rchat',
+            synchronize: true,
             entities: ['src/app/models/*.*'],
         });
     }

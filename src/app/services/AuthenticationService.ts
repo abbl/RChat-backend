@@ -25,6 +25,8 @@ export default class AuthenticationService {
     public async signIn(username: string, password: string): Promise<AuthenticationResult | null> {
         const user = await this.userService.findOneByUsername(username);
 
+        console.log(user);
+
         if (user) {
             const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
@@ -47,6 +49,14 @@ export default class AuthenticationService {
         };
 
         await this.refreshTokenRepository.save(refreshTokenEntity);
+    }
+
+    private async checkIfPreviousTokenExist(user: User): Promise<boolean> {
+        const previousToken = await this.refreshTokenRepository.findOne({ where: { belongsTo: user } });
+
+        console.log(previousToken);
+
+        return false;
     }
 
     private calculateTokenExpirationDay(expiresIn: number) {

@@ -1,10 +1,10 @@
 import { Field, ObjectType } from 'type-graphql';
-import { Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
+import { Column, Entity, ObjectID, PrimaryGeneratedColumn } from 'typeorm';
 
 @ObjectType()
 @Entity()
 export default class User {
-    @ObjectIdColumn()
+    @PrimaryGeneratedColumn()
     _id?: ObjectID;
 
     @Column()
