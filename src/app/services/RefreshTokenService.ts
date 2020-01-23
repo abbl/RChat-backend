@@ -59,8 +59,6 @@ export default class RefreshTokenService {
     private async getUserRefreshTokensNumber(user: User): Promise<number> {
         const userRefreshTokens = await this.refreshTokenRepository.findAndCount({ where: { belongsTo: user } });
 
-        console.log(userRefreshTokens[1]);
-
         return userRefreshTokens[1];
     }
 
