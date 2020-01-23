@@ -2,6 +2,7 @@ import { ApolloServer } from 'apollo-server-express';
 import cors from 'cors';
 import express from 'express';
 import jwt from 'express-jwt';
+import figlet from 'figlet';
 import { createConnection } from 'typeorm';
 import { schema } from './graphql/resolvers/Schema';
 
@@ -14,6 +15,7 @@ export default class RChatAPI {
     }
 
     public async start(): Promise<void> {
+        this.displayLogo();
         this.enableCORS();
         this.setupJWT();
         await this.setupDatabase();
@@ -65,5 +67,11 @@ export default class RChatAPI {
                 credentialsRequired: false,
             }).unless({ path: ['/graphql'] }),
         );
+    }
+
+    private displayLogo(): void {
+        const logo = figlet.textSync('----- \n RChat \n----- ');
+
+        console.log(logo);
     }
 }
