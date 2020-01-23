@@ -44,7 +44,7 @@ export default class RefreshTokenService {
      */
     private async saveRefreshToken(refreshToken: RefreshToken, user: User): Promise<RefreshToken> {
         //Checking if user exceeds the limit of refresh tokens.
-        if ((await this.getUserRefreshTokensNumber(user)) > this.REFRESH_TOKEN_LIMIT) {
+        if ((await this.getUserRefreshTokensNumber(user)) >= this.REFRESH_TOKEN_LIMIT) {
             this.removeUserOldestRefreshToken(user);
         }
         const result = this.refreshTokenRepository.save(refreshToken);
@@ -58,6 +58,8 @@ export default class RefreshTokenService {
      */
     private async getUserRefreshTokensNumber(user: User): Promise<number> {
         const userRefreshTokens = await this.refreshTokenRepository.findAndCount({ where: { belongsTo: user } });
+
+        console.log(userRefreshTokens[1]);
 
         return userRefreshTokens[1];
     }
