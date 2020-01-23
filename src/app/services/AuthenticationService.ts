@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { Inject, Service } from 'typedi';
-import AuthenticationResult from '../authentication/AuthenticationResult';
+import AuthenticationTokens from '../authentication/AuthenticationResult';
 import { UserTokenContent } from '../authentication/UserTokenContent';
 import { AUTHENTICATION_INCORRECT_CREDENTIALS } from '../constants/ErrorCodes';
 import ErrorResponse from '../graphql/resolvers/shared/ErrorResponse';
@@ -9,6 +9,11 @@ import User from '../models/User';
 import RefreshTokenService from './RefreshTokenService';
 import UserService from './UserService';
 
+/**
+ * AuthenticationService takes care of SignIn process by exposing signIn method
+ * which returns AuthenticationTokens or ErrorResponse based on credentials provided
+ * by user.
+ */
 @Service()
 export default class AuthenticationService {
     @Inject()
@@ -17,22 +22,23 @@ export default class AuthenticationService {
     @Inject()
     private refreshTokenService: RefreshTokenService;
 
-    private tokenSecret: string = process.env.API_SECRET;
+    private readonly tokenSecret: string = process.env.API_SECRET;
 
     /**
-     * After successful authentication returns JWT and RefreshToken.
+     * Checks username and password provided by user and returns AuthenticationTokens object
+     * upon successful authentication or ErrorResponse If credentials are incorrect.
      * @param signInInput
      */
-    public async signIn(username: string, password: string): Promise<AuthenticationResult | ErrorResponse> {
+    public async signIn(username: string, password: string): Promise<AuthenticationTokens | ErrorResponse> {
         const user = await this.userService.findOneByUsername(username);
 
         if (user) {
             const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
             if (isPasswordCorrect) {
-                const authorizationKeys = await this.createAuthorizationKeys(user);
+                const authorizationKeys = await this.createAuthenticationTokens(user);
 
-                return Object.assign(new AuthenticationResult(), authorizationKeys);
+                return Object.assign(new AuthenticationTokens(), authorizationKeys);
             }
         }
 
@@ -42,7 +48,11 @@ export default class AuthenticationService {
         });
     }
 
-    private async createAuthorizationKeys(user: User): Promise<AuthenticationResult> {
+    /**
+     * Creates tokens required to access restricted parts of the API.
+     * @param user
+     */
+    private async createAuthenticationTokens(user: User): Promise<AuthenticationTokens> {
         return {
             authenticationToken: this.createJWT(user.username, user.role),
             refreshToken: (await this.refreshTokenService.createRefreshToken(user)).token,
