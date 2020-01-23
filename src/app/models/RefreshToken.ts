@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ObjectID, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, ObjectID, PrimaryGeneratedColumn } from 'typeorm';
 import User from './User';
 
 @Entity()
@@ -12,7 +12,7 @@ export default class RefreshToken {
     @Column()
     expiresAt: Date;
 
-    @OneToOne(type => User)
+    @ManyToOne(type => User)
     @JoinColumn()
     belongsTo: User;
 }
