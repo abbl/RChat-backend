@@ -3,6 +3,7 @@ import { Inject } from 'typedi';
 import AuthenticationService from '../../../services/AuthenticationService';
 import UserService from '../../../services/UserService';
 import { RenewTokenInput, SignInInput, SignUpInput } from './AuthenticationInputs';
+import { AuthenticationResultUnion } from './AuthenticationResolverUnions';
 
 @Resolver()
 export default class AuthenticationResolver {
@@ -12,13 +13,11 @@ export default class AuthenticationResolver {
     @Inject()
     private userService: UserService;
 
-    @Query(returns => Boolean)
-    public async signIn(@Arg('data') signInInput: SignInInput) {
-        const result = this.authenticationService.signIn(signInInput.username, signInInput.password);
+    @Query(returns => AuthenticationResultUnion)
+    public async signIn(@Arg('data') signInInput: SignInInput): Promise<typeof AuthenticationResultUnion> {
+        const result = await this.authenticationService.signIn(signInInput.username, signInInput.password);
 
-        console.log(await result);
-
-        return false;
+        return result;
     }
 
     @Query(returns => Boolean)
