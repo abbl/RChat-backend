@@ -1,6 +1,6 @@
 import { createUnionType } from 'type-graphql';
-import AuthenticationTokens from '../../../authentication/AuthenticationResult';
 import ErrorResponse from '../shared/ErrorResponse';
+import AuthenticationTokens from './AuthenticationResult';
 
 export const AuthenticationResultUnion = createUnionType({
     name: 'AuthenticationResultUnion',

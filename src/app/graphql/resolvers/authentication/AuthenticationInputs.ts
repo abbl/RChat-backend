@@ -1,5 +1,6 @@
 import { Field, InputType } from 'type-graphql';
 import User from '../../../models/User';
+import AuthenticationTokens from './AuthenticationResult';
 
 @InputType()
 export class SignInInput implements Partial<User> {
@@ -23,7 +24,7 @@ export class SignUpInput implements Partial<User> {
 }
 
 @InputType()
-export class RenewTokenInput {
+export class RefreshAuthenticationTokenInput implements Partial<AuthenticationTokens> {
     @Field()
-    token: string;
+    refreshToken: string;
 }

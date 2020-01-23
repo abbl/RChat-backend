@@ -17,7 +17,11 @@ export default class RefreshTokenService {
     private readonly REFRESH_TOKEN_LIMIT: number = 5;
     private refreshTokenRepository: Repository<RefreshToken> = getConnection().getRepository(RefreshToken);
 
-    public async fetchRefreshTokens(user: User): Promise<RefreshToken[]> {
+    public async findRefreshToken(refreshToken: string): Promise<RefreshToken | null> {
+        return this.refreshTokenRepository.findOne({ where: { token: refreshToken }, relations: ['belongsTo'] });
+    }
+
+    public async fetchRefreshTokensByUser(user: User): Promise<RefreshToken[]> {
         const refreshTokens = this.refreshTokenRepository.find({ where: { belongsTo: user } });
 
         return refreshTokens;
