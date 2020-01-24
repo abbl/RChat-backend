@@ -4,7 +4,9 @@ import express from 'express';
 import jwt from 'express-jwt';
 import figlet from 'figlet';
 import { createConnection } from 'typeorm';
+import { RequestContextStructure } from './authentication/RequestContextStructure';
 import { schema } from './graphql/resolvers/Schema';
+import { RequestWithJWT } from './types/RequestWithJWT';
 
 export default class RChatAPI {
     private expressInstance: express.Express;
@@ -50,9 +52,9 @@ export default class RChatAPI {
     private async createApolloServer(): Promise<void> {
         this.apolloInstance = new ApolloServer({
             schema: await schema,
-            context: ({ req }: { req: Express.Request }) => {
-                const context = {
-                    ABC: 'abc',
+            context: ({ req }: { req: RequestWithJWT }) => {
+                const context: RequestContextStructure = {
+                    user: { ...req.user },
                 };
 
                 return context;
@@ -65,7 +67,7 @@ export default class RChatAPI {
             jwt({
                 secret: process.env.API_SECRET,
                 credentialsRequired: false,
-            }).unless({ path: ['/graphql'] }),
+            }),
         );
     }
 

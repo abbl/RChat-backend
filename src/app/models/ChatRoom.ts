@@ -1,5 +1,6 @@
 import { Field, ID, ObjectType } from 'type-graphql';
-import { Column, Entity, ObjectID, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, ObjectID, PrimaryGeneratedColumn } from 'typeorm';
+import User from './User';
 
 /**
  * Model representing ChatRoom entity.
@@ -19,9 +20,10 @@ export class ChatRoom {
     @Field()
     description: string;
 
-    @Column()
+    @ManyToOne(type => User)
+    @JoinColumn()
     @Field()
-    owner: string;
+    owner: User;
 
     @Column()
     @Field()
