@@ -32,9 +32,7 @@ export default class ChatroomRepository extends Repository<Chatroom> {
         return updateResult.affected > 0;
     }
 
-    public async removeChatroomById(id: string): Promise<boolean> {
-        const chatroom = await this.getChatroomById(id);
-
+    public async removeChatroomByEntity(chatroom: Chatroom): Promise<boolean> {
         return Boolean(this.remove(chatroom));
     }
 
