@@ -3,10 +3,8 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { Inject, Service } from 'typedi';
 import { UserTokenContent } from '../authentication/UserTokenContent';
-import { AUTHENTICATION_INCORRECT_REFRESH_TOKEN } from '../constants/ErrorCodes';
 import { RefreshAuthenticationTokenInput } from '../graphql/resolvers/authentication/AuthenticationInputs';
 import AuthenticationTokens from '../graphql/resolvers/authentication/AuthenticationTokens';
-import ErrorResponse from '../graphql/resolvers/shared/ErrorResponse';
 import RefreshToken from '../models/RefreshToken';
 import User from '../models/User';
 import RefreshTokenService from './RefreshTokenService';
@@ -66,11 +64,7 @@ export default class AuthenticationService {
                 refreshToken: refreshAuthenticationToken.refreshToken,
             });
         }
-
-        return Object.assign(new ErrorResponse(), {
-            code: AUTHENTICATION_INCORRECT_REFRESH_TOKEN,
-            message: 'Provided refresh token is incorrect or expired',
-        });
+        throw new Error('Provided refresh token is incorrect or expired');
     }
 
     /**

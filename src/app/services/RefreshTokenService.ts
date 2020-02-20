@@ -1,5 +1,6 @@
 import { Service } from 'typedi';
 import { getConnection, Repository } from 'typeorm';
+import DatabaseType from '../constants/DatabaseType';
 import RefreshToken from '../models/RefreshToken';
 import User from '../models/User';
 import uuid = require('uuid');
@@ -15,7 +16,9 @@ export default class RefreshTokenService {
      * The limit of available tokens for one user.
      */
     private readonly REFRESH_TOKEN_LIMIT: number = 5;
-    private readonly refreshTokenRepository: Repository<RefreshToken> = getConnection().getRepository(RefreshToken);
+    private readonly refreshTokenRepository: Repository<RefreshToken> = getConnection(
+        DatabaseType.MAIN_DATABASE,
+    ).getRepository(RefreshToken);
 
     public async findRefreshToken(refreshToken: string): Promise<RefreshToken | null> {
         return this.refreshTokenRepository.findOne({ where: { token: refreshToken }, relations: ['belongsTo'] });

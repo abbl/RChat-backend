@@ -1,12 +1,13 @@
 import bcrypt from 'bcrypt';
 import { Service } from 'typedi';
 import { getConnection, Repository } from 'typeorm';
+import DatabaseType from '../constants/DatabaseType';
 import { ROLES } from '../constants/Roles';
 import User from '../models/User';
 
 @Service()
 export default class UserService {
-    private userRepository: Repository<User> = getConnection().getRepository(User);
+    private userRepository: Repository<User> = getConnection(DatabaseType.MAIN_DATABASE).getRepository(User);
 
     public async findOneByUsername(username: string): Promise<User> {
         return this.userRepository.findOne({ where: { username: username } });

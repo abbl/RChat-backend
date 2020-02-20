@@ -3,8 +3,8 @@ import cors from 'cors';
 import express from 'express';
 import jwt from 'express-jwt';
 import figlet from 'figlet';
-import Container, { Inject } from 'typedi';
-import { createConnection } from 'typeorm';
+import Container from 'typedi';
+import DatabaseManager from './database/DatabaseManager';
 import { schema } from './graphql/resolvers/Schema';
 import UserService from './services/UserService';
 import { JWTRequest } from './types/JWTRequest';
@@ -12,8 +12,6 @@ import { JWTRequest } from './types/JWTRequest';
 export default class RChat {
     private expressInstance: express.Express;
     private apolloInstance: ApolloServer;
-
-    @Inject()
     private userService: UserService;
 
     constructor(expressInstance: express.Express) {
@@ -40,16 +38,7 @@ export default class RChat {
     }
 
     private async setupDatabase(): Promise<void> {
-        await createConnection({
-            type: 'postgres',
-            host: 'localhost',
-            port: 5432,
-            username: 'postgres',
-            password: '123',
-            database: 'rchat',
-            synchronize: true,
-            entities: ['src/app/models/*.*'],
-        });
+        await DatabaseManager.initializeDatabases();
     }
 
     private async createApolloServer(): Promise<void> {

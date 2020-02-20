@@ -20,14 +20,14 @@ export default class ChatroomRepository extends Repository<Chatroom> {
      */
     public async updateChatroomById<T extends Partial<Chatroom>>(
         chatroom: Chatroom,
-        fieldsToUpdate: T,
+        partialEntity: T,
     ): Promise<boolean> {
-        if (fieldsToUpdate.name) {
-            if (!this.isChatRoomNameAvailable(fieldsToUpdate.name)) {
+        if (partialEntity.name) {
+            if (!this.isChatRoomNameAvailable(partialEntity.name)) {
                 throw new Error(`Name of the chatroom is already taken.`);
             }
         }
-        const updateResult = await this.update(chatroom.id, fieldsToUpdate);
+        const updateResult = await this.update(chatroom.id, partialEntity);
 
         return updateResult.affected > 0;
     }

@@ -1,5 +1,6 @@
 import { Service } from 'typedi';
 import { getConnection } from 'typeorm';
+import DatabaseType from '../constants/DatabaseType';
 import {
     CreateChatroomInput,
     DeleteChatroomInput,
@@ -11,7 +12,9 @@ import ChatroomRepository from '../repositories/ChatroomRepository';
 
 @Service()
 export default class ChatroomService {
-    private readonly chatRoomRepository: ChatroomRepository = getConnection().getCustomRepository(ChatroomRepository);
+    private readonly chatRoomRepository: ChatroomRepository = getConnection(
+        DatabaseType.MAIN_DATABASE,
+    ).getCustomRepository(ChatroomRepository);
 
     public async createChatroom(createChatRoomInput: CreateChatroomInput, userEntity: User): Promise<Chatroom> {
         const chatroom: Chatroom = {
