@@ -1,10 +1,11 @@
+import { UserInputError } from 'apollo-server-express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { Inject, Service } from 'typedi';
 import { UserTokenContent } from '../authentication/UserTokenContent';
-import { AUTHENTICATION_INCORRECT_CREDENTIALS, AUTHENTICATION_INCORRECT_REFRESH_TOKEN } from '../constants/ErrorCodes';
+import { AUTHENTICATION_INCORRECT_REFRESH_TOKEN } from '../constants/ErrorCodes';
 import { RefreshAuthenticationTokenInput } from '../graphql/resolvers/authentication/AuthenticationInputs';
-import AuthenticationTokens from '../graphql/resolvers/authentication/AuthenticationResult';
+import AuthenticationTokens from '../graphql/resolvers/authentication/AuthenticationTokens';
 import ErrorResponse from '../graphql/resolvers/shared/ErrorResponse';
 import RefreshToken from '../models/RefreshToken';
 import User from '../models/User';
@@ -28,10 +29,10 @@ export default class AuthenticationService {
 
     /**
      * Checks username and password provided by user and returns AuthenticationTokens object
-     * upon successful authentication or ErrorResponse If credentials are incorrect.
+     * upon successful authentication or throws an UserInputError If credentials are incorrect.
      * @param signInInput
      */
-    public async signIn(username: string, password: string): Promise<AuthenticationTokens | ErrorResponse> {
+    public async signIn(username: string, password: string): Promise<AuthenticationTokens> {
         const user: User | undefined = await this.userService.findOneByUsername(username);
 
         if (user) {
@@ -44,10 +45,7 @@ export default class AuthenticationService {
             }
         }
 
-        return Object.assign(new ErrorResponse(), {
-            code: AUTHENTICATION_INCORRECT_CREDENTIALS,
-            message: 'Username or password is incorrect',
-        });
+        throw new UserInputError('Username or password is incorrect');
     }
 
     /**
@@ -86,8 +84,9 @@ export default class AuthenticationService {
         };
     }
 
+    //TODO: Change expiration date of token to 15 minutes after being done with testing.
     private createJWT(user: User): string {
-        const userTokenContent: UserTokenContent = { username: user.username, role: user.role };
+        const userTokenContent: UserTokenContent = { id: user.id, role: user.role };
 
         return jwt.sign(userTokenContent, this.tokenSecret, { expiresIn: '7d' });
     }

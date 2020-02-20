@@ -8,6 +8,14 @@ import User from '../models/User';
 export default class UserService {
     private userRepository: Repository<User> = getConnection().getRepository(User);
 
+    public async findOneByUsername(username: string): Promise<User> {
+        return this.userRepository.findOne({ where: { username: username } });
+    }
+
+    public async findOneById(id: string): Promise<User> {
+        return this.userRepository.findOne({ where: { id: id } });
+    }
+
     public async createUser(username: string, password: string, email: string): Promise<User | null> {
         if ((await this.isUsernameAvailable(username)) && (await this.isEmailAvailable(email))) {
             return await bcrypt.hash(password, 10).then(async encryptedPassword => {
@@ -24,17 +32,13 @@ export default class UserService {
         return null;
     }
 
-    public async findOneByUsername(username: string): Promise<User> {
-        return await this.userRepository.findOne({ where: { username: username } });
-    }
-
-    public async isUsernameAvailable(username: string): Promise<boolean> {
-        return this.findOneByUsername(username).then(result => {
+    private async isUsernameAvailable(username: string): Promise<boolean> {
+        return await this.findOneByUsername(username).then(result => {
             return !Boolean(result);
         });
     }
 
-    public async isEmailAvailable(email: string): Promise<boolean> {
+    private async isEmailAvailable(email: string): Promise<boolean> {
         return this.userRepository.findOne({ where: { email: email } }).then(result => !Boolean(result));
     }
 }

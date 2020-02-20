@@ -3,14 +3,18 @@ import cors from 'cors';
 import express from 'express';
 import jwt from 'express-jwt';
 import figlet from 'figlet';
+import Container, { Inject } from 'typedi';
 import { createConnection } from 'typeorm';
-import { RequestContextStructure } from './authentication/RequestContextStructure';
 import { schema } from './graphql/resolvers/Schema';
-import { RequestWithJWT } from './types/RequestWithJWT';
+import UserService from './services/UserService';
+import { JWTRequest } from './types/JWTRequest';
 
-export default class RChatAPI {
+export default class RChat {
     private expressInstance: express.Express;
     private apolloInstance: ApolloServer;
+
+    @Inject()
+    private userService: UserService;
 
     constructor(expressInstance: express.Express) {
         this.expressInstance = expressInstance;
@@ -22,9 +26,8 @@ export default class RChatAPI {
         this.setupJWT();
         await this.setupDatabase();
         await this.createApolloServer();
-
+        this.userService = Container.get(UserService);
         this.apolloInstance.applyMiddleware({ app: this.expressInstance, path: '/graphql' });
-
         this.expressInstance.listen(4000);
 
         console.log('API enabled on port 4000');
@@ -52,12 +55,10 @@ export default class RChatAPI {
     private async createApolloServer(): Promise<void> {
         this.apolloInstance = new ApolloServer({
             schema: await schema,
-            context: ({ req }: { req: RequestWithJWT }) => {
-                const context: RequestContextStructure = {
-                    user: { ...req.user },
+            context: async ({ req }: { req: JWTRequest }) => {
+                return {
+                    userEntity: req.user ? await this.userService.findOneById(req.user.id) : undefined,
                 };
-
-                return context;
             },
         });
     }

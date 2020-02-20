@@ -1,6 +1,6 @@
 import { Field, InputType } from 'type-graphql';
 import User from '../../../models/User';
-import AuthenticationTokens from './AuthenticationResult';
+import AuthenticationTokens from './AuthenticationTokens';
 
 @InputType()
 export class SignInInput implements Partial<User> {

@@ -1,31 +1,28 @@
-import { Field, ID, ObjectType } from 'type-graphql';
-import { Column, Entity, JoinColumn, ManyToOne, ObjectID, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import User from './User';
 
 /**
  * Model representing ChatRoom entity.
  */
 @Entity()
-@ObjectType()
-export class ChatRoom {
+export class Chatroom {
     @PrimaryGeneratedColumn()
-    @Field(type => ID)
-    _id: ObjectID;
+    id?: string;
 
     @Column()
-    @Field()
     name: string;
 
     @Column()
-    @Field()
     description: string;
 
-    @ManyToOne(type => User)
+    @ManyToOne(type => User, { eager: true })
     @JoinColumn()
-    @Field()
     owner: User;
 
     @Column()
-    @Field()
     isPrivate: boolean;
+
+    @ManyToMany(type => User, { cascade: true })
+    @JoinTable()
+    users?: User[];
 }

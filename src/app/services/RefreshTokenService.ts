@@ -15,7 +15,7 @@ export default class RefreshTokenService {
      * The limit of available tokens for one user.
      */
     private readonly REFRESH_TOKEN_LIMIT: number = 5;
-    private refreshTokenRepository: Repository<RefreshToken> = getConnection().getRepository(RefreshToken);
+    private readonly refreshTokenRepository: Repository<RefreshToken> = getConnection().getRepository(RefreshToken);
 
     public async findRefreshToken(refreshToken: string): Promise<RefreshToken | null> {
         return this.refreshTokenRepository.findOne({ where: { token: refreshToken }, relations: ['belongsTo'] });
@@ -48,7 +48,7 @@ export default class RefreshTokenService {
      */
     private async saveRefreshToken(refreshToken: RefreshToken, user: User): Promise<RefreshToken> {
         //Checking if user exceeds the limit of refresh tokens.
-        if ((await this.getUserRefreshTokensNumber(user)) >= this.REFRESH_TOKEN_LIMIT) {
+        if ((await this.getUserRefreshTokensAmount(user)) >= this.REFRESH_TOKEN_LIMIT) {
             this.removeUserOldestRefreshToken(user);
         }
         const result = this.refreshTokenRepository.save(refreshToken);
@@ -56,11 +56,7 @@ export default class RefreshTokenService {
         return result;
     }
 
-    /**
-     * Returns the number of tokens that user generated.
-     * @param user
-     */
-    private async getUserRefreshTokensNumber(user: User): Promise<number> {
+    private async getUserRefreshTokensAmount(user: User): Promise<number> {
         const userRefreshTokens = await this.refreshTokenRepository.findAndCount({ where: { belongsTo: user } });
 
         return userRefreshTokens[1];

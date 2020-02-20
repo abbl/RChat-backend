@@ -1,11 +1,11 @@
 import { AuthChecker } from 'type-graphql';
-import { RequestContextStructure } from './RequestContextStructure';
-import { UserTokenContent } from './UserTokenContent';
+import User from '../models/User';
+import { ContextStructure } from './ContextStructure';
 
 export interface AuthCheckerArgs {
     root: any;
     args: any;
-    context: RequestContextStructure;
+    context: ContextStructure;
     info: any;
 }
 
@@ -13,10 +13,10 @@ export const graphQLAuthenticationChecker: AuthChecker<any> = (
     { root, args, context, info }: AuthCheckerArgs,
     roles,
 ) => {
-    const userTokenContent: UserTokenContent = context.user;
+    const userEntity: User = context.userEntity;
 
-    if (userTokenContent) {
-        return roles.includes(userTokenContent.role);
+    if (userEntity) {
+        return roles.includes(userEntity.role);
     }
     return false;
 };

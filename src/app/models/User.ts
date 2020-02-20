@@ -1,18 +1,18 @@
 import { Field, ObjectType } from 'type-graphql';
-import { Column, Entity, ObjectID, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Chatroom } from './Chatroom';
 
 @ObjectType()
 @Entity()
 export default class User {
     @PrimaryGeneratedColumn()
-    _id?: ObjectID;
+    id?: string;
 
     @Column()
     @Field()
     username: string;
 
     @Column()
-    @Field()
     password: string;
 
     @Column()
@@ -22,4 +22,7 @@ export default class User {
     @Column()
     @Field()
     role: string;
+
+    @ManyToMany(type => Chatroom, { cascade: true })
+    chatrooms?: Chatroom[];
 }

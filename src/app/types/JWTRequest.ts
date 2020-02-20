@@ -1,5 +1,5 @@
 import { UserTokenContent } from '../authentication/UserTokenContent';
 
-export interface RequestWithJWT extends Express.Request {
+export interface JWTRequest extends Express.Request {
     user: UserTokenContent;
 }

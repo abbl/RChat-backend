@@ -1,4 +1,4 @@
 export interface UserTokenContent {
-    username: string;
+    id: string;
     role: string;
 }
